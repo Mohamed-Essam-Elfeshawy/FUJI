@@ -152,7 +152,7 @@ const Safety = () => {
                         </p>
                         <div className={`flex flex-col sm:flex-row gap-4 justify-center ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
                             <button
-                                onClick={() => window.open('https://wa.me/966534223238', '_blank')}
+                                onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
                                 className={`px-8 py-4 bg-brandRed hover:bg-red-600 text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${isRTL ? 'font-cairo' : ''}`}
                             >
                                 {isRTL ? 'تواصل معنا' : 'Contact Us'}

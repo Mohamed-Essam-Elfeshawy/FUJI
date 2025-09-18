@@ -142,7 +142,7 @@ const Navbar = () => {
                                     if (location.pathname === '/cart') {
                                         window.location.href = '/checkout';
                                     } else if (location.pathname === '/shop') {
-                                        window.open('https://wa.me/966534223238', '_blank');
+                                        window.open('https://wa.me/2001201029395', '_blank');
                                     } else {
                                         window.location.href = '/shop';
                                     }
@@ -167,7 +167,7 @@ const Navbar = () => {
                         {/* Checkout page - Contact CTA */}
                         {isCheckoutPage && (
                             <button
-                                onClick={() => window.open('https://wa.me/966534223238', '_blank')}
+                                onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
                                 className={`hidden md:inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg bg-brandRed hover:bg-red-600 text-white hover:shadow-xl ${isRTL ? 'font-cairo' : ''}`}
                             >
                                 {isRTL ? 'مساعدة' : 'Help'}
@@ -245,9 +245,9 @@ const Navbar = () => {
                                     if (location.pathname === '/cart') {
                                         window.location.href = '/checkout';
                                     } else if (location.pathname === '/shop') {
-                                        window.open('https://wa.me/966534223238', '_blank');
+                                        window.open('https://wa.me/2001201029395', '_blank');
                                     } else if (isCheckoutPage) {
-                                        window.open('https://wa.me/966534223238', '_blank');
+                                        window.open('https://wa.me/2001201029395', '_blank');
                                     } else {
                                         window.location.href = '/shop';
                                     }

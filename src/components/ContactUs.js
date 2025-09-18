@@ -177,7 +177,7 @@ const ContactUs = () => {
                             </div>
                             <div>
                                 <h3 className='text-sm text-gray-500 font-medium'>{t('Phone_Number')}</h3>
-                                <p className='text-lg font-bold text-gray-900'>053-422-3238</p>
+                                <p className='text-lg font-bold text-gray-900'>012-010-29395</p>
                             </div>
                         </div>
 
@@ -208,7 +208,7 @@ const ContactUs = () => {
 
                         {/* WhatsApp Button */}
                         <button
-                            onClick={() => window.open('https://wa.me/966534223238', '_blank')}
+                            onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
                             className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 rtl:space-x-reverse"
                         >
                             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -368,7 +368,7 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <h3 className='text-lg text-gray-500 font-medium'>{t('Phone_Number')}</h3>
-                                            <p className='text-2xl font-bold text-gray-900'>053-422-3238</p>
+                                            <p className='text-2xl font-bold text-gray-900'>012-010-29395</p>
                                         </div>
                                     </div>
 
@@ -400,7 +400,7 @@ const ContactUs = () => {
 
                                 {/* WhatsApp Button */}
                                 <button
-                                    onClick={() => window.open('https://wa.me/966534223238', '_blank')}
+                                    onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
                                     className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-3 rtl:space-x-reverse"
                                 >
                                     <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">

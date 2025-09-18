@@ -84,7 +84,7 @@ const Hero = () => {
                             {/* Modern CTA buttons with glassmorphism */}
                             <div className={`flex flex-col gap-4 animate-fade-in-up ${isRTL ? 'items-end' : 'items-start'}`} style={{animationDelay: '0.4s'}}>
                                 <button
-                                    onClick={() => window.open('https://wa.me/966534223238', '_blank')}
+                                    onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
                                     className={`py-4 px-8 bg-electricBlue hover:bg-electricBlueDark text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-strong hover:shadow-xl transform hover:scale-105 hover:shadow-electricBlue/25 ${isRTL ? 'font-cairo' : ''}`}>
                                     {isRTL ? 'احصل على عرض سعر' : 'Get a Quote'}
                                 </button>
@@ -155,7 +155,7 @@ const Hero = () => {
                             {/* Modern CTA buttons with glassmorphism */}
                             <div className={`flex flex-col gap-4 animate-fade-in-up ${isRTL ? 'items-end' : 'items-start'}`} style={{animationDelay: '0.4s'}}>
                                 <button
-                                    onClick={() => window.open('https://wa.me/966534223238', '_blank')}
+                                    onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
                                     className={`py-4 px-8 bg-electricBlue hover:bg-electricBlueDark text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-strong hover:shadow-xl transform hover:scale-105 hover:shadow-electricBlue/25 ${isRTL ? 'font-cairo' : ''}`}>
                                     {isRTL ? 'احصل على عرض سعر' : 'Get a Quote'}
                                 </button>

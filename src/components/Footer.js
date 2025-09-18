@@ -97,7 +97,7 @@ const Footer = () => {
                             ].map((service, index) => (
                                 <li key={index}>
                                     <a 
-                                        href="https://wa.me/966534223238"
+                                        href="https://wa.me/2001201029395"
                                         className={`text-gray-300 hover:text-brandRed transition-colors duration-300 flex items-center group ${isRTL ? 'font-cairo' : ''}`}
                                     >
                                         <span className={`w-2 h-2 bg-brandRed rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isRTL ? 'ml-3 mr-0' : ''}`}></span>
@@ -117,7 +117,7 @@ const Footer = () => {
                         {/* Contact Info */}
                         <div className="space-y-4 mb-8">
                             <a 
-                                href="tel:+966534223238"
+                                href="tel:+2001201029395"
                                 className="flex items-center gap-3 text-gray-300 hover:text-brandRed transition-colors duration-300 group"
                             >
                                 <div className="w-10 h-10 bg-brandRed/20 rounded-xl flex items-center justify-center group-hover:bg-brandRed transition-colors duration-300">
@@ -125,7 +125,7 @@ const Footer = () => {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
                                 </div>
-                                <span className={`${isRTL ? 'font-cairo' : ''}`}>+966 53 422 3238</span>
+                                <span className={`${isRTL ? 'font-cairo' : ''}`}>+20 120 102 9395</span>
                             </a>
 
                             <a 
