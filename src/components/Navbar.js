@@ -60,8 +60,8 @@ const Navbar = () => {
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
             isScrolled 
-                ? 'bg-white/95 backdrop-blur-lg border-b border-gray-200/20 shadow-lg' 
-                : 'bg-white/10 backdrop-blur-md border-b border-white/10'
+                ? 'bg-white shadow-lg border-b border-gray-200' 
+                : 'bg-white/95 backdrop-blur-lg shadow-md'
         }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
@@ -74,10 +74,10 @@ const Navbar = () => {
                             alt="FUJIE Logo" 
                         />
                         <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
-                            <h1 className={`text-xl font-bold ${isScrolled ? 'text-gray-900' : 'text-white'} ${isRTL ? 'font-cairo' : ''}`}>
+                            <h1 className={`text-xl font-bold ${isScrolled ? 'text-gray-900' : 'text-gray-900'} ${isRTL ? 'font-cairo' : ''}`}>
                                 {t('App_Name')}
                             </h1>
-                            <p className={`text-xs ${isScrolled ? 'text-gray-600' : 'text-gray-300'} ${isRTL ? 'font-cairo' : ''}`}>
+                            <p className={`text-xs ${isScrolled ? 'text-gray-600' : 'text-gray-600'} ${isRTL ? 'font-cairo' : ''}`}>
                                 {isRTL ? 'حلول المصاعد المتطورة' : 'Premium Elevator Solutions'}
                             </p>
                         </div>
@@ -90,14 +90,14 @@ const Navbar = () => {
                                 <a 
                                     key={link.path}
                                     href={link.href} 
-                                    className={`relative px-3 py-2 text-sm font-semibold transition-all duration-300 group ${
+                                    className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 group rounded-lg ${
                                         location.pathname === link.path 
-                                            ? (isScrolled ? 'text-brandRed' : 'text-electricBlue') 
-                                            : (isScrolled ? 'text-gray-700 hover:text-brandRed' : 'text-white hover:text-electricBlue')
+                                            ? 'text-brandRed bg-brandRed/10' 
+                                            : 'text-gray-700 hover:text-brandRed hover:bg-brandRed/5'
                                     } ${isRTL ? 'font-cairo' : ''}`}
                                 >
                                     {link.label}
-                                    <span className={`absolute bottom-0 left-0 w-0 h-0.5 ${isScrolled ? 'bg-brandRed' : 'bg-electricBlue'} transition-all duration-300 group-hover:w-full ${location.pathname === link.path ? 'w-full' : ''}`}></span>
+                                    <span className={`absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-brandRed transition-all duration-300 group-hover:w-3/4 ${location.pathname === link.path ? 'w-3/4' : ''}`}></span>
                                 </a>
                             ))}
                         </div>
@@ -109,11 +109,7 @@ const Navbar = () => {
                         {/* Language Switcher */}
                         <button
                             onClick={() => changeLanguage(language === 'en' ? 'ar' : 'en')}
-                            className={`px-3 py-2 text-xs font-medium rounded-lg border transition-all duration-300 ${
-                                isScrolled 
-                                    ? 'border-gray-300 text-gray-700 hover:border-brandBlue hover:text-brandBlue hover:bg-brandBlue/5' 
-                                    : 'border-white/30 text-white hover:border-electricBlue hover:text-electricBlue hover:bg-electricBlue/10'
-                            }`}
+                            className="px-3 py-2 text-xs font-medium rounded-lg border border-gray-300 text-gray-700 hover:border-brandRed hover:text-brandRed hover:bg-brandRed/5 transition-all duration-300"
                         >
                             {language === 'en' ? 'ع' : 'EN'}
                         </button>
@@ -124,10 +120,8 @@ const Navbar = () => {
                                 href="/cart" 
                                 className={`relative p-3 rounded-xl transition-all duration-300 group ${
                                     location.pathname === '/cart'
-                                        ? (isScrolled ? 'bg-brandRed/10 text-brandRed' : 'bg-electricBlue/20 text-electricBlue')
-                                        : (isScrolled 
-                                            ? 'text-gray-700 hover:text-brandRed hover:bg-brandRed/5' 
-                                            : 'text-white hover:text-electricBlue hover:bg-electricBlue/10')
+                                        ? 'bg-brandRed/10 text-brandRed'
+                                        : 'text-gray-700 hover:text-brandRed hover:bg-brandRed/5'
                                 }`}
                             >
                                 <svg className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -158,9 +152,7 @@ const Navbar = () => {
                                         ? 'bg-brandBlue hover:bg-blue-700 text-white hover:shadow-xl'
                                         : location.pathname === '/shop'
                                             ? 'bg-brandRed hover:bg-red-600 text-white hover:shadow-xl'
-                                            : (isScrolled 
-                                                ? 'bg-brandRed hover:bg-red-600 text-white hover:shadow-xl' 
-                                                : 'bg-electricBlue hover:bg-electricBlueDark text-white hover:shadow-electricBlue/25')
+                                            : 'bg-brandRed hover:bg-red-600 text-white hover:shadow-xl'
                                 } ${isRTL ? 'font-cairo' : ''}`}
                             >
                                 {location.pathname === '/cart' 
@@ -185,11 +177,7 @@ const Navbar = () => {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setShowMobileMenu(!showMobileMenu)}
-                            className={`md:hidden p-2 rounded-lg transition-all duration-300 ${
-                                isScrolled 
-                                    ? 'text-gray-700 hover:text-brandRed hover:bg-brandRed/5' 
-                                    : 'text-white hover:text-electricBlue hover:bg-electricBlue/10'
-                            }`}
+                            className="md:hidden p-2 rounded-lg transition-all duration-300 text-gray-700 hover:text-brandRed hover:bg-brandRed/5"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 {showMobileMenu ? (
@@ -209,7 +197,7 @@ const Navbar = () => {
                     ? 'max-h-screen opacity-100' 
                     : 'max-h-0 opacity-0 overflow-hidden'
             }`}>
-                <div className="bg-white/95 backdrop-blur-lg border-t border-gray-200/20 shadow-lg">
+                <div className="bg-white shadow-lg border-t border-gray-200">
                     <div className="px-4 py-6 space-y-4">
                         
                         {/* Mobile Navigation Links */}
