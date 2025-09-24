@@ -25,6 +25,7 @@
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold;
+    color: #146FB6;
   }
   
   h1 {
@@ -45,6 +46,7 @@
   
   p {
     @apply leading-relaxed;
+    color: #C0392B;
   }
 }
 
@@ -79,6 +81,201 @@
   
   .animate-slide-in-rtl {
     animation: slideInRTL 0.6s ease-out;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-down {
+    animation: fadeInDown 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+
+  /* Advanced Scroll Animations */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animate.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-animate-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animate-left.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-animate-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animate-right.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-animate-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animate-scale.animate {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .scroll-animate-rotate {
+    opacity: 0;
+    transform: rotate(10deg) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animate-rotate.animate {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  /* Stagger Animation Delays */
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+  .stagger-6 { transition-delay: 0.6s; }
+  .stagger-7 { transition-delay: 0.7s; }
+  .stagger-8 { transition-delay: 0.8s; }
+
+
+  /* Dark Mode Styles */
+  .dark {
+    color-scheme: dark;
+  }
+
+  .light {
+    color-scheme: light;
+  }
+
+  /* Dark mode background */
+  .dark body {
+    background-color: #0f172a;
+    color: #f1f5f9;
+  }
+
+  .light body {
+    background-color: #ffffff;
+    color: #1e293b;
+  }
+
+  /* Dark mode navbar */
+  .dark nav {
+    background-color: rgba(15, 23, 42, 0.95) !important;
+    border-color: rgba(71, 85, 105, 0.3) !important;
+  }
+
+  .light nav {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-color: rgba(229, 231, 235, 1) !important;
+  }
+
+  /* Dark mode text colors */
+  .dark .text-gray-900 {
+    color: #f1f5f9 !important;
+  }
+
+  .dark .text-gray-700 {
+    color: #cbd5e1 !important;
+  }
+
+  .dark .text-gray-600 {
+    color: #94a3b8 !important;
+  }
+
+  .dark .text-gray-500 {
+    color: #64748b !important;
+  }
+
+  /* Dark mode backgrounds */
+  .dark .bg-white {
+    background-color: #1e293b !important;
+  }
+
+  .dark .bg-gray-50 {
+    background-color: #0f172a !important;
+  }
+
+  .dark .bg-gray-100 {
+    background-color: #1e293b !important;
+  }
+
+  /* Dark mode borders */
+  .dark .border-gray-200 {
+    border-color: #334155 !important;
+  }
+
+  .dark .border-gray-300 {
+    border-color: #475569 !important;
+  }
+
+  /* Dark mode shadows */
+  .dark .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .dark .shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  /* Dark mode cards */
+  .dark .bg-white\/5 {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .dark .bg-white\/10 {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* Dark mode hover effects */
+  .dark .hover\:bg-gray-50:hover {
+    background-color: #1e293b !important;
+  }
+
+  .dark .hover\:bg-gray-100:hover {
+    background-color: #334155 !important;
+  }
+
+  /* High Quality Image Rendering */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+  }
+
+  /* Background Image Quality Enhancement */
+  .bg-cover {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    image-rendering: -webkit-optimize-contrast;
   }
 }
 

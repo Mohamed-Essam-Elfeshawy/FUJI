@@ -2,6 +2,7 @@ import React from 'react'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
 import ProductSlider from '../components/ProductSlider'
+import ProductGrid from '../components/ProductGrid'
 import OurServices from '../components/OurServices'
 import Elevators from '../components/Elevators'
 import Safety from '../components/Safety'
@@ -16,6 +17,7 @@ const MainLayout = () => {
         <div className="min-h-screen">
             <Hero />
             <ProductSlider />
+            <ProductGrid />
 
             <div id='ourServices'>
                 <OurServices />

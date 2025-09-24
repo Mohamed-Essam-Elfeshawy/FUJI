@@ -125,7 +125,7 @@ const OurServices = () => {
                             {/* CTA Buttons */}
                             <div className={`flex flex-col sm:flex-row gap-4 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
                                 <button
-                                    onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
+                                    onClick={() => window.location.href = '/shop'}
                                     className={`px-8 py-4 bg-brandRed hover:bg-red-600 text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-2xl hover:shadow-brandRed/30 transform hover:scale-105 hover:-translate-y-1 ${isRTL ? 'font-cairo' : ''}`}
                                 >
                                     {isRTL ? 'احصل على عرض سعر' : 'Get Quote'}

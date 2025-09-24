@@ -21,10 +21,10 @@ const OurDesigns = () => {
                 
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <h2 className={`text-4xl lg:text-5xl font-bold text-gray-900 mb-6 ${isRTL ? 'font-cairo' : ''}`}>
+                    <h2 className={`text-4xl lg:text-5xl font-bold text-fujiBlue mb-6 ${isRTL ? 'font-cairo' : ''}`}>
                         {t('Our_Designs')}
                     </h2>
-                    <p className={`text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed ${isRTL ? 'font-cairo' : ''}`}>
+                    <p className={`text-lg text-[#C0392B] max-w-3xl mx-auto leading-relaxed ${isRTL ? 'font-cairo' : ''}`}>
                         {isRTL 
                             ? 'استكشف مجموعتنا المتنوعة من التصاميم الحديثة والأنيقة التي تلبي جميع احتياجاتك'
                             : 'Explore our diverse collection of modern and elegant designs that meet all your needs'
@@ -52,11 +52,11 @@ const OurDesigns = () => {
                 {/* Selected Category Info */}
                 {selectedCategoryData && (
                     <div className="text-center mb-12">
-                        <h3 className={`text-2xl lg:text-3xl font-bold text-gray-900 mb-4 ${isRTL ? 'font-cairo' : ''}`}>
+                        <h3 className={`text-2xl lg:text-3xl font-bold text-fujiBlue mb-4 ${isRTL ? 'font-cairo' : ''}`}>
                             {isRTL ? selectedCategoryData.titleAR : selectedCategoryData.titleEN}
                         </h3>
                         <p 
-                            className={`text-gray-600 max-w-2xl mx-auto ${isRTL ? 'font-cairo' : ''}`}
+                            className={`text-[#C0392B] max-w-2xl mx-auto ${isRTL ? 'font-cairo' : ''}`}
                             dangerouslySetInnerHTML={{ 
                                 __html: isRTL ? selectedCategoryData.descriptionAR : selectedCategoryData.descriptionEN 
                             }}
@@ -107,7 +107,7 @@ const OurDesigns = () => {
 
                                 {/* Card Content */}
                                 <div className="p-6">
-                                    <h4 className={`text-lg font-semibold text-gray-900 mb-2 ${isRTL ? 'font-cairo text-right' : ''}`}>
+                                    <h4 className={`text-lg font-semibold text-fujiBlue mb-2 ${isRTL ? 'font-cairo text-right' : ''}`}>
                                         {selectedCategoryData.titlesEN && selectedCategoryData.titlesEN[index] 
                                             ? (isRTL ? selectedCategoryData.titlesAR[index] : selectedCategoryData.titlesEN[index])
                                             : `${isRTL ? selectedCategoryData.titleAR : selectedCategoryData.titleEN} ${index + 1}`

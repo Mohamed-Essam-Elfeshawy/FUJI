@@ -1,13 +1,11 @@
-import React from 'react'
-import Navbar from './Navbar'
-import call_icon from '../images/ContactUs/call_icon.png'
-import email_icon from '../images/ContactUs/email_icon.png'
-import location_icon from '../images/ContactUs/location_icon.png'
-import Footer from './Footer'
-import StickyWhatsAppIcon from './StickyWhatsAppIcon'
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import StickyWhatsAppIcon from './StickyWhatsAppIcon';
+import AnimateOnScroll from './AnimateOnScroll';
+import StaggerAnimation from './StaggerAnimation';
 import emailjs from 'emailjs-com';
-import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 
 const ContactUs = () => {
     const { t } = useTranslation();
@@ -60,10 +58,10 @@ const ContactUs = () => {
                         <span className='inline-block bg-brandRed/10 text-brandRed px-6 py-2 rounded-full text-sm font-semibold mb-4'>
                             {t('Get_in_Touch') || 'تواصل معنا'}
                         </span>
-                        <h1 className='text-3xl font-bold text-gray-900 mb-4'>
+                        <h1 className='text-3xl font-bold text-fujiBlue mb-4'>
                             {t('Lets_talk_about_your_project') || 'تواصل معنا الآن'}
                         </h1>
-                        <p className='text-gray-600 text-base leading-relaxed'>
+                        <p className='text-[#C0392B] text-base leading-relaxed'>
                             {t('need_help') || 'نحن هنا لمساعدتك في مشروعك'}
                         </p>
                     </div>
@@ -169,17 +167,17 @@ const ContactUs = () => {
                     </div>
                     {/* Contact Info */}
                     <div className='space-y-6'>
-                        <div className='flex items-center space-x-4 rtl:space-x-reverse p-6 bg-white rounded-2xl shadow-soft'>
-                            <div className='w-12 h-12 bg-brandRed/10 text-brandRed rounded-xl flex items-center justify-center flex-shrink-0'>
+                        <a href="tel:+966549561015" className='flex items-center space-x-4 rtl:space-x-reverse p-6 bg-white rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 group'>
+                            <div className='w-12 h-12 bg-brandRed/10 text-brandRed rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-brandRed group-hover:text-white transition-colors duration-300'>
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
                             </div>
                             <div>
                                 <h3 className='text-sm text-gray-500 font-medium'>{t('Phone_Number')}</h3>
-                                <p className='text-lg font-bold text-gray-900'>012-010-29395</p>
+                                <p className='text-lg font-bold text-fujiBlue group-hover:text-brandRed transition-colors duration-300'>+966 54 956 1015</p>
                             </div>
-                        </div>
+                        </a>
 
                         <div className='flex items-center space-x-4 p-6 bg-white rounded-2xl shadow-soft'>
                             <div className='w-12 h-12 bg-brandBlue/10 text-brandBlue rounded-xl flex items-center justify-center flex-shrink-0'>
@@ -189,7 +187,7 @@ const ContactUs = () => {
                             </div>
                             <div>
                                 <h3 className='text-sm text-gray-500 font-medium'>{t('Email')}</h3>
-                                <p className='text-lg font-bold text-gray-900'>info@quad-dimensions.com</p>
+                                <p className='text-lg font-bold text-fujiBlue'>info@fujifd-ksa.com</p>
                             </div>
                         </div>
 
@@ -202,13 +200,13 @@ const ContactUs = () => {
                             </div>
                             <div>
                                 <h3 className='text-sm text-gray-500 font-medium'>{t('Map_Street')}</h3>
-                                <p className='text-lg font-bold text-gray-900'>{t('District_Name')}</p>
+                                <p className='text-lg font-bold text-fujiBlue'>{t('District_Name')}</p>
                             </div>
                         </div>
 
                         {/* WhatsApp Button */}
                         <button
-                            onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
+                            onClick={() => window.open('https://wa.me/966549561015', '_blank')}
                             className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 rtl:space-x-reverse"
                         >
                             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -236,26 +234,26 @@ const ContactUs = () => {
             {/* Desktop */}
             <div className='hidden lg:block'>
                 <Navbar />
-                <div className='pt-28 pb-20'>
+                <div className='pt-28 pb-20 bg-white'>
                     {/* Hero Section */}
                     <div className='max-w-7xl mx-auto px-8 text-center mb-20'>
                         <span className='inline-block bg-brandRed/10 text-brandRed px-8 py-3 rounded-full text-lg font-semibold mb-6'>
                             {t('Get_in_Touch') || 'تواصل معنا'}
                         </span>
-                        <h1 className='text-5xl font-bold text-gray-900 mb-6'>
+                        <h1 className='text-5xl font-bold text-fujiBlue mb-6'>
                             {t('Lets_talk_about_your_project') || 'تواصل معنا الآن'}
                         </h1>
-                        <p className='text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed'>
+                        <p className='text-xl text-[#C0392B] max-w-3xl mx-auto leading-relaxed'>
                             {t('need_help') || 'نحن هنا لمساعدتك في مشروعك'}
                         </p>
                     </div>
 
                     {/* Main Content Grid */}
                     <div className='max-w-7xl mx-auto px-8'>
-                        <div className='grid lg:grid-cols-2 gap-16'>
+                        <div className='grid lg:grid-cols-2 gap-16 bg-fuji-surface rounded-3xl p-12'>
                             {/* Left Column - Contact Form */}
                             <div className='bg-white rounded-3xl shadow-strong p-12'>
-                                <h2 className='text-2xl font-bold text-gray-900 mb-8'>إرسال رسالة / Send Message</h2>
+                                <h2 className='text-2xl font-bold text-fujiBlue mb-8'>إرسال رسالة / Send Message</h2>
 
                                 <form onSubmit={handleSubmit} className='space-y-6'>
                                     <div className='grid grid-cols-2 gap-6'>
@@ -357,7 +355,7 @@ const ContactUs = () => {
                             </div>
 
                             {/* Right Column - Contact Info & Map */}
-                            <div className='space-y-8'>
+                            <div className='space-y-8 bg-white rounded-3xl p-8'>
                                 {/* Contact Info Cards */}
                                 <div className='space-y-6'>
                                     <div className='flex items-center space-x-6 rtl:space-x-reverse p-8 bg-white rounded-2xl shadow-soft'>
@@ -368,7 +366,7 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <h3 className='text-lg text-gray-500 font-medium'>{t('Phone_Number')}</h3>
-                                            <p className='text-2xl font-bold text-gray-900'>012-010-29395</p>
+                                            <p className='text-2xl font-bold text-fujiBlue'>+966 54 956 1015</p>
                                         </div>
                                     </div>
 
@@ -380,7 +378,7 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <h3 className='text-lg text-gray-500 font-medium'>{t('Email')}</h3>
-                                            <p className='text-2xl font-bold text-gray-900'>info@quad-dimensions.com</p>
+                                            <p className='text-2xl font-bold text-fujiBlue'>info@fujifd-ksa.com</p>
                                         </div>
                                     </div>
 
@@ -393,14 +391,14 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <h3 className='text-lg text-gray-500 font-medium'>{t('Map_Street')}</h3>
-                                            <p className='text-2xl font-bold text-gray-900'>{t('District_Name')}</p>
+                                            <p className='text-2xl font-bold text-fujiBlue'>{t('District_Name')}</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* WhatsApp Button */}
                                 <button
-                                    onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
+                                    onClick={() => window.open('https://wa.me/966549561015', '_blank')}
                                     className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-3 rtl:space-x-reverse"
                                 >
                                     <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">

@@ -1,0 +1,287 @@
+/* FUJI FD Elevators - Custom Styles */
+
+/* CSS Custom Properties */
+:root {
+    --fuji-blue: #146FB6;
+    --fuji-blue-dark: #054A7B;
+    --fuji-blue-600: #0A6AAA;
+    --fuji-accent-red: #E21E26;
+    --bg: #FFFFFF;
+    --surface: #F5F7FA;
+    --muted: #C0392B;
+    --text: #C0392B;
+    --heading-color: #146FB6;
+}
+
+/* Typography Rules */
+body {
+    font-family: "Poppins", "Cairo", system-ui, sans-serif;
+    direction: rtl;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--heading-color);
+}
+
+p {
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+/* Hero Background */
+.hero-bg {
+    background: linear-gradient(90deg, var(--fuji-blue) 0%, rgba(20, 111, 182, 0.92) 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Custom Button Styles */
+.btn-primary {
+    background: var(--fuji-blue);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    background: var(--fuji-blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(20, 111, 182, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--fuji-blue);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid var(--fuji-blue);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-secondary:hover {
+    background: var(--fuji-blue);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(20, 111, 182, 0.3);
+}
+
+/* Card Styles */
+.product-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--fuji-blue);
+}
+
+.product-card h3 {
+    color: var(--heading-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.product-card p {
+    color: var(--text);
+    font-size: 0.875rem;
+    margin-bottom: 16px;
+}
+
+.product-card .read-more {
+    color: var(--fuji-blue);
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.3s ease;
+}
+
+.product-card .read-more:hover {
+    color: var(--fuji-blue-dark);
+    gap: 8px;
+}
+
+/* Navigation Styles */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.navbar a {
+    color: var(--heading-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: var(--fuji-blue);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-bg {
+        padding: 60px 0;
+    }
+    
+    .hero-bg h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-bg p {
+        font-size: 1rem;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 10px 20px;
+        font-size: 0.875rem;
+    }
+    
+    .product-card {
+        padding: 20px;
+    }
+}
+
+/* Accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus States */
+button:focus,
+a:focus,
+input:focus {
+    outline: 2px solid var(--fuji-blue);
+    outline-offset: 2px;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading Animation */
+.loading {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.loading.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--fuji-blue);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--fuji-blue-dark);
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .mobile-menu {
+        display: none;
+    }
+    
+    .hero-bg {
+        background: white;
+        color: black;
+    }
+    
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+}

@@ -6,7 +6,7 @@ const StickyWhatsAppIcon = () => {
     const currentLanguageCode = cookies.get('i18next');
     return (
         <a
-            href="https://wa.me/2001201029395" // Replace with your WhatsApp number
+            href="https://wa.me/966549561015" // Replace with your WhatsApp number
             target="_blank"
             rel="noopener noreferrer"
             className={`fixed bottom-2 ${currentLanguageCode === 'en' ? 'right-2' : 'left-2'}  z-20 shadow-lg`}

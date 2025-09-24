@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import fujieLogo from '../images/fujie-logo.jpg'
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import cookies from "js-cookie";
-import i18next from 'i18next';
+import fujiLogo from '../images/fujie-logo.jpg';
 import { useCart } from '../context/CartContext';
+import Cart from './Cart';
+import ThemeToggle from './ThemeToggle';
+import SubscriptionModal from './SubscriptionModal';
+import i18next from 'i18next';
 
 const Navbar = () => {
     const { t } = useTranslation();
-    const location = useLocation();
+    const location = window.location;
     const [showMobileMenu, setShowMobileMenu] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isSubscriptionModalOpen, setIsSubscriptionModalOpen] = useState(false);
     const { items } = useCart();
-    const cartCount = items.reduce((s, i) => s + (i.qty || 0), 0);
 
     const currentLanguageCode = cookies.get('i18next')
     const [language, setLanguage] = useState(currentLanguageCode);
     const isRTL = language === 'ar';
+    
+    const cartItemsCount = items.reduce((total, item) => total + item.qty, 0);
 
     // Scroll detection for sticky navbar
     useEffect(() => {
@@ -35,149 +40,117 @@ const Navbar = () => {
         window.location.reload();
     };
 
-    // Determine if we're on checkout page for simplified navbar
-    const isCheckoutPage = location.pathname === '/checkout';
-    const isHomePage = location.pathname === '/';
-    
-    // Navigation links based on page
+    // Navigation links
     const getNavigationLinks = () => {
-        if (isCheckoutPage) {
-            return [
-                { href: '/', label: isRTL ? 'الرئيسية' : 'Home', path: '/' },
-                { href: '/shop', label: isRTL ? 'المتجر' : 'Shop', path: '/shop' },
-                { href: '/contact', label: isRTL ? 'اتصل بنا' : 'Contact', path: '/contact' }
-            ];
-        }
-        return [
+        const links = [
             { href: '/', label: isRTL ? 'الرئيسية' : 'Home', path: '/' },
             { href: '/shop', label: isRTL ? 'المتجر' : 'Shop', path: '/shop' },
-            { href: '/cart', label: isRTL ? 'السلة' : 'Cart', path: '/cart' },
+            { href: '/blog', label: isRTL ? 'المدونة' : 'Blog', path: '/blog' },
             { href: '/about', label: isRTL ? 'من نحن' : 'About', path: '/about' },
-            { href: '/contact', label: isRTL ? 'اتصل بنا' : 'Contact', path: '/contact' }
+            { href: '/contact', label: isRTL ? 'اتصل بنا' : 'Contact', path: '/contact' },
+            { href: '/login', label: isRTL ? 'تسجيل الدخول' : 'Login', path: '/login' }
         ];
+        return links;
     };
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-            isScrolled 
-                ? 'bg-white shadow-lg border-b border-gray-200' 
-                : 'bg-white/95 backdrop-blur-lg shadow-md'
-        }`}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-20">
+        <>
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-b border-gray-200 transition-all duration-300">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-6 xl:px-8">
+                <div className="flex items-center h-16 sm:h-18 md:h-20 lg:h-20">
                     
                     {/* Logo Section */}
-                    <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                        <img 
-                            className="w-12 h-8 object-contain rounded-lg" 
-                            src={fujieLogo} 
-                            alt="FUJIE Logo" 
-                        />
-                        <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
-                            <h1 className={`text-xl font-bold ${isScrolled ? 'text-gray-900' : 'text-gray-900'} ${isRTL ? 'font-cairo' : ''}`}>
+                    <div className={`flex items-center gap-2 sm:gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <div className="relative group">
+                            <img 
+                                className="w-10 h-7 sm:w-12 sm:h-8 lg:w-14 lg:h-10 object-contain rounded-lg shadow-md bg-white p-1 border border-fuji-blue/20 hover:shadow-lg hover:border-fuji-blue/40 transition-all duration-300 group-hover:scale-105" 
+                                src={fujiLogo} 
+                                alt="FUJI FD Logo" 
+                                style={{
+                                    filter: 'brightness(1.1) contrast(1.3) saturate(1.2)',
+                                    imageRendering: 'crisp-edges'
+                                }}
+                            />
+                            <div className="absolute -inset-1 bg-gradient-to-r from-fuji-blue/20 to-fuji-accent/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                        </div>
+                        <div className={`${isRTL ? 'text-right' : 'text-left'} hidden sm:block`}>
+                            <h1 className={`text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl font-bold ${isRTL ? 'font-cairo' : ''} text-fuji-blue hover:text-fuji-accent transition-colors duration-300`}>
                                 {t('App_Name')}
                             </h1>
-                            <p className={`text-xs ${isScrolled ? 'text-gray-600' : 'text-gray-600'} ${isRTL ? 'font-cairo' : ''}`}>
+                            <p className={`text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm ${isRTL ? 'font-cairo' : ''} text-fuji-muted`}>
                                 {isRTL ? 'حلول المصاعد المتطورة' : 'Premium Elevator Solutions'}
                             </p>
                         </div>
                     </div>
 
                     {/* Desktop Navigation Links */}
-                    <div className="hidden md:flex items-center space-x-8">
-                        <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
+                    <div className="hidden lg:flex items-center flex-1 justify-center">
+                        <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-4 xl:space-x-6' : 'space-x-4 xl:space-x-6'}`}>
                             {getNavigationLinks().map((link) => (
                                 <a 
                                     key={link.path}
                                     href={link.href} 
-                                    className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 group rounded-lg ${
+                                    className={`relative px-2 py-1.5 lg:px-3 lg:py-1.5 xl:px-4 xl:py-2 text-xs lg:text-sm xl:text-sm font-semibold transition-all duration-300 group rounded-lg ${
                                         location.pathname === link.path 
-                                            ? 'text-brandRed bg-brandRed/10' 
-                                            : 'text-gray-700 hover:text-brandRed hover:bg-brandRed/5'
+                                            ? 'text-fuji-blue bg-fuji-blue/10' 
+                                            : 'text-fuji-blue hover:text-fuji-blue hover:bg-fuji-blue/5'
                                     } ${isRTL ? 'font-cairo' : ''}`}
                                 >
                                     {link.label}
-                                    <span className={`absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-brandRed transition-all duration-300 group-hover:w-3/4 ${location.pathname === link.path ? 'w-3/4' : ''}`}></span>
+                                    <span className={`absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-fuji-blue transition-all duration-300 group-hover:w-3/4 ${location.pathname === link.path ? 'w-3/4' : ''}`}></span>
                                 </a>
                             ))}
                         </div>
                     </div>
 
-                    {/* Right Section - Language, Cart, CTA */}
-                    <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    {/* Right Section - Language, Theme, Cart, Mobile Menu */}
+                    <div className={`flex items-center gap-2 sm:gap-3 md:gap-3 lg:gap-3 xl:gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                         
+                        {/* Subscription Button */}
+                        <button
+                            onClick={() => setIsSubscriptionModalOpen(true)}
+                            className="px-2 py-1 sm:px-3 sm:py-1.5 md:px-3 md:py-1.5 lg:px-3 lg:py-2 text-xs sm:text-sm md:text-sm font-medium rounded-md bg-fuji-accent text-white hover:bg-red-600 transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
+                        >
+                            <span className={`${isRTL ? 'font-cairo' : ''}`}>
+                                {isRTL ? '🎁 العروض' : '🎁 Offers'}
+                            </span>
+                        </button>
+
                         {/* Language Switcher */}
                         <button
                             onClick={() => changeLanguage(language === 'en' ? 'ar' : 'en')}
-                            className="px-3 py-2 text-xs font-medium rounded-lg border border-gray-300 text-gray-700 hover:border-brandRed hover:text-brandRed hover:bg-brandRed/5 transition-all duration-300"
+                            className="px-2 py-1 sm:px-3 sm:py-1.5 md:px-3 md:py-1.5 lg:px-3 lg:py-2 text-xs sm:text-sm md:text-sm font-medium rounded-md border border-gray-300 text-gray-700 hover:border-fuji-blue hover:text-fuji-blue hover:bg-fuji-blue/5 transition-all duration-300 shadow-sm hover:shadow-md"
                         >
                             {language === 'en' ? 'ع' : 'EN'}
                         </button>
 
-                        {/* Cart - Enhanced with better styling */}
-                        {!isCheckoutPage && (
-                            <a 
-                                href="/cart" 
-                                className={`relative p-3 rounded-xl transition-all duration-300 group ${
-                                    location.pathname === '/cart'
-                                        ? 'bg-brandRed/10 text-brandRed'
-                                        : 'text-gray-700 hover:text-brandRed hover:bg-brandRed/5'
-                                }`}
-                            >
-                                <svg className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6" />
-                                </svg>
-                                {cartCount > 0 && (
-                                    <span className="absolute -top-1 -right-1 w-6 h-6 bg-brandRed text-white text-xs font-bold rounded-full flex items-center justify-center animate-pulse shadow-lg">
-                                        {cartCount}
-                                    </span>
-                                )}
-                            </a>
-                        )}
+                        {/* Theme Toggle - Hidden on mobile */}
+                        <div className="hidden md:block">
+                            <ThemeToggle className="scale-90 lg:scale-100" />
+                        </div>
 
-                        {/* CTA Button - Enhanced with page-specific logic */}
-                        {!isCheckoutPage && (
-                            <button
-                                onClick={() => {
-                                    if (location.pathname === '/cart') {
-                                        window.location.href = '/checkout';
-                                    } else if (location.pathname === '/shop') {
-                                        window.open('https://wa.me/2001201029395', '_blank');
-                                    } else {
-                                        window.location.href = '/shop';
-                                    }
-                                }}
-                                className={`hidden md:inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg ${
-                                    location.pathname === '/cart'
-                                        ? 'bg-brandBlue hover:bg-blue-700 text-white hover:shadow-xl'
-                                        : location.pathname === '/shop'
-                                            ? 'bg-brandRed hover:bg-red-600 text-white hover:shadow-xl'
-                                            : 'bg-brandRed hover:bg-red-600 text-white hover:shadow-xl'
-                                } ${isRTL ? 'font-cairo' : ''}`}
-                            >
-                                {location.pathname === '/cart' 
-                                    ? (isRTL ? 'إتمام الشراء' : 'Checkout')
-                                    : location.pathname === '/shop'
-                                        ? (isRTL ? 'احصل على عرض سعر' : 'Get Quote')
-                                        : (isRTL ? 'تسوق الآن' : 'Shop Now')
-                                }
-                            </button>
-                        )}
-
-                        {/* Checkout page - Contact CTA */}
-                        {isCheckoutPage && (
-                            <button
-                                onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
-                                className={`hidden md:inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg bg-brandRed hover:bg-red-600 text-white hover:shadow-xl ${isRTL ? 'font-cairo' : ''}`}
-                            >
-                                {isRTL ? 'مساعدة' : 'Help'}
-                            </button>
-                        )}
+                        {/* Cart Icon */}
+                        <button
+                            onClick={() => setIsCartOpen(true)}
+                            className="relative p-2 sm:p-2.5 md:p-3 lg:p-3 rounded-lg bg-gradient-to-br from-fuji-blue/5 to-fuji-blue/10 hover:from-fuji-blue/10 hover:to-fuji-blue/20 text-fuji-blue hover:text-fuji-blue transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md group"
+                        >
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 lg:w-6 lg:h-6 transition-transform duration-200 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
+                            </svg>
+                            {cartItemsCount > 0 && (
+                                <span className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 bg-gradient-to-r from-fuji-accent to-red-600 text-white text-xs sm:text-sm font-bold rounded-full min-w-[18px] sm:min-w-[22px] h-5 sm:h-6 flex items-center justify-center px-1 sm:px-1.5 shadow-lg border-2 border-white animate-pulse">
+                                    {cartItemsCount > 99 ? '99+' : cartItemsCount}
+                                </span>
+                            )}
+                            
+                            {/* Subtle glow effect */}
+                            <div className="absolute inset-0 rounded-xl bg-fuji-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                        </button>
 
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setShowMobileMenu(!showMobileMenu)}
-                            className="md:hidden p-2 rounded-lg transition-all duration-300 text-gray-700 hover:text-brandRed hover:bg-brandRed/5"
+                            className="lg:hidden p-2 sm:p-3 rounded-lg transition-all duration-300 text-gray-700 hover:text-fuji-accent hover:bg-fuji-accent/5 shadow-sm hover:shadow-md"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 {showMobileMenu ? (
@@ -198,7 +171,7 @@ const Navbar = () => {
                     : 'max-h-0 opacity-0 overflow-hidden'
             }`}>
                 <div className="bg-white shadow-lg border-t border-gray-200">
-                    <div className="px-4 py-6 space-y-4">
+                    <div className="px-3 sm:px-4 py-4 sm:py-6 space-y-4">
                         
                         {/* Mobile Navigation Links */}
                         <div className="space-y-3">
@@ -208,8 +181,8 @@ const Navbar = () => {
                                     href={link.href} 
                                     className={`block px-4 py-3 text-base font-semibold rounded-lg transition-all duration-300 ${
                                         location.pathname === link.path 
-                                            ? 'bg-brandRed/10 text-brandRed' 
-                                            : 'text-gray-700 hover:bg-brandRed/5 hover:text-brandRed'
+                                            ? 'bg-fuji-accent/10 text-fuji-accent' 
+                                            : 'text-gray-700 hover:bg-fuji-accent/5 hover:text-fuji-accent'
                                     } ${isRTL ? 'font-cairo text-right' : ''}`}
                                     onClick={() => setShowMobileMenu(false)}
                                 >
@@ -217,63 +190,53 @@ const Navbar = () => {
                                 </a>
                             ))}
                             
-                            {/* Mobile Cart Link - only show if not checkout page */}
-                            {!isCheckoutPage && (
-                                <a 
-                                    href="/cart" 
-                                    className={`flex items-center justify-between px-4 py-3 text-base font-semibold rounded-lg transition-all duration-300 ${
-                                        location.pathname === '/cart' 
-                                            ? 'bg-brandRed/10 text-brandRed' 
-                                            : 'text-gray-700 hover:bg-brandRed/5 hover:text-brandRed'
-                                    } ${isRTL ? 'font-cairo text-right flex-row-reverse' : ''}`}
-                                    onClick={() => setShowMobileMenu(false)}
-                                >
-                                    <span>{isRTL ? 'السلة' : 'Cart'}</span>
-                                    {cartCount > 0 && (
-                                        <span className="w-6 h-6 bg-brandRed text-white text-xs font-bold rounded-full flex items-center justify-center">
-                                            {cartCount}
-                                        </span>
-                                    )}
-                                </a>
-                            )}
                         </div>
 
-                        {/* Mobile CTA Button */}
+                        {/* Mobile Subscription Button */}
                         <div className="pt-4 border-t border-gray-200">
                             <button
                                 onClick={() => {
-                                    if (location.pathname === '/cart') {
-                                        window.location.href = '/checkout';
-                                    } else if (location.pathname === '/shop') {
-                                        window.open('https://wa.me/2001201029395', '_blank');
-                                    } else if (isCheckoutPage) {
-                                        window.open('https://wa.me/2001201029395', '_blank');
-                                    } else {
-                                        window.location.href = '/shop';
-                                    }
+                                    setIsSubscriptionModalOpen(true);
                                     setShowMobileMenu(false);
                                 }}
-                                className={`w-full px-6 py-3 text-white text-base font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg ${
-                                    location.pathname === '/cart'
-                                        ? 'bg-brandBlue hover:bg-blue-700'
-                                        : 'bg-brandRed hover:bg-red-600'
-                                } ${isRTL ? 'font-cairo' : ''}`}
+                                className={`w-full px-4 py-3 bg-fuji-accent text-white font-semibold rounded-xl hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg mb-4 ${isRTL ? 'font-cairo' : ''}`}
                             >
-                                {location.pathname === '/cart' 
-                                    ? (isRTL ? 'إتمام الشراء' : 'Checkout')
-                                    : location.pathname === '/shop'
-                                        ? (isRTL ? 'احصل على عرض سعر' : 'Get Quote')
-                                        : isCheckoutPage
-                                            ? (isRTL ? 'مساعدة' : 'Help')
-                                            : (isRTL ? 'تسوق الآن' : 'Shop Now')
-                                }
+                                <span className="flex items-center justify-center">
+                                    <span className="mr-2">🎁</span>
+                                    {isRTL ? 'اشترك في العروض الترويجية' : 'Subscribe to Offers'}
+                                </span>
                             </button>
                         </div>
+
+                        {/* Mobile Theme Toggle & Language */}
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                                <span className="text-sm font-medium text-gray-700">Theme:</span>
+                                <ThemeToggle />
+                            </div>
+                            <button
+                                onClick={() => changeLanguage(language === 'en' ? 'ar' : 'en')}
+                                className="px-3 py-2 text-xs font-medium rounded-lg border border-gray-300 text-gray-700 hover:border-fuji-blue hover:text-fuji-blue hover:bg-fuji-blue/5 transition-all duration-300"
+                            >
+                                {language === 'en' ? 'ع' : 'EN'}
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </nav>
-    )
-}
+        
+        {/* Cart Modal */}
+        <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+        
+        {/* Subscription Modal */}
+        <SubscriptionModal 
+            isOpen={isSubscriptionModalOpen} 
+            onClose={() => setIsSubscriptionModalOpen(false)} 
+        />
+        </>
+    );
+};
 
-export default Navbar
+export default Navbar;

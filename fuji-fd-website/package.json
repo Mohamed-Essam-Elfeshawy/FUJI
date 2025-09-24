@@ -1,0 +1,37 @@
+{
+  "name": "fuji-fd-elevators-website",
+  "version": "1.0.0",
+  "description": "FUJI FD Elevators - Complete Website Theme",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./styles.css -o ./dist/output.css --watch",
+    "build": "npx tailwindcss -i ./styles.css -o ./dist/output.css --minify",
+    "serve": "npx serve .",
+    "start": "npm run serve"
+  },
+  "keywords": [
+    "elevators",
+    "fuji",
+    "website",
+    "theme",
+    "tailwind",
+    "arabic",
+    "rtl"
+  ],
+  "author": "FUJI FD Elevators",
+  "license": "Proprietary",
+  "devDependencies": {
+    "tailwindcss": "^3.3.0",
+    "serve": "^14.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "private"
+  },
+  "homepage": "https://fujifd-ksa.com",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

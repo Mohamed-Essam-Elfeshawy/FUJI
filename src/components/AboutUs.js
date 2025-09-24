@@ -1,7 +1,10 @@
-import { useTranslation } from 'react-i18next';
 import React from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import ScrollAnimation from './ScrollAnimation'
+import StaggerAnimation from './StaggerAnimation'
+import { useTranslation } from 'react-i18next'
+import cookies from "js-cookie"
 import StickyWhatsAppIcon from './StickyWhatsAppIcon'
 import our_Mission_img from '../images/AboutUs/our_Mission_img.jpg'
 import our_Vision_img from '../images/AboutUs/our_Vision_img.jpg'
@@ -11,6 +14,8 @@ import elevator_about_us_02 from '../images/AboutUs/elevator_about_us_02.jpeg'
 
 const AboutUs = () => {
     const { t } = useTranslation();
+    const currentLanguageCode = cookies.get('i18next');
+    const isRTL = currentLanguageCode === 'ar';
     
     const keyHighlights = [
         {
@@ -49,64 +54,96 @@ const AboutUs = () => {
                 <Navbar />
                 <div className='pt-28 pb-16 px-4'>
                     {/* Hero Section */}
-                    <div className='text-center mb-12'>
-                        <span className='inline-block bg-brandRed/10 text-brandRed px-6 py-2 rounded-full text-sm font-semibold mb-4'>
-                            {t('About_Us')}
-                        </span>
-                        <h1 className='text-3xl font-bold text-gray-900 mb-4'>
-                            {t('Rise_to_new_heights')}
-                        </h1>
-                        <p className='text-gray-600 text-base leading-relaxed'>
-                            {t('About_Us_Title_Long_Text')}
-                        </p>
-                    </div>
+                    <ScrollAnimation animation="fade-up" delay={100}>
+                        <div className='text-center mb-12'>
+                            <ScrollAnimation animation="scale" delay={200}>
+                                <span className='inline-block bg-brandRed/10 text-brandRed px-6 py-2 rounded-full text-sm font-semibold mb-4'>
+                                    {t('About_Us')}
+                                </span>
+                            </ScrollAnimation>
+                            <ScrollAnimation animation="fade-up" delay={400}>
+                                <h1 className='text-3xl font-bold text-fujiBlue mb-4'>
+                                    {t('Rise_to_new_heights')}
+                                </h1>
+                            </ScrollAnimation>
+                            <ScrollAnimation animation="fade-up" delay={600}>
+                                <p className='text-[#C0392B] text-base leading-relaxed'>
+                                    {t('About_Us_Title_Long_Text')}
+                                </p>
+                            </ScrollAnimation>
+                        </div>
+                    </ScrollAnimation>
 
                     {/* Key Highlights */}
-                    <div className='mb-16'>
-                        <h2 className='text-2xl font-bold text-gray-900 mb-8 text-center'>Why Choose Us</h2>
-                        <div className='space-y-6'>
-                            {keyHighlights.map((highlight, index) => (
-                                <div key={index} className='flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-soft border border-gray-100'>
-                                    <div className='flex-shrink-0 w-12 h-12 bg-brandRed/10 text-brandRed rounded-xl flex items-center justify-center'>
-                                        {highlight.icon}
+                    <ScrollAnimation animation="fade-up" delay={200}>
+                        <div className='mb-16'>
+                            <ScrollAnimation animation="fade-down" delay={300}>
+                                <h2 className='text-2xl font-bold text-fujiBlue mb-8 text-center'>Why Choose Us</h2>
+                            </ScrollAnimation>
+                            <StaggerAnimation staggerDelay={200} animation="slide-up">
+                                {keyHighlights.map((highlight, index) => (
+                                    <div key={index} className={`flex items-start p-6 bg-white rounded-2xl shadow-soft border border-gray-100 hover:shadow-medium transition-all duration-300 transform hover:scale-105 ${isRTL ? 'space-x-reverse space-x-4 flex-row-reverse' : 'space-x-4'}`}>
+                                        <div className='flex-shrink-0 w-12 h-12 bg-brandRed/10 text-brandRed rounded-xl flex items-center justify-center'>
+                                            {highlight.icon}
+                                        </div>
+                                        <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
+                                            <h3 className={`text-lg font-semibold text-fujiBlue mb-2 ${isRTL ? 'font-cairo' : ''}`}>{highlight.title}</h3>
+                                            <p className={`text-[#C0392B] text-sm leading-relaxed ${isRTL ? 'font-cairo' : ''}`}>{highlight.description}</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h3 className='text-lg font-semibold text-gray-900 mb-2'>{highlight.title}</h3>
-                                        <p className='text-gray-600 text-sm'>{highlight.description}</p>
-                                    </div>
-                                </div>
-                            ))}
+                                ))}
+                            </StaggerAnimation>
                         </div>
-                    </div>
+                    </ScrollAnimation>
 
                     {/* Mission Card */}
-                    <div className='bg-gradient-to-br from-brandRed to-red-600 rounded-3xl p-8 text-white mb-8 shadow-strong'>
-                        <div className='text-center mb-6'>
-                            <div className='w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4'>
-                                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                </svg>
+                    <ScrollAnimation animation="slide-left" delay={400}>
+                        <div className='bg-gradient-to-br from-brandRed to-red-600 rounded-3xl p-8 text-white mb-8 shadow-strong hover:shadow-xl transition-all duration-300 transform hover:scale-105'>
+                            <div className='text-center mb-6'>
+                                <ScrollAnimation animation="rotate" delay={600}>
+                                    <div className='w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4'>
+                                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                        </svg>
+                                    </div>
+                                </ScrollAnimation>
+                                <ScrollAnimation animation="fade-up" delay={800}>
+                                    <h3 className='text-xl font-bold mb-2 text-white'>{t('Our_Mission')}</h3>
+                                </ScrollAnimation>
+                                <ScrollAnimation animation="fade-up" delay={1000}>
+                                    <h4 className='text-lg font-semibold mb-4 text-white'>{t('Our_Mission_Title')}</h4>
+                                </ScrollAnimation>
+                                <ScrollAnimation animation="fade-up" delay={1200}>
+                                    <p className='text-white/90 leading-relaxed' dangerouslySetInnerHTML={{ __html: t('Our_Mission_Long_Text') }}></p>
+                                </ScrollAnimation>
                             </div>
-                            <h3 className='text-xl font-bold mb-2'>{t('Our_Mission')}</h3>
-                            <h4 className='text-lg font-semibold mb-4'>{t('Our_Mission_Title')}</h4>
-                            <p className='text-white/90 leading-relaxed' dangerouslySetInnerHTML={{ __html: t('Our_Mission_Long_Text') }}></p>
                         </div>
-                    </div>
+                    </ScrollAnimation>
 
                     {/* Vision Card */}
-                    <div className='bg-gradient-to-br from-brandBlue to-blue-600 rounded-3xl p-8 text-white shadow-strong'>
-                        <div className='text-center'>
-                            <div className='w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4'>
-                                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                </svg>
+                    <ScrollAnimation animation="slide-right" delay={600}>
+                        <div className='bg-gradient-to-br from-brandBlue to-blue-600 rounded-3xl p-8 text-white shadow-strong hover:shadow-xl transition-all duration-300 transform hover:scale-105'>
+                            <div className='text-center'>
+                                <ScrollAnimation animation="rotate" delay={800}>
+                                    <div className='w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4'>
+                                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                    </div>
+                                </ScrollAnimation>
+                                <ScrollAnimation animation="fade-up" delay={1000}>
+                                    <h3 className='text-xl font-bold mb-2 text-white'>{t('OUR_VISSION')}</h3>
+                                </ScrollAnimation>
+                                <ScrollAnimation animation="fade-up" delay={1200}>
+                                    <h4 className='text-lg font-semibold mb-4 text-white'>{t('OUR_VISSION_Title')}</h4>
+                                </ScrollAnimation>
+                                <ScrollAnimation animation="fade-up" delay={1400}>
+                                    <p className='text-white/90 leading-relaxed'>{t('OUR_VISSION_Text')}</p>
+                                </ScrollAnimation>
                             </div>
-                            <h3 className='text-xl font-bold mb-2'>{t('OUR_VISSION')}</h3>
-                            <h4 className='text-lg font-semibold mb-4'>{t('OUR_VISSION_Title')}</h4>
-                            <p className='text-white/90 leading-relaxed'>{t('OUR_VISSION_Text')}</p>
                         </div>
-                    </div>
+                    </ScrollAnimation>
                 </div>
                 <Footer />
             </div>
@@ -120,10 +157,10 @@ const AboutUs = () => {
                         <span className='inline-block bg-brandRed/10 text-brandRed px-8 py-3 rounded-full text-lg font-semibold mb-6'>
                             {t('About_Us')}
                         </span>
-                        <h1 className='text-5xl font-bold text-gray-900 mb-6'>
+                        <h1 className='text-5xl font-bold text-fujiBlue mb-6'>
                             {t('Rise_to_new_heights')}
                         </h1>
-                        <p className='text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed'>
+                        <p className='text-xl text-[#C0392B] max-w-3xl mx-auto leading-relaxed'>
                             {t('About_Us_Title_Long_Text')}
                         </p>
                     </div>
@@ -134,8 +171,8 @@ const AboutUs = () => {
                             {/* Left Column - Content */}
                             <div className='space-y-8'>
                                 <div>
-                                    <h2 className='text-3xl font-bold text-gray-900 mb-6'>Our Story</h2>
-                                    <p className='text-lg text-gray-600 leading-relaxed mb-8'>
+                                    <h2 className='text-3xl font-bold text-fujiBlue mb-6'>Our Story</h2>
+                                    <p className='text-lg text-[#C0392B] leading-relaxed mb-8'>
                                         {t('About_Us_Title_Long_Text')}
                                     </p>
                                 </div>
@@ -148,8 +185,8 @@ const AboutUs = () => {
                                                 {highlight.icon}
                                             </div>
                                             <div>
-                                                <h3 className='text-xl font-semibold text-gray-900 mb-2'>{highlight.title}</h3>
-                                                <p className='text-gray-600'>{highlight.description}</p>
+                                                <h3 className='text-xl font-semibold text-fujiBlue mb-2'>{highlight.title}</h3>
+                                                <p className='text-[#C0392B]'>{highlight.description}</p>
                                             </div>
                                         </div>
                                     ))}
@@ -182,8 +219,8 @@ const AboutUs = () => {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                         </svg>
                                     </div>
-                                    <h3 className='text-2xl font-bold mb-3'>{t('Our_Mission')}</h3>
-                                    <h4 className='text-xl font-semibold mb-6'>{t('Our_Mission_Title')}</h4>
+                                    <h3 className='text-2xl font-bold mb-3 text-white'>{t('Our_Mission')}</h3>
+                                    <h4 className='text-xl font-semibold mb-6 text-white'>{t('Our_Mission_Title')}</h4>
                                     <p className='text-white/90 text-lg leading-relaxed' dangerouslySetInnerHTML={{ __html: t('Our_Mission_Long_Text') }}></p>
                                 </div>
                             </div>
@@ -197,8 +234,8 @@ const AboutUs = () => {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                         </svg>
                                     </div>
-                                    <h3 className='text-2xl font-bold mb-3'>{t('OUR_VISSION')}</h3>
-                                    <h4 className='text-xl font-semibold mb-6'>{t('OUR_VISSION_Title')}</h4>
+                                    <h3 className='text-2xl font-bold mb-3 text-white'>{t('OUR_VISSION')}</h3>
+                                    <h4 className='text-xl font-semibold mb-6 text-white'>{t('OUR_VISSION_Title')}</h4>
                                     <p className='text-white/90 text-lg leading-relaxed'>{t('OUR_VISSION_Text')}</p>
                                 </div>
                             </div>

@@ -71,10 +71,10 @@ const Safety = () => {
                 
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <h2 className={`text-4xl lg:text-5xl font-bold text-gray-900 mb-6 ${isRTL ? 'font-cairo' : ''}`}>
+                    <h2 className={`text-4xl lg:text-5xl font-bold mb-6 ${isRTL ? 'font-cairo' : ''}`} style={{color: '#146FB6'}}>
                         {t('Safety')}
                     </h2>
-                    <p className={`text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed ${isRTL ? 'font-cairo' : ''}`}>
+                    <p className={`text-lg max-w-3xl mx-auto leading-relaxed ${isRTL ? 'font-cairo' : ''}`} style={{color: '#C0392B'}}>
                         {isRTL 
                             ? 'نحن ملتزمون بأعلى معايير السلامة والجودة في جميع منتجاتنا وخدماتنا لضمان حماية مثلى للمستخدمين'
                             : 'We are committed to the highest safety and quality standards in all our products and services to ensure optimal user protection'
@@ -114,13 +114,13 @@ const Safety = () => {
 
                             {/* Content */}
                             <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
-                                <h3 className={`text-xl font-bold text-gray-900 mb-4 transition-colors duration-300 ${
-                                    hoveredCard === feature.id ? 'text-brandRed' : 'group-hover:text-brandRed'
-                                } ${isRTL ? 'font-cairo' : ''}`}>
+                                <h3 className={`text-xl font-bold mb-4 transition-colors duration-300 ${
+                                    hoveredCard === feature.id ? '' : ''
+                                } ${isRTL ? 'font-cairo' : ''}`} style={{color: '#146FB6'}}>
                                     {isRTL ? feature.titleAR : feature.titleEN}
                                 </h3>
                                 
-                                <p className={`text-gray-600 leading-relaxed text-sm ${isRTL ? 'font-cairo' : ''}`}>
+                                <p className={`leading-relaxed text-sm ${isRTL ? 'font-cairo' : ''}`} style={{color: '#C0392B'}}>
                                     {isRTL ? feature.descriptionAR : feature.descriptionEN}
                                 </p>
                             </div>
@@ -141,10 +141,10 @@ const Safety = () => {
                 {/* Bottom CTA Section */}
                 <div className="mt-16 text-center">
                     <div className="bg-gradient-to-r from-brandRed/5 to-brandBlue/5 rounded-3xl p-8 lg:p-12">
-                        <h3 className={`text-2xl lg:text-3xl font-bold text-gray-900 mb-4 ${isRTL ? 'font-cairo' : ''}`}>
+                        <h3 className={`text-2xl lg:text-3xl font-bold mb-4 ${isRTL ? 'font-cairo' : ''}`} style={{color: '#146FB6'}}>
                             {isRTL ? 'هل تحتاج إلى مزيد من المعلومات حول معايير السلامة؟' : 'Need more information about our safety standards?'}
                         </h3>
-                        <p className={`text-gray-600 mb-8 max-w-2xl mx-auto ${isRTL ? 'font-cairo' : ''}`}>
+                        <p className={`mb-8 max-w-2xl mx-auto ${isRTL ? 'font-cairo' : ''}`} style={{color: '#C0392B'}}>
                             {isRTL 
                                 ? 'تواصل معنا للحصول على تفاصيل شاملة حول شهادات السلامة والمعايير الدولية التي نلتزم بها'
                                 : 'Contact us for comprehensive details about safety certifications and international standards we adhere to'
@@ -152,7 +152,7 @@ const Safety = () => {
                         </p>
                         <div className={`flex flex-col sm:flex-row gap-4 justify-center ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
                             <button
-                                onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
+                                onClick={() => window.open('https://wa.me/966549561015', '_blank')}
                                 className={`px-8 py-4 bg-brandRed hover:bg-red-600 text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${isRTL ? 'font-cairo' : ''}`}
                             >
                                 {isRTL ? 'تواصل معنا' : 'Contact Us'}

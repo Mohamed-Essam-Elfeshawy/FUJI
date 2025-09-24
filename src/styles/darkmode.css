@@ -1,0 +1,210 @@
+/* FUJI FD Dark Mode Styles */
+
+/* Root Variables for Dynamic Theme Switching */
+:root {
+  --fuji-bg: #FFFFFF;
+  --fuji-surface: #F5F7FA;
+  --fuji-text: #111827;
+  --fuji-muted: #6B7280;
+  --fuji-border: #E5E7EB;
+  --fuji-card: #FFFFFF;
+}
+
+.dark {
+  --fuji-bg: linear-gradient(135deg, #0A0E1A 0%, #1A1F2E 100%);
+  --fuji-surface: #1A1F2E;
+  --fuji-text: #E2E8F0;
+  --fuji-muted: #8B9DC3;
+  --fuji-border: #3A4553;
+  --fuji-card: #252B3D;
+}
+
+/* Global Dark Mode Styles */
+.dark body {
+  background: linear-gradient(135deg, #0A0E1A 0%, #1A1F2E 50%, #0A0E1A 100%);
+  color: var(--fuji-text);
+  min-height: 100vh;
+}
+
+/* Navbar Dark Mode */
+.dark nav {
+  background: rgba(26, 31, 46, 0.95) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(79, 142, 247, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark nav .text-fujiBlue {
+  color: #4F8EF7 !important;
+}
+
+.dark nav .hover\:bg-fujiBlue\/10:hover {
+  background-color: rgba(79, 142, 247, 0.15) !important;
+}
+
+/* Cards and Surfaces */
+.dark .bg-white {
+  background: linear-gradient(145deg, #252B3D 0%, #2D3748 100%) !important;
+  border: 1px solid rgba(79, 142, 247, 0.1);
+}
+
+.dark .bg-fuji-surface {
+  background: linear-gradient(145deg, #1A1F2E 0%, #252B3D 100%) !important;
+}
+
+.dark .bg-gray-50 {
+  background: linear-gradient(145deg, #1A1F2E 0%, #252B3D 100%) !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #2D3748 !important;
+}
+
+/* Text Colors */
+.dark .text-fuji-blue {
+  color: #4F8EF7 !important;
+}
+
+.dark .text-fuji-muted {
+  color: #8B9DC3 !important;
+}
+
+.dark .text-gray-600 {
+  color: #8B9DC3 !important;
+}
+
+.dark .text-gray-700 {
+  color: #CBD5E1 !important;
+}
+
+.dark .text-gray-800 {
+  color: #E2E8F0 !important;
+}
+
+.dark .text-gray-900 {
+  color: #E2E8F0 !important;
+}
+
+/* Borders */
+.dark .border-gray-200 {
+  border-color: rgba(79, 142, 247, 0.2) !important;
+}
+
+.dark .border-gray-300 {
+  border-color: rgba(79, 142, 247, 0.3) !important;
+}
+
+/* Buttons */
+.dark .bg-gray-200 {
+  background: linear-gradient(145deg, #3A4553 0%, #475569 100%) !important;
+  color: #E2E8F0 !important;
+  border: 1px solid rgba(79, 142, 247, 0.2);
+}
+
+.dark .hover\:bg-gray-300:hover {
+  background: linear-gradient(145deg, #475569 0%, #64748B 100%) !important;
+}
+
+/* Product Cards */
+.dark .shadow-soft {
+  box-shadow: 
+    0 4px 25px -5px rgba(0, 0, 0, 0.4), 
+    0 10px 10px -5px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(79, 142, 247, 0.1) !important;
+}
+
+.dark .shadow-medium {
+  box-shadow: 
+    0 10px 40px -10px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(79, 142, 247, 0.15) !important;
+}
+
+.dark .shadow-strong {
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(79, 142, 247, 0.2) !important;
+}
+
+/* Cart Modal */
+.dark .bg-black {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Input Fields */
+.dark input {
+  background-color: var(--fuji-surface) !important;
+  border-color: var(--fuji-border) !important;
+  color: var(--fuji-text) !important;
+}
+
+.dark input::placeholder {
+  color: var(--fuji-muted) !important;
+}
+
+.dark input:focus {
+  border-color: #3B82F6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Scrollbar Dark Mode */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1E293B;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+}
+
+/* Smooth Transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hero Section Dark Mode */
+.dark .hero-gradient {
+  background: linear-gradient(135deg, #0A0E1A 0%, #1A1F2E 50%, #252B3D 100%) !important;
+}
+
+/* Footer Dark Mode */
+.dark footer {
+  background: linear-gradient(135deg, #0A0E1A 0%, #1A1F2E 100%) !important;
+  border-top: 1px solid rgba(79, 142, 247, 0.2) !important;
+}
+
+/* Enhanced Glow Effects */
+.dark .bg-fuji-accent,
+.dark .bg-fuji-accent-red {
+  box-shadow: 0 0 20px rgba(226, 30, 38, 0.3) !important;
+}
+
+.dark .text-fuji-accent {
+  color: #FF6B6B !important;
+}
+
+/* Cart Icon Enhancement */
+.dark .bg-fujiRed {
+  background: linear-gradient(135deg, #E21E26 0%, #FF4757 100%) !important;
+  box-shadow: 0 0 15px rgba(226, 30, 38, 0.4) !important;
+}
+
+/* Hover Effects */
+.dark .hover\:shadow-md:hover {
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(79, 142, 247, 0.2) !important;
+}
+
+.dark .hover\:shadow-lg:hover {
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(79, 142, 247, 0.25) !important;
+}

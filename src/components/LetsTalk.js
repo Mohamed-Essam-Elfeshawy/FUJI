@@ -46,12 +46,12 @@ const LetsTalk = () => {
 
 
     return (
-        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-midnight py-16 lg:py-24 overflow-hidden">
+        <section className="relative bg-white py-16 lg:py-24 overflow-hidden">
             {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-0 w-72 h-72 bg-brandRed rounded-full filter blur-3xl"></div>
-                <div className="absolute bottom-0 right-0 w-96 h-96 bg-brandBlue rounded-full filter blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-brandRed to-brandBlue rounded-full filter blur-3xl opacity-50"></div>
+            <div className="absolute inset-0 opacity-5">
+                <div className="absolute top-0 left-0 w-72 h-72 bg-fuji-accent rounded-full filter blur-3xl"></div>
+                <div className="absolute bottom-0 right-0 w-96 h-96 bg-fuji-blue rounded-full filter blur-3xl"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-fuji-accent to-fuji-blue rounded-full filter blur-3xl opacity-30"></div>
             </div>
 
             <div className="relative max-w-7xl mx-auto px-6 lg:px-16">
@@ -60,10 +60,10 @@ const LetsTalk = () => {
                     {/* Left Column - Content & Image */}
                     <div className={`${isRTL ? 'lg:col-start-2 text-right' : 'text-left'} relative`}>
                         <div className="mb-12">
-                            <h2 className={`text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight ${isRTL ? 'font-cairo' : ''}`}>
+                            <h2 className={`text-4xl lg:text-5xl font-bold text-fuji-blue mb-6 leading-tight ${isRTL ? 'font-cairo' : ''}`}>
                                 {isRTL ? 'لنتحدث عن مشروعك' : "Let's Talk About Your Project"}
                             </h2>
-                            <p className={`text-xl text-gray-300 leading-relaxed mb-8 ${isRTL ? 'font-cairo' : ''}`}>
+                            <p className={`text-xl text-fuji-muted leading-relaxed mb-8 ${isRTL ? 'font-cairo' : ''}`}>
                                 {isRTL 
                                     ? 'هل تحتاج إلى مساعدة؟ تواصل معنا وسنكون سعداء لمساعدتك في تحقيق رؤيتك'
                                     : 'Need help? Get in touch with us and we\'ll be happy to help you bring your vision to life'
@@ -82,8 +82,8 @@ const LetsTalk = () => {
                                     ),
                                     titleEN: "Call Us",
                                     titleAR: "اتصل بنا",
-                                    valueEN: "+966 53 422 3238",
-                                    valueAR: "+966 53 422 3238"
+                                    valueEN: "+966 54 956 1015",
+                                    valueAR: "+966 54 956 1015"
                                 },
                                 {
                                     icon: (
@@ -93,8 +93,8 @@ const LetsTalk = () => {
                                     ),
                                     titleEN: "Email Us",
                                     titleAR: "راسلنا",
-                                    valueEN: "info@quaddimensions.com",
-                                    valueAR: "info@quaddimensions.com"
+                                    valueEN: "info@fujifd-ksa.com",
+                                    valueAR: "info@fujifd-ksa.com"
                                 },
                                 {
                                     icon: (
@@ -109,15 +109,15 @@ const LetsTalk = () => {
                                     valueAR: "جدة، المملكة العربية السعودية"
                                 }
                             ].map((contact, index) => (
-                                <div key={index} className="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300">
-                                    <div className="w-12 h-12 bg-brandRed rounded-xl flex items-center justify-center text-white">
+                                <div key={index} className="flex items-center gap-4 p-4 bg-fuji-surface backdrop-blur-md rounded-2xl border border-gray-200 hover:bg-white hover:shadow-soft transition-all duration-300">
+                                    <div className="w-12 h-12 bg-fuji-accent rounded-xl flex items-center justify-center text-white">
                                         {contact.icon}
                                     </div>
                                     <div>
-                                        <h4 className={`text-white font-semibold ${isRTL ? 'font-cairo' : ''}`}>
+                                        <h4 className={`text-fuji-blue font-semibold ${isRTL ? 'font-cairo' : ''}`}>
                                             {isRTL ? contact.titleAR : contact.titleEN}
                                         </h4>
-                                        <p className={`text-gray-300 ${isRTL ? 'font-cairo' : ''}`}>
+                                        <p className={`text-fuji-muted ${isRTL ? 'font-cairo' : ''}`}>
                                             {isRTL ? contact.valueAR : contact.valueEN}
                                         </p>
                                     </div>
@@ -128,7 +128,7 @@ const LetsTalk = () => {
 
                     {/* Right Column - Contact Form */}
                     <div className={`${isRTL ? 'lg:col-start-1' : ''}`}>
-                        <div className="bg-white/95 backdrop-blur-md rounded-3xl p-8 lg:p-12 shadow-2xl border border-white/20">
+                        <div className="bg-white backdrop-blur-md rounded-3xl p-8 lg:p-12 shadow-strong border border-gray-200">
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${isRTL ? 'md:grid-flow-col-dense' : ''}`}>
                                     <div>
@@ -141,7 +141,7 @@ const LetsTalk = () => {
                                             value={formData.firstName}
                                             onChange={handleChange}
                                             required
-                                            className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-brandRed focus:ring-4 focus:ring-brandRed/20 transition-all duration-300 ${isRTL ? 'font-cairo text-right' : ''}`}
+                                            className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-fuji-accent focus:ring-4 focus:ring-fuji-accent/20 transition-all duration-300 ${isRTL ? 'font-cairo text-right' : ''}`}
                                             placeholder={isRTL ? 'أدخل اسمك الأول' : 'Enter your first name'}
                                         />
                                     </div>
@@ -155,7 +155,7 @@ const LetsTalk = () => {
                                             value={formData.lastName}
                                             onChange={handleChange}
                                             required
-                                            className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-brandRed focus:ring-4 focus:ring-brandRed/20 transition-all duration-300 ${isRTL ? 'font-cairo text-right' : ''}`}
+                                            className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-fuji-accent focus:ring-4 focus:ring-fuji-accent/20 transition-all duration-300 ${isRTL ? 'font-cairo text-right' : ''}`}
                                             placeholder={isRTL ? 'أدخل اسم العائلة' : 'Enter your last name'}
                                         />
                                     </div>
@@ -172,7 +172,7 @@ const LetsTalk = () => {
                                             value={formData.phoneNumber}
                                             onChange={handleChange}
                                             required
-                                            className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-brandRed focus:ring-4 focus:ring-brandRed/20 transition-all duration-300 ${isRTL ? 'font-cairo text-right' : ''}`}
+                                            className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-fuji-accent focus:ring-4 focus:ring-fuji-accent/20 transition-all duration-300 ${isRTL ? 'font-cairo text-right' : ''}`}
                                             placeholder={isRTL ? 'أدخل رقم هاتفك' : 'Enter your phone number'}
                                         />
                                     </div>
@@ -186,7 +186,7 @@ const LetsTalk = () => {
                                             value={formData.emailAddress}
                                             onChange={handleChange}
                                             required
-                                            className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-brandRed focus:ring-4 focus:ring-brandRed/20 transition-all duration-300 ${isRTL ? 'font-cairo text-right' : ''}`}
+                                            className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-fuji-accent focus:ring-4 focus:ring-fuji-accent/20 transition-all duration-300 ${isRTL ? 'font-cairo text-right' : ''}`}
                                             placeholder={isRTL ? 'أدخل بريدك الإلكتروني' : 'Enter your email address'}
                                         />
                                     </div>
@@ -202,7 +202,7 @@ const LetsTalk = () => {
                                         value={formData.subject}
                                         onChange={handleChange}
                                         required
-                                        className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-brandRed focus:ring-4 focus:ring-brandRed/20 transition-all duration-300 ${isRTL ? 'font-cairo text-right' : ''}`}
+                                        className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-fuji-accent focus:ring-4 focus:ring-fuji-accent/20 transition-all duration-300 ${isRTL ? 'font-cairo text-right' : ''}`}
                                         placeholder={isRTL ? 'أدخل موضوع الرسالة' : 'Enter message subject'}
                                     />
                                 </div>
@@ -217,7 +217,7 @@ const LetsTalk = () => {
                                         onChange={handleChange}
                                         required
                                         rows="5"
-                                        className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-brandRed focus:ring-4 focus:ring-brandRed/20 transition-all duration-300 resize-none ${isRTL ? 'font-cairo text-right' : ''}`}
+                                        className={`w-full px-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-fuji-accent focus:ring-4 focus:ring-fuji-accent/20 transition-all duration-300 resize-none ${isRTL ? 'font-cairo text-right' : ''}`}
                                         placeholder={isRTL ? 'اكتب رسالتك هنا...' : 'Write your message here...'}
                                     />
                                 </div>
@@ -225,7 +225,7 @@ const LetsTalk = () => {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className={`w-full px-8 py-4 bg-gradient-to-r from-brandRed to-red-600 hover:from-red-600 hover:to-red-700 text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none ${isRTL ? 'font-cairo' : ''}`}
+                                    className={`w-full px-8 py-4 bg-gradient-to-r from-fuji-accent to-fuji-accent-red hover:from-fuji-accent-red hover:to-red-700 text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none ${isRTL ? 'font-cairo' : ''}`}
                                 >
                                     {isSubmitting 
                                         ? (isRTL ? 'جاري الإرسال...' : 'Sending...') 

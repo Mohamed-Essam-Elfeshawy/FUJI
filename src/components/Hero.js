@@ -3,25 +3,37 @@ import Navbar from './Navbar'
 import { useTranslation } from 'react-i18next';
 import cookies from "js-cookie";
 import MultilineText from './MultilineText';
-import { PRODUCTS } from '../data/products';
+
+// Import new hero background images
+import heroImage1 from '../images/Hero/44.jpg';
+import heroImage2 from '../images/Hero/55.jpg';
+import heroImage3 from '../images/Hero/66.jpg';
+import heroImage4 from '../images/Hero/77.jpg';
+import heroImage5 from '../images/Hero/88.jpg';
 
 const Hero = () => {
     const { t } = useTranslation();
     const currentLanguageCode = cookies.get('i18next');
     const isRTL = currentLanguageCode === 'ar';
     
-    // Filter only elevator products for the background slider
-    const elevatorProducts = PRODUCTS.filter(product => product.category === 'elevators');
+    // New hero background images array
+    const heroImages = [
+        { id: 1, image: heroImage1, alt: 'Hero Background 1' },
+        { id: 2, image: heroImage2, alt: 'Hero Background 2' },
+        { id: 3, image: heroImage3, alt: 'Hero Background 3' },
+        { id: 4, image: heroImage4, alt: 'Hero Background 4' },
+        { id: 5, image: heroImage5, alt: 'Hero Background 5' }
+    ];
     const [currentSlide, setCurrentSlide] = useState(0);
     
     // Auto-play functionality for background images
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % elevatorProducts.length);
-        }, 5000); // Change background every 5 seconds
+            setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+        }, 4000); // Change background every 4 seconds
 
         return () => clearInterval(interval);
-    }, [elevatorProducts.length]);
+    }, [heroImages.length]);
     
     const scrollToSection = (id) => {
         document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
@@ -30,12 +42,12 @@ const Hero = () => {
     return (
         <>
             {/* Mobile */}
-            <div className="block md:hidden relative h-screen overflow-hidden">
+            <div className="block md:hidden relative h-screen min-h-[600px] max-h-[800px] overflow-hidden">
                 {/* Background Image Slider */}
                 <div className="absolute inset-0">
-                    {elevatorProducts.map((product, index) => (
+                    {heroImages.map((heroImg, index) => (
                         <div
-                            key={product.id}
+                            key={heroImg.id}
                             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
                                 index === currentSlide ? 'opacity-100' : 'opacity-0'
                             }`}
@@ -43,38 +55,42 @@ const Hero = () => {
                             <div
                                 className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
                                 style={{
-                                    backgroundImage: `url(${product.image})`,
-                                    filter: 'brightness(0.9) contrast(1.2) saturate(1.1)',
+                                    backgroundImage: `url(${heroImg.image})`,
+                                    filter: 'brightness(0.8) contrast(1.4) saturate(1.3) blur(0px)',
+                                    imageRendering: 'crisp-edges',
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center center',
+                                    backgroundRepeat: 'no-repeat'
                                 }}
                             />
                         </div>
                     ))}
-                    {/* Lighter gradient overlay for more visible images */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-midnight/60 via-midnight/40 to-midnight/20" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-midnight/70 via-transparent to-midnight/30" />
+                    {/* Enhanced gradient overlay for better image quality */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-midnight/50 via-midnight/30 to-midnight/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-midnight/60 via-transparent to-midnight/20" />
                 </div>
 
                 <Navbar />
 
-                <div className='relative z-20 px-6 pt-20'>
+                <div className='relative z-20 px-4 sm:px-6 pt-16 sm:pt-20'>
                     {/* Modern hero content with glassmorphism */}
-                    <div className="flex flex-col justify-center min-h-[calc(100vh-120px)]">
+                    <div className="flex flex-col justify-center min-h-[calc(100vh-100px)] sm:min-h-[calc(100vh-120px)]">
                         <div className="text-center">
-                            <h1 className={`text-white text-4xl font-bold leading-tight mb-6 tracking-tight animate-fade-in-up ${isRTL ? 'font-cairo text-right' : 'text-left'}`}>
+                            <h1 className={`text-white text-3xl sm:text-4xl font-bold leading-tight mb-4 sm:mb-6 tracking-tight animate-fade-in-up drop-shadow-lg ${isRTL ? 'font-cairo text-center' : 'text-center'}`}>
                                 {isRTL ? (
                                     <>
                                         نرتقي إلى آفاق جديدة،<br />
-                                        <span className="text-electricBlue">بأمان وسرعة</span>
+                                        <span className="text-white font-extrabold drop-shadow-xl">بأمان وسرعة</span>
                                     </>
                                 ) : (
                                     <>
                                         Rising To New Heights,<br />
-                                        <span className="text-electricBlue">Safely & Swiftly</span>
+                                        <span className="text-white font-extrabold drop-shadow-xl">Safely & Swiftly</span>
                                     </>
                                 )}
                             </h1>
 
-                            <p className={`text-lightGray text-base font-normal leading-relaxed mb-10 max-w-md mx-auto animate-fade-in-up ${isRTL ? 'font-cairo text-right' : 'text-left'}`} style={{animationDelay: '0.2s'}}>
+                            <p className={`text-white text-base font-medium leading-relaxed mb-10 max-w-md mx-auto animate-fade-in-up drop-shadow-md ${isRTL ? 'font-cairo text-right' : 'text-left'}`} style={{animationDelay: '0.2s'}}>
                                 {isRTL ? 
                                     'نقدم حلولاً تكنولوجية متطورة تمكن الشركات من الوصول إلى آفاق جديدة بأمان وسرعة لا مثيل لهما.' :
                                     'We provide cutting-edge technological solutions that empower businesses to scale new heights with unparalleled safety and swiftness.'
@@ -84,13 +100,13 @@ const Hero = () => {
                             {/* Modern CTA buttons with glassmorphism */}
                             <div className={`flex flex-col gap-4 animate-fade-in-up ${isRTL ? 'items-end' : 'items-start'}`} style={{animationDelay: '0.4s'}}>
                                 <button
-                                    onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
+                                    onClick={() => window.location.href = '/shop'}
                                     className={`py-4 px-8 bg-electricBlue hover:bg-electricBlueDark text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-strong hover:shadow-xl transform hover:scale-105 hover:shadow-electricBlue/25 ${isRTL ? 'font-cairo' : ''}`}>
                                     {isRTL ? 'احصل على عرض سعر' : 'Get a Quote'}
                                 </button>
                                 <button
                                     onClick={() => scrollToSection('ourServices')}
-                                    className={`py-4 px-8 bg-white/5 backdrop-blur-md border border-electricBlue/30 text-electricBlue text-lg font-semibold rounded-2xl hover:bg-electricBlue/10 hover:border-electricBlue/50 transition-all duration-300 shadow-soft ${isRTL ? 'font-cairo' : ''}`}>
+                                    className={`py-4 px-8 bg-electricBlue hover:bg-electricBlueDark text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-strong hover:shadow-xl transform hover:scale-105 hover:shadow-electricBlue/25 ${isRTL ? 'font-cairo' : ''}`}>
                                     {isRTL ? 'خدماتنا' : 'Our Services'}
                                 </button>
                             </div>
@@ -104,9 +120,9 @@ const Hero = () => {
             <div className="hidden md:block relative h-screen overflow-hidden">
                 {/* Background Image Slider */}
                 <div className="absolute inset-0">
-                    {elevatorProducts.map((product, index) => (
+                    {heroImages.map((heroImg, index) => (
                         <div
-                            key={product.id}
+                            key={heroImg.id}
                             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
                                 index === currentSlide ? 'opacity-100' : 'opacity-0'
                             }`}
@@ -114,15 +130,19 @@ const Hero = () => {
                             <div
                                 className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
                                 style={{
-                                    backgroundImage: `url(${product.image})`,
-                                    filter: 'brightness(0.9) contrast(1.2) saturate(1.1)',
+                                    backgroundImage: `url(${heroImg.image})`,
+                                    filter: 'brightness(0.8) contrast(1.4) saturate(1.3) blur(0px)',
+                                    imageRendering: 'crisp-edges',
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center center',
+                                    backgroundRepeat: 'no-repeat'
                                 }}
                             />
                         </div>
                     ))}
-                    {/* Lighter gradient overlay for more visible images */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-midnight/60 via-midnight/40 to-midnight/20" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-midnight/70 via-transparent to-midnight/30" />
+                    {/* Enhanced gradient overlay for better image quality */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-midnight/50 via-midnight/30 to-midnight/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-midnight/60 via-transparent to-midnight/20" />
                 </div>
 
                 <Navbar />
@@ -131,21 +151,21 @@ const Hero = () => {
                     {/* Modern hero content with glassmorphism */}
                     <div className="flex items-center min-h-[calc(100vh-120px)]">
                         <div className="max-w-4xl pt-20">
-                            <h1 className={`text-white text-4xl font-bold leading-tight mb-6 tracking-tight animate-fade-in-up ${isRTL ? 'font-cairo text-right' : 'text-left'}`}>
+                            <h1 className={`text-white text-4xl font-bold leading-tight mb-6 tracking-tight animate-fade-in-up drop-shadow-lg ${isRTL ? 'font-cairo text-right' : 'text-left'}`}>
                                 {isRTL ? (
                                     <>
                                         نرتقي إلى آفاق جديدة،<br />
-                                        <span className="text-electricBlue">بأمان وسرعة</span>
+                                        <span className="text-white font-extrabold drop-shadow-xl">بأمان وسرعة</span>
                                     </>
                                 ) : (
                                     <>
                                         Rising To New Heights,<br />
-                                        <span className="text-electricBlue">Safely & Swiftly</span>
+                                        <span className="text-white font-extrabold drop-shadow-xl">Safely & Swiftly</span>
                                     </>
                                 )}
                             </h1>
 
-                            <p className={`text-lightGray text-base font-normal leading-relaxed mb-10 max-w-md mx-auto animate-fade-in-up ${isRTL ? 'font-cairo text-right' : 'text-left'}`} style={{animationDelay: '0.2s'}}>
+                            <p className={`text-white text-base font-medium leading-relaxed mb-10 max-w-md mx-auto animate-fade-in-up drop-shadow-md ${isRTL ? 'font-cairo text-right' : 'text-left'}`} style={{animationDelay: '0.2s'}}>
                                 {isRTL ? 
                                     'نقدم حلولاً تكنولوجية متطورة تمكن الشركات من الوصول إلى آفاق جديدة بأمان وسرعة لا مثيل لهما.' :
                                     'We provide cutting-edge technological solutions that empower businesses to scale new heights with unparalleled safety and swiftness.'
@@ -155,13 +175,13 @@ const Hero = () => {
                             {/* Modern CTA buttons with glassmorphism */}
                             <div className={`flex flex-col gap-4 animate-fade-in-up ${isRTL ? 'items-end' : 'items-start'}`} style={{animationDelay: '0.4s'}}>
                                 <button
-                                    onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
+                                    onClick={() => window.location.href = '/shop'}
                                     className={`py-4 px-8 bg-electricBlue hover:bg-electricBlueDark text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-strong hover:shadow-xl transform hover:scale-105 hover:shadow-electricBlue/25 ${isRTL ? 'font-cairo' : ''}`}>
                                     {isRTL ? 'احصل على عرض سعر' : 'Get a Quote'}
                                 </button>
                                 <button
                                     onClick={() => scrollToSection('ourServices')}
-                                    className={`py-4 px-8 bg-white/5 backdrop-blur-md border border-electricBlue/30 text-electricBlue text-lg font-semibold rounded-2xl hover:bg-electricBlue/10 hover:border-electricBlue/50 transition-all duration-300 shadow-soft ${isRTL ? 'font-cairo' : ''}`}>
+                                    className={`py-4 px-8 bg-electricBlue hover:bg-electricBlueDark text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-strong hover:shadow-xl transform hover:scale-105 hover:shadow-electricBlue/25 ${isRTL ? 'font-cairo' : ''}`}>
                                     {isRTL ? 'خدماتنا' : 'Our Services'}
                                 </button>
                             </div>

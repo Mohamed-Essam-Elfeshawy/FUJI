@@ -1,27 +1,53 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{html,js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        primary: '#EC2224',
-        primaryDark: '#C41E20',
-        primaryLight: '#FF4A4C',
-        secondary: '#1072B9',
-        secondaryDark: '#0E5A8A',
-        secondaryLight: '#4A9FE7',
+        // FUJI FD Brand Colors - Light & Dark Mode
+        'fuji-blue': '#146FB6',
+        'fuji-blue-dark': '#054A7B',
+        'fuji-blue-600': '#0A6AAA',
+        'fuji-blue-light': '#3B82F6',
+        'fuji-accent': '#E21E26',
+        'fuji-accent-red': '#E21E26',
+        'fuji-accent-light': '#EF4444',
+        
+        // Light Mode Colors
+        'fuji-surface': '#F5F7FA',
+        'fuji-bg': '#FFFFFF',
+        'fuji-muted': '#6B7280',
+        'fuji-text': '#111827',
+        
+        // Dark Mode Colors - Enhanced & Warmer
+        'fuji-dark-bg': '#0A0E1A',
+        'fuji-dark-surface': '#1A1F2E',
+        'fuji-dark-card': '#252B3D',
+        'fuji-dark-text': '#E2E8F0',
+        'fuji-dark-muted': '#8B9DC3',
+        'fuji-dark-border': '#3A4553',
+        'fuji-dark-accent': '#4F8EF7',
+        'fuji-dark-hover': '#2D3748',
+        // Legacy colors for compatibility
+        primary: '#146FB6',
+        primaryDark: '#054A7B',
+        primaryLight: '#0A6AAA',
+        secondary: '#E21E26',
+        secondaryDark: '#C0392B',
+        secondaryLight: '#EC7063',
         midnight: '#0F172A',
-        // Modern brand colors
-        electricBlue: '#00D4FF',
-        electricBlueDark: '#00B8E6',
-        midnight: '#0F172A',
+        electricBlue: '#146FB6',
+        electricBlueDark: '#054A7B',
         charcoal: '#1E293B',
         lightGray: '#94A3B8',
-        // Brand accent colors
-        brandRed: '#EC2224',
-        brandBlue: '#1072B9',
+        brandRed: '#E21E26',
+        brandBlue: '#146FB6',
+        fujiBlue: '#146FB6',
+        fujiRed: '#E21E26',
+        fujiBackground: '#F5F7FA',
         gray: {
           50: '#F9FAFB',
           100: '#F3F4F6',
@@ -40,9 +66,9 @@ module.exports = {
         textGray: '#708FA0'
       },
       
-      // Modern typography
+      // FUJI Typography
       fontFamily: {
-        'inter': ['Inter', 'system-ui', 'sans-serif'],
+        'sans': ['Poppins', 'Cairo', 'system-ui', 'sans-serif'],
         'poppins': ['Poppins', 'system-ui', 'sans-serif'],
         'cairo': ['Cairo', 'system-ui', 'sans-serif'],
         'tajawal': ['Tajawal', 'system-ui', 'sans-serif'],

@@ -36,12 +36,20 @@ export const CartProvider = ({ children }) => {
 
   const totals = useMemo(() => {
     const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0);
-    const shipping = items.length ? 25 : 0;
-    const tax = subtotal * 0.15;
+    const shipping = items.length ? 50 : 0; // Updated shipping cost
+    const tax = Math.round(subtotal * 0.15); // Round tax to nearest riyal
     const total = subtotal + shipping + tax;
     return { subtotal, shipping, tax, total };
   }, [items]);
 
-  const value = { items, addItem, removeItem, updateQty, clear, totals };
+  const value = { 
+    items, 
+    addItem, 
+    addToCart: addItem, // إضافة alias للتوافق
+    removeItem, 
+    updateQty, 
+    clear, 
+    totals 
+  };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

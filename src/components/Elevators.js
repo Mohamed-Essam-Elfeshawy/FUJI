@@ -40,10 +40,10 @@ const Elevators = () => {
                 
                 {/* Section Header */}
                 <div className="text-center mb-12">
-                    <h2 className={`text-4xl lg:text-5xl font-bold text-gray-900 mb-4 ${isRTL ? 'font-cairo' : ''}`}>
+                    <h2 className={`text-4xl lg:text-5xl font-bold text-fujiBlue mb-4 ${isRTL ? 'font-cairo' : ''}`}>
                         {t('Elevators')}
                     </h2>
-                    <p className={`text-lg text-gray-600 max-w-2xl mx-auto ${isRTL ? 'font-cairo' : ''}`}>
+                    <p className={`text-lg text-[#C0392B] max-w-2xl mx-auto ${isRTL ? 'font-cairo' : ''}`}>
                         {isRTL 
                             ? 'اكتشف مجموعتنا المتنوعة من المصاعد المصممة لتلبية احتياجاتك المختلفة'
                             : 'Discover our diverse range of elevators designed to meet your various needs'
@@ -58,7 +58,7 @@ const Elevators = () => {
                             onClick={() => setShowMobileFilter(!showMobileFilter)}
                             className={`w-full bg-white rounded-2xl border border-gray-200 px-6 py-4 flex items-center justify-between shadow-soft hover:shadow-medium transition-all duration-300 ${isRTL ? 'flex-row-reverse' : ''}`}
                         >
-                            <span className={`text-lg font-semibold text-gray-900 ${isRTL ? 'font-cairo' : ''}`}>
+                            <span className={`text-lg font-semibold text-fujiBlue ${isRTL ? 'font-cairo' : ''}`}>
                                 {isRTL ? Elevators_Data[activeElevator].titleAR : Elevators_Data[activeElevator].titleEN}
                             </span>
                             <svg className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${showMobileFilter ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,7 +92,7 @@ const Elevators = () => {
                     {/* Left Sidebar - 25% width on desktop */}
                     <div className={`hidden lg:block ${isRTL ? 'lg:col-start-4' : ''}`}>
                         <div className="bg-white rounded-3xl border border-gray-200 shadow-soft p-8 sticky top-8">
-                            <h3 className={`text-xl font-bold text-gray-900 mb-6 ${isRTL ? 'font-cairo text-right' : ''}`}>
+                            <h3 className={`text-xl font-bold text-fujiBlue mb-6 ${isRTL ? 'font-cairo text-right' : ''}`}>
                                 {isRTL ? 'أنواع المصاعد' : 'Elevator Types'}
                             </h3>
                             
@@ -150,13 +150,13 @@ const Elevators = () => {
                                 <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
                                     
                                     {/* Title */}
-                                    <h3 className={`text-3xl lg:text-4xl font-bold text-gray-900 mb-4 ${isRTL ? 'font-cairo' : ''}`}>
+                                    <h3 className={`text-3xl lg:text-4xl font-bold text-fujiBlue mb-4 ${isRTL ? 'font-cairo' : ''}`}>
                                         {isRTL ? Elevators_Data[activeElevator].titleAR : Elevators_Data[activeElevator].titleEN}
                                     </h3>
 
                                     {/* Specifications */}
                                     <div className="mb-8">
-                                        <h4 className={`text-lg font-semibold text-gray-900 mb-4 ${isRTL ? 'font-cairo' : ''}`}>
+                                        <h4 className={`text-lg font-semibold text-fujiBlue mb-4 ${isRTL ? 'font-cairo' : ''}`}>
                                             {isRTL ? 'المواصفات الرئيسية:' : 'Key Specifications:'}
                                         </h4>
                                         <ul className="space-y-3">
@@ -174,7 +174,7 @@ const Elevators = () => {
                                     {/* Call-to-Action Buttons */}
                                     <div className={`flex flex-col sm:flex-row gap-4 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
                                         <button
-                                            onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
+                                            onClick={() => window.open('https://wa.me/966549561015', '_blank')}
                                             className={`px-8 py-4 bg-brandRed hover:bg-red-600 text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 ${isRTL ? 'font-cairo' : ''}`}
                                         >
                                             {isRTL ? 'اطلب الآن' : 'Request Quote'}
@@ -189,7 +189,7 @@ const Elevators = () => {
 
                                     {/* Additional Info */}
                                     <div className="mt-8 pt-8 border-t border-gray-200">
-                                        <div className={`flex items-center gap-4 text-sm text-gray-600 ${isRTL ? 'flex-row-reverse font-cairo' : ''}`}>
+                                        <div className={`flex items-center gap-4 text-sm text-[#C0392B] ${isRTL ? 'flex-row-reverse font-cairo' : ''}`}>
                                             <div className="flex items-center gap-2">
                                                 <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

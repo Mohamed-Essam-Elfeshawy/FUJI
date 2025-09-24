@@ -71,10 +71,10 @@ const WhyChooseUs = () => {
                     
                     {/* Left Column - Content */}
                     <div className={`${isRTL ? 'lg:col-start-2 text-right' : 'text-left'}`}>
-                        <h2 className={`text-4xl lg:text-5xl font-bold text-gray-900 mb-6 ${isRTL ? 'font-cairo' : ''}`}>
-                            {isRTL ? 'لماذا تختار كواد ديمنشنز؟' : 'Why Choose Quad Dimensions?'}
+                        <h2 className={`text-4xl lg:text-5xl font-bold text-fujiBlue mb-6 ${isRTL ? 'font-cairo' : ''}`}>
+                            {isRTL ? 'لماذا تختار فوجي إف دي؟' : 'Why Choose FUJI FD?'}
                         </h2>
-                        <p className={`text-lg text-gray-600 mb-12 leading-relaxed ${isRTL ? 'font-cairo' : ''}`}>
+                        <p className={`text-lg text-[#C0392B] mb-12 leading-relaxed ${isRTL ? 'font-cairo' : ''}`}>
                             {isRTL 
                                 ? 'نحن نقدم حلول مصاعد متطورة تجمع بين الابتكار والجودة والسلامة لضمان أفضل تجربة لعملائنا'
                                 : 'We deliver advanced elevator solutions that combine innovation, quality, and safety to ensure the best experience for our clients'
@@ -102,12 +102,12 @@ const WhyChooseUs = () => {
                                             {feature.icon}
                                         </div>
                                         <div className={`flex-1 ${isRTL ? 'text-right' : 'text-left'}`}>
-                                            <h3 className={`text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 ${
+                                            <h3 className={`text-xl font-bold text-fujiBlue mb-2 transition-colors duration-300 ${
                                                 hoveredFeature === feature.id ? 'text-brandRed' : 'group-hover:text-brandRed'
                                             } ${isRTL ? 'font-cairo' : ''}`}>
                                                 {isRTL ? feature.titleAR : feature.titleEN}
                                             </h3>
-                                            <p className={`text-gray-600 leading-relaxed ${isRTL ? 'font-cairo' : ''}`}>
+                                            <p className={`text-[#C0392B] leading-relaxed ${isRTL ? 'font-cairo' : ''}`}>
                                                 {isRTL ? feature.descriptionAR : feature.descriptionEN}
                                             </p>
                                         </div>
@@ -119,7 +119,7 @@ const WhyChooseUs = () => {
                         {/* CTA Button */}
                         <div className="mt-12">
                             <button
-                                onClick={() => window.open('https://wa.me/2001201029395', '_blank')}
+                                onClick={() => window.location.href = '/shop'}
                                 className={`px-8 py-4 bg-brandRed hover:bg-red-600 text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${isRTL ? 'font-cairo' : ''}`}
                             >
                                 {isRTL ? 'احصل على عرض سعر' : 'Get a Quote'}
@@ -132,7 +132,7 @@ const WhyChooseUs = () => {
                         <div className="relative">
                             <img
                                 src={Rectangle}
-                                alt="Quad Dimensions Excellence"
+                                alt="FUJI FD Excellence"
                                 className="w-full h-auto rounded-3xl shadow-2xl"
                             />
                             
@@ -141,10 +141,10 @@ const WhyChooseUs = () => {
                                 <div className="flex items-center gap-3">
                                     <img src={Verified_Icon} alt="Verified" className="w-8 h-8" />
                                     <div>
-                                        <p className={`text-sm font-semibold text-gray-900 ${isRTL ? 'font-cairo' : ''}`}>
+                                        <p className={`text-sm font-semibold text-fujiBlue ${isRTL ? 'font-cairo' : ''}`}>
                                             {isRTL ? 'معتمد وموصى به' : 'Verified & Recommended'}
                                         </p>
-                                        <p className={`text-xs text-gray-600 ${isRTL ? 'font-cairo' : ''}`}>
+                                        <p className={`text-xs text-[#C0392B] ${isRTL ? 'font-cairo' : ''}`}>
                                             {isRTL ? 'شهادة الجودة' : 'Quality Certified'}
                                         </p>
                                     </div>
@@ -157,10 +157,10 @@ const WhyChooseUs = () => {
                                         <img src={Heart_Icon} alt="Experience" className="w-8 h-8 filter brightness-0 invert" />
                                     </div>
                                     <div>
-                                        <p className={`text-lg font-bold text-gray-900 ${isRTL ? 'font-cairo' : ''}`}>
+                                        <p className={`text-lg font-bold text-fujiBlue ${isRTL ? 'font-cairo' : ''}`}>
                                             {isRTL ? '15+ سنة' : '15+ Years'}
                                         </p>
-                                        <p className={`text-sm text-gray-600 ${isRTL ? 'font-cairo' : ''}`}>
+                                        <p className={`text-sm text-[#C0392B] ${isRTL ? 'font-cairo' : ''}`}>
                                             {isRTL ? 'من الخبرة' : 'Experience'}
                                         </p>
                                     </div>
