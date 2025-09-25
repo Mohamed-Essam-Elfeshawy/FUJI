@@ -7,6 +7,7 @@ import AnimateOnScroll from './AnimateOnScroll';
 import StaggerAnimation from './StaggerAnimation';
 import emailjs from 'emailjs-com';
 import cookies from "js-cookie";
+import { sendContactEmail, sendDirectEmail } from '../utils/emailService';
 
 const ContactUs = () => {
     const { t } = useTranslation();
@@ -37,13 +38,43 @@ const ContactUs = () => {
         setIsSubmitting(true);
 
         try {
-            // Use emailjs to send the form data
-            await emailjs.send('service_5yyfaqj', 'template_jmewn0n', formData, '-Dqp5Ia1jl6qhAYVT');
-            alert("تم إرسال الرسالة بنجاح! / Email sent successfully!");
+            const emailSubject = encodeURIComponent(`رسالة من موقع FUJI FD: ${formData.subject}`);
+            const emailBody = encodeURIComponent(`
+🏢 رسالة جديدة من موقع FUJI FD
+
+👤 معلومات المرسل:
+الاسم: ${formData.firstName} ${formData.lastName}
+البريد الإلكتروني: ${formData.emailAddress}
+رقم الهاتف: ${formData.phoneNumber || 'غير محدد'}
+
+📋 تفاصيل الرسالة:
+الموضوع: ${formData.subject}
+
+💬 الرسالة:
+${formData.message}
+
+---
+تم إرسال هذه الرسالة من نموذج التواصل في موقع FUJI FD
+التاريخ: ${new Date().toLocaleString('ar-SA')}
+            `);
+
+            const mailtoLink = `mailto:melfeshawy42@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+            window.open(mailtoLink);
+            
             setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', subject: '', message: '' });
+            
+            // eslint-disable-next-line no-alert
+            alert(isRTL ? 
+                "تم فتح تطبيق البريد الإلكتروني. يرجى الضغط على 'إرسال' لإتمام العملية." :
+                "Email app opened. Please click 'Send' to complete the process."
+            );
         } catch (err) {
-            console.log('FAILED...', err);
-            alert("فشل في إرسال الرسالة / Email sending failed.");
+            console.log('Error:', err);
+            // eslint-disable-next-line no-alert
+            alert(isRTL ? 
+                "حدث خطأ. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة على: melfeshawy42@gmail.com" :
+                "An error occurred. Please try again or contact us directly at: melfeshawy42@gmail.com"
+            );
         } finally {
             setIsSubmitting(false);
         }

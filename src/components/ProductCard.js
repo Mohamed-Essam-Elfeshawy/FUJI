@@ -24,8 +24,8 @@ const ProductCard = ({ product }) => {
 
   const sendWhatsAppMessage = () => {
     const productName = product.nameAR || product.name;
-    const productPrice = `${product.price.toLocaleString()} ريال`;
-    const totalPrice = `${(product.price * quantity).toLocaleString()} ريال`;
+    const productPrice = `${product.price.toLocaleString()} ريال سعودي`;
+    const totalPrice = `${(product.price * quantity).toLocaleString()} ريال سعودي`;
     
     const message = `السلام عليكم
 عاوز اطلب المنتج ده من موقع فوجي FUJI FD:
@@ -163,11 +163,11 @@ const ProductCard = ({ product }) => {
           <span className={`text-fuji-blue font-bold text-lg ${isRTL ? 'font-cairo' : ''}`}>
             {isRTL ? (
               <>
-                {product.price.toLocaleString()} <RiyalSymbol className="w-6 h-6 inline-block ml-1" />
+                {product.price.toLocaleString()} <span className="text-base font-medium">ريال سعودي</span> <RiyalSymbol className="w-6 h-6 inline-block ml-1" />
               </>
             ) : (
               <>
-                <RiyalSymbol className="w-6 h-6 inline-block mr-1" /> {product.price.toLocaleString()}
+                {product.price.toLocaleString()} <span className="text-base font-medium">Saudi Riyal</span> <RiyalSymbol className="w-6 h-6 inline-block ml-1" />
               </>
             )}
           </span>
@@ -175,11 +175,11 @@ const ProductCard = ({ product }) => {
             <div className={`text-sm text-fuji-muted mt-1 ${isRTL ? 'font-cairo' : ''}`}>
               {isRTL ? (
                 <>
-                  الإجمالي: {(product.price * quantity).toLocaleString()} <RiyalSymbol className="w-4 h-4 inline-block ml-1" />
+                  الإجمالي: {(product.price * quantity).toLocaleString()} <span className="text-xs">ريال سعودي</span> <RiyalSymbol className="w-4 h-4 inline-block ml-1" />
                 </>
               ) : (
                 <>
-                  Total: <RiyalSymbol className="w-4 h-4 inline-block mr-1" /> {(product.price * quantity).toLocaleString()}
+                  Total: {(product.price * quantity).toLocaleString()} <span className="text-xs">Saudi Riyal</span> <RiyalSymbol className="w-4 h-4 inline-block ml-1" />
                 </>
               )}
             </div>

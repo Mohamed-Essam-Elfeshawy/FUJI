@@ -36,8 +36,39 @@
 
 /* Logo Background in Dark Mode */
 .dark nav img[alt="FUJI FD Logo"] {
-  background-color: rgba(26, 31, 46, 0.95) !important;
-  border-color: rgba(79, 142, 247, 0.3) !important;
+  background-color: #2C3647 !important;
+  border-color: rgba(79, 142, 247, 0.2) !important;
+}
+
+/* Additional Logo Background Selectors for Dark Mode */
+.dark .relative.group img[alt="FUJI FD Logo"] {
+  background-color: white !important;
+  border-color: rgba(79, 142, 247, 0.2) !important;
+}
+
+.dark nav .relative.group img {
+   background-color: white !important;
+  border-color: rgba(79, 142, 247, 0.2) !important;
+}
+
+/* Force Logo Background in Dark Mode - Most Specific */
+html.dark nav img,
+html.dark .navbar img,
+body.dark nav img,
+body.dark .navbar img,
+.dark img[src*="fujie-logo"],
+html.dark img[src*="fujie-logo"],
+html.dark nav img[alt*="FUJI"],
+html.dark img[alt*="Logo"] {
+  /* background-color: #2C3647 !important; */
+  border-color: rgba(79, 142, 247, 0.2) !important;
+  background-color: white !important;
+}
+
+
+/* Override any inline styles */
+html.dark nav img[style] {
+   background-color: #2C3647 !important; 
 }
 
 .dark nav .text-fujiBlue {
@@ -51,6 +82,10 @@
 /* Cards and Surfaces */
 .dark .bg-white {
   background: linear-gradient(145deg, #252B3D 0%, #2D3748 100%) !important;
+  border: 1px solid rgba(79, 142, 247, 0.1);
+}
+.dark .bg-new {
+  background-color: white !important;
   border: 1px solid rgba(79, 142, 247, 0.1);
 }
 

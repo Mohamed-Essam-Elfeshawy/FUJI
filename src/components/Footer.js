@@ -25,9 +25,9 @@ const Footer = () => {
                     {/* Column 1: Company Logo + Description */}
                     <div>
                         <div className="flex items-center mb-6">
-                            <div className="relative">
+                            <div className="relative bg-white rounded-lg">
                                 <img 
-                                    className="w-16 h-12 lg:w-18 lg:h-14 xl:w-20 xl:h-16 object-contain rounded-lg shadow-lg bg-white p-2 border border-gray-300" 
+                                    className="w-16 h-12 lg:w-18 lg:h-14 xl:w-20 xl:h-16 object-contain rounded-lg shadow-lg bg-new p-2 border border-gray-300" 
                                     src={fujiLogo} 
                                     alt="FUJI FD Logo" 
                                     style={{

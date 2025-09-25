@@ -153,12 +153,14 @@ const ProductSlider = () => {
                         {isRTL ? (
                           <>
                             <span>{product.price.toLocaleString()}</span>
+                            <span className="text-lg lg:text-xl font-medium">ريال سعودي</span>
                             <RiyalSymbol className="w-6 h-6 lg:w-8 lg:h-8" />
                           </>
                         ) : (
                           <>
-                            <RiyalSymbol className="w-6 h-6 lg:w-8 lg:h-8" />
                             <span>{product.price.toLocaleString()}</span>
+                            <span className="text-lg lg:text-xl font-medium">Saudi Riyal</span>
+                            <RiyalSymbol className="w-6 h-6 lg:w-8 lg:h-8" />
                           </>
                         )}
                       </div>

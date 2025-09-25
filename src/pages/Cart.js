@@ -26,7 +26,7 @@ const Cart = () => {
                   <img src={item.image} alt={item.name} className="w-24 h-24 object-cover rounded-xl" />
                   <div className="flex-1">
                     <h3 className="text-gray-900 font-semibold">{item.name}</h3>
-                    <p className="text-gray-600 text-sm">{(item.price).toLocaleString()} SAR</p>
+                    <p className="text-gray-600 text-sm">{(item.price).toLocaleString()} ريال سعودي</p>
                     <div className="mt-3 flex items-center gap-3">
                       <label className="text-sm text-gray-600">Qty</label>
                       <input
@@ -47,10 +47,10 @@ const Cart = () => {
             <aside className="bg-white rounded-2xl border border-gray-100 p-6 shadow-soft h-fit">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Order Summary</h2>
               <div className="space-y-2 text-gray-700">
-                <div className="flex justify-between"><span>Subtotal</span><span>{totals.subtotal.toFixed(2)} SAR</span></div>
-                <div className="flex justify-between"><span>Shipping</span><span>{totals.shipping.toFixed(2)} SAR</span></div>
-                <div className="flex justify-between"><span>VAT (15%)</span><span>{totals.tax.toFixed(2)} SAR</span></div>
-                <div className="border-t pt-3 flex justify-between font-semibold text-gray-900"><span>Total</span><span>{totals.total.toFixed(2)} SAR</span></div>
+                <div className="flex justify-between"><span>Subtotal</span><span>{totals.subtotal.toFixed(2)} ريال سعودي</span></div>
+                <div className="flex justify-between"><span>Shipping</span><span>{totals.shipping.toFixed(2)} ريال سعودي</span></div>
+                <div className="flex justify-between"><span>VAT (15%)</span><span>{totals.tax.toFixed(2)} ريال سعودي</span></div>
+                <div className="border-t pt-3 flex justify-between font-semibold text-gray-900"><span>Total</span><span>{totals.total.toFixed(2)} ريال سعودي</span></div>
               </div>
               <Link to="/checkout" className="block mt-6 text-center px-5 py-3 bg-primary hover:bg-primaryDark text-white rounded-xl font-semibold shadow-medium">Proceed to Checkout</Link>
             </aside>

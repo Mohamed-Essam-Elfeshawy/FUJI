@@ -19,8 +19,8 @@ const ProductGrid = () => {
   const handleOrderNow = (product) => {
     const productName = isRTL ? product.nameAR : product.nameEN;
     const message = isRTL 
-      ? `مرحباً، أريد طلب ${productName} بسعر ${product.price.toLocaleString()} ريال`
-      : `Hello, I want to order ${productName} for ${product.price.toLocaleString()} SAR`;
+      ? `مرحباً، أريد طلب ${productName} بسعر ${product.price.toLocaleString()} ريال سعودي`
+      : `Hello, I want to order ${productName} for ${product.price.toLocaleString()} Saudi Riyal`;
     
     const whatsappUrl = `https://wa.me/966549561015?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -109,12 +109,14 @@ const ProductGrid = () => {
                         {isRTL ? (
                           <>
                             <span>{product.price.toLocaleString()}</span>
+                            <span className="text-lg font-medium">ريال سعودي</span>
                             <RiyalSymbol className="w-6 h-6" />
                           </>
                         ) : (
                           <>
-                            <RiyalSymbol className="w-6 h-6" />
                             <span>{product.price.toLocaleString()}</span>
+                            <span className="text-lg font-medium">Saudi Riyal</span>
+                            <RiyalSymbol className="w-6 h-6" />
                           </>
                         )}
                       </div>

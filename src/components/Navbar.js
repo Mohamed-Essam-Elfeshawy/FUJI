@@ -61,10 +61,10 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-14 sm:h-16 md:h-18 lg:h-20">
                     
                     {/* Logo Section */}
-                    <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                    <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 ">
                         <div className="relative group">
-                            <img 
-                                className="w-12 h-9 sm:w-14 sm:h-10 md:w-16 md:h-12 lg:w-18 lg:h-14 xl:w-20 xl:h-15 object-contain rounded-lg shadow-md bg-transparent p-1 border border-fuji-blue/20 hover:shadow-lg hover:border-fuji-blue/40 transition-all duration-300 group-hover:scale-105" 
+                            <img  
+                                className=" h-9 sm:w-14 sm:h-10 md:w-16 md:h-12 lg:w-full lg:h-14 xl:w-20 xl:h-15 object-contain rounded-lg shadow-md bg-transparent p-1 border border-fuji-blue/20 hover:shadow-lg hover:border-fuji-blue/40 transition-all duration-300 group-hover:scale-105" 
                                 src={fujiLogo} 
                                 alt="FUJI FD Logo" 
                                 style={{
@@ -74,6 +74,7 @@ const Navbar = () => {
                             />
                             <div className="absolute -inset-1 bg-gradient-to-r from-fuji-blue/20 to-fuji-accent/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                         </div>
+
                         <div className={`${isRTL ? 'text-right' : 'text-left'} hidden sm:block`}>
                             <h1 className={`text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold ${isRTL ? 'font-cairo' : ''} text-fuji-blue hover:text-fuji-accent transition-colors duration-300`}>
                                 {t('App_Name')}

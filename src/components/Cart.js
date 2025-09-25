@@ -19,9 +19,9 @@ const Cart = ({ isOpen, onClose }) => {
         
         const orderDetails = items.map((item, index) => 
             `${index + 1}. ${item.nameAR || item.name}
-   السعر: ${item.price.toLocaleString()} ريال
+   السعر: ${item.price.toLocaleString()} ريال سعودي
    الكمية: ${item.qty} قطعة
-   الإجمالي: ${(item.price * item.qty).toLocaleString()} ريال`
+   الإجمالي: ${(item.price * item.qty).toLocaleString()} ريال سعودي`
         ).join('\n\n');
 
         const message = `🏢 طلب جديد من موقع فوجي FUJI FD
@@ -32,11 +32,11 @@ ${orderDetails}
 
 💰 ملخص التكاليف:
 ┌─────────────────────────────────
-│ المجموع الفرعي: ${totals.subtotal.toLocaleString()} ريال
-│ رسوم الشحن: ${totals.shipping.toLocaleString()} ريال  
-│ الضريبة (15%): ${totals.tax.toLocaleString()} ريال
+│ المجموع الفرعي: ${totals.subtotal.toLocaleString()} ريال سعودي
+│ رسوم الشحن: ${totals.shipping.toLocaleString()} ريال سعودي  
+│ الضريبة (15%): ${totals.tax.toLocaleString()} ريال سعودي
 ├─────────────────────────────────
-│ 💎 الإجمالي النهائي: ${totals.total.toLocaleString()} ريال
+│ 💎 الإجمالي النهائي: ${totals.total.toLocaleString()} ريال سعودي
 └─────────────────────────────────
 
 شكراً لكم 🙏`;
@@ -141,11 +141,11 @@ ${orderDetails}
                                             <p className={`text-fuji-accent font-bold flex items-center ${isRTL ? 'font-cairo justify-end' : 'justify-start'}`}>
                                                 {isRTL ? (
                                                     <>
-                                                        {item.price.toLocaleString()} <RiyalSymbol className="w-5 h-5 ml-1" />
+                                                        {item.price.toLocaleString()} <span className="text-sm font-medium">ريال سعودي</span> <RiyalSymbol className="w-5 h-5 ml-1" />
                                                     </>
                                                 ) : (
                                                     <>
-                                                        <RiyalSymbol className="w-5 h-5 mr-1" /> {item.price.toLocaleString()}
+                                                        {item.price.toLocaleString()} <span className="text-sm font-medium">Saudi Riyal</span> <RiyalSymbol className="w-5 h-5 ml-1" />
                                                     </>
                                                 )}
                                             </p>
@@ -187,11 +187,11 @@ ${orderDetails}
                                         <span className="flex items-center">
                                             {isRTL ? (
                                                 <>
-                                                    {totals.subtotal.toLocaleString()} <RiyalSymbol className="w-4 h-4 ml-1" />
+                                                    {totals.subtotal.toLocaleString()} <span className="text-xs">ريال سعودي</span> <RiyalSymbol className="w-4 h-4 ml-1" />
                                                 </>
                                             ) : (
                                                 <>
-                                                    <RiyalSymbol className="w-4 h-4 mr-1" /> {totals.subtotal.toLocaleString()}
+                                                    {totals.subtotal.toLocaleString()} <span className="text-xs">Saudi Riyal</span> <RiyalSymbol className="w-4 h-4 ml-1" />
                                                 </>
                                             )}
                                         </span>
@@ -201,11 +201,11 @@ ${orderDetails}
                                         <span className="flex items-center">
                                             {isRTL ? (
                                                 <>
-                                                    {totals.shipping.toLocaleString()} <RiyalSymbol className="w-4 h-4 ml-1" />
+                                                    {totals.shipping.toLocaleString()} <span className="text-xs">ريال سعودي</span> <RiyalSymbol className="w-4 h-4 ml-1" />
                                                 </>
                                             ) : (
                                                 <>
-                                                    <RiyalSymbol className="w-4 h-4 mr-1" /> {totals.shipping.toLocaleString()}
+                                                    {totals.shipping.toLocaleString()} <span className="text-xs">Saudi Riyal</span> <RiyalSymbol className="w-4 h-4 ml-1" />
                                                 </>
                                             )}
                                         </span>
@@ -215,11 +215,11 @@ ${orderDetails}
                                         <span className="flex items-center">
                                             {isRTL ? (
                                                 <>
-                                                    {totals.tax.toLocaleString()} <RiyalSymbol className="w-4 h-4 ml-1" />
+                                                    {totals.tax.toLocaleString()} <span className="text-xs">ريال سعودي</span> <RiyalSymbol className="w-4 h-4 ml-1" />
                                                 </>
                                             ) : (
                                                 <>
-                                                    <RiyalSymbol className="w-4 h-4 mr-1" /> {totals.tax.toLocaleString()}
+                                                    {totals.tax.toLocaleString()} <span className="text-xs">Saudi Riyal</span> <RiyalSymbol className="w-4 h-4 ml-1" />
                                                 </>
                                             )}
                                         </span>
@@ -229,11 +229,11 @@ ${orderDetails}
                                         <span className="flex items-center">
                                             {isRTL ? (
                                                 <>
-                                                    {totals.total.toLocaleString()} <RiyalSymbol className="w-6 h-6 ml-1" />
+                                                    {totals.total.toLocaleString()} <span className="text-sm font-medium">ريال سعودي</span> <RiyalSymbol className="w-6 h-6 ml-1" />
                                                 </>
                                             ) : (
                                                 <>
-                                                    <RiyalSymbol className="w-6 h-6 mr-1" /> {totals.total.toLocaleString()}
+                                                    {totals.total.toLocaleString()} <span className="text-sm font-medium">Saudi Riyal</span> <RiyalSymbol className="w-6 h-6 ml-1" />
                                                 </>
                                             )}
                                         </span>

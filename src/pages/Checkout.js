@@ -117,16 +117,16 @@ const Checkout = () => {
               {items.map((i) => (
                 <div key={i.id} className="flex justify-between text-gray-700">
                   <span>{i.name} × {i.qty}</span>
-                  <span>{(i.price * i.qty).toFixed(2)} SAR</span>
+                  <span>{(i.price * i.qty).toFixed(2)} ريال سعودي</span>
                 </div>
               ))}
               {items.length === 0 && <p className="text-gray-600">No items</p>}
             </div>
             <div className="space-y-2 text-gray-700">
-              <div className="flex justify-between"><span>Subtotal</span><span>{totals.subtotal.toFixed(2)} SAR</span></div>
-              <div className="flex justify-between"><span>Shipping</span><span>{totals.shipping.toFixed(2)} SAR</span></div>
-              <div className="flex justify-between"><span>VAT (15%)</span><span>{totals.tax.toFixed(2)} SAR</span></div>
-              <div className="border-t pt-3 flex justify-between font-semibold text-gray-900"><span>Total</span><span>{totals.total.toFixed(2)} SAR</span></div>
+              <div className="flex justify-between"><span>Subtotal</span><span>{totals.subtotal.toFixed(2)} ريال سعودي</span></div>
+              <div className="flex justify-between"><span>Shipping</span><span>{totals.shipping.toFixed(2)} ريال سعودي</span></div>
+              <div className="flex justify-between"><span>VAT (15%)</span><span>{totals.tax.toFixed(2)} ريال سعودي</span></div>
+              <div className="border-t pt-3 flex justify-between font-semibold text-gray-900"><span>Total</span><span>{totals.total.toFixed(2)} ريال سعودي</span></div>
             </div>
           </aside>
         </div>
