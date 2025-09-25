@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فحص الصور - FUJI FD</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .image-test { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .image-test img { max-width: 200px; height: auto; margin: 10px; border: 1px solid #ccc; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .status { font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>فحص صور موقع FUJI FD</h1>
+    
+    <div class="image-test" id="logo-test">
+        <h3>شعار الشركة</h3>
+        <img src="./assets/logo.svg" alt="FUJI FD Logo" onload="markSuccess('logo-test')" onerror="markError('logo-test', this.src)">
+        <div class="status" id="logo-status">جاري التحميل...</div>
+    </div>
+    
+    <div class="image-test" id="favicon-test">
+        <h3>أيقونة المفضلة</h3>
+        <img src="./assets/favicon.svg" alt="Favicon" onload="markSuccess('favicon-test')" onerror="markError('favicon-test', this.src)">
+        <div class="status" id="favicon-status">جاري التحميل...</div>
+    </div>
+    
+    <div class="image-test" id="gearless-test">
+        <h3>مصعد بدون تروس</h3>
+        <img src="./assets/elevator-gearless.svg" alt="مصعد بدون تروس" onload="markSuccess('gearless-test')" onerror="markError('gearless-test', this.src)">
+        <div class="status" id="gearless-status">جاري التحميل...</div>
+    </div>
+    
+    <div class="image-test" id="panoramic-test">
+        <h3>مصعد بانوراما</h3>
+        <img src="./assets/elevator-panoramic.svg" alt="مصعد بانوراما" onload="markSuccess('panoramic-test')" onerror="markError('panoramic-test', this.src)">
+        <div class="status" id="panoramic-status">جاري التحميل...</div>
+    </div>
+    
+    <div class="image-test" id="hospital-test">
+        <h3>مصعد المستشفيات</h3>
+        <img src="./assets/elevator-hospital.svg" alt="مصعد المستشفيات" onload="markSuccess('hospital-test')" onerror="markError('hospital-test', this.src)">
+        <div class="status" id="hospital-status">جاري التحميل...</div>
+    </div>
+    
+    <div class="image-test" id="freight-test">
+        <h3>مصعد البضائع</h3>
+        <img src="./assets/elevator-freight.svg" alt="مصعد البضائع" onload="markSuccess('freight-test')" onerror="markError('freight-test', this.src)">
+        <div class="status" id="freight-status">جاري التحميل...</div>
+    </div>
+
+    <div style="margin-top: 30px; padding: 20px; background-color: #e7f3ff; border-radius: 8px;">
+        <h3>إرشادات الإصلاح:</h3>
+        <ul>
+            <li>إذا كانت جميع الصور تظهر بنجاح، فالموقع جاهز للعمل</li>
+            <li>إذا فشلت صورة، تأكد من وجود الملف في مجلد assets/</li>
+            <li>استخدم خادم محلي (python -m http.server 8000) لا تفتح الملف مباشرة</li>
+            <li>تحقق من أن مسارات الصور تبدأ بـ ./assets/</li>
+        </ul>
+    </div>
+
+    <script>
+        function markSuccess(testId) {
+            const element = document.getElementById(testId);
+            const status = document.getElementById(testId.replace('-test', '-status'));
+            element.classList.add('success');
+            status.textContent = '✅ تم تحميل الصورة بنجاح';
+            status.style.color = 'green';
+        }
+        
+        function markError(testId, src) {
+            const element = document.getElementById(testId);
+            const status = document.getElementById(testId.replace('-test', '-status'));
+            element.classList.add('error');
+            status.textContent = '❌ فشل في تحميل الصورة: ' + src;
+            status.style.color = 'red';
+        }
+        
+        // Check after 3 seconds for any remaining "loading" status
+        setTimeout(() => {
+            const allStatus = document.querySelectorAll('.status');
+            allStatus.forEach(status => {
+                if (status.textContent === 'جاري التحميل...') {
+                    status.textContent = '⏳ انتظار طويل - تحقق من المسار';
+                    status.style.color = 'orange';
+                    status.parentElement.classList.add('error');
+                }
+            });
+        }, 3000);
+    </script>
+</body>
+</html>

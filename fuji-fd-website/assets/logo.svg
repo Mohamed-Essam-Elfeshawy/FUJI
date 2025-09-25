@@ -1,0 +1,30 @@
+<svg width="200" height="80" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <defs>
+    <linearGradient id="fujiGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#146FB6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0A6AAA;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="40" cy="40" r="35" fill="url(#fujiGradient)" opacity="0.1"/>
+  
+  <!-- Elevator Icon -->
+  <rect x="25" y="15" width="30" height="50" rx="3" fill="url(#fujiGradient)" stroke="#146FB6" stroke-width="2"/>
+  <rect x="28" y="18" width="24" height="44" rx="2" fill="white"/>
+  
+  <!-- Elevator Doors -->
+  <line x1="40" y1="20" x2="40" y2="60" stroke="#146FB6" stroke-width="1"/>
+  <rect x="30" y="25" width="8" height="30" rx="1" fill="#F5F7FA" stroke="#146FB6" stroke-width="0.5"/>
+  <rect x="42" y="25" width="8" height="30" rx="1" fill="#F5F7FA" stroke="#146FB6" stroke-width="0.5"/>
+  
+  <!-- Control Panel -->
+  <circle cx="46" cy="30" r="1.5" fill="#E21E26"/>
+  <circle cx="46" cy="35" r="1.5" fill="#146FB6"/>
+  <circle cx="46" cy="40" r="1.5" fill="#146FB6"/>
+  
+  <!-- Company Name -->
+  <text x="80" y="30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#146FB6">FUJI</text>
+  <text x="80" y="50" font-family="Arial, sans-serif" font-size="16" fill="#E21E26">FD</text>
+  <text x="80" y="65" font-family="Arial, sans-serif" font-size="10" fill="#666">ELEVATORS</text>
+</svg>

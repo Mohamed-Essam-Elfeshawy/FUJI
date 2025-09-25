@@ -88,17 +88,17 @@ const ProductSlider = () => {
     <div className="relative w-full bg-white overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-fujiBlue/20 rounded-full blur-2xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-fujiRed/15 rounded-full blur-3xl animate-float" style={{animationDelay: '3s'}}></div>
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-fuji-blue/20 rounded-full blur-2xl animate-float"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-fuji-accent/15 rounded-full blur-3xl animate-float" style={{animationDelay: '3s'}}></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-16 py-16">
         {/* Section Header */}
         <div className={`text-center mb-10 ${isRTL ? 'font-cairo' : ''}`}>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-fujiBlue mb-3 animate-fade-in-up">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-fuji-blue mb-3 animate-fade-in-up">
             {isRTL ? 'منتجاتنا المميزة' : 'Our Products'}
           </h2>
-          <p className="text-[#C0392B] text-base max-w-xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+          <p className="text-fuji-muted text-base max-w-xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             {isRTL ? 'حلول مصاعد متطورة وموثوقة' : 'Advanced & reliable elevator solutions'}
           </p>
         </div>
@@ -107,7 +107,7 @@ const ProductSlider = () => {
           {/* Main Slider */}
           <div 
             ref={sliderRef}
-            className="relative h-[450px] md:h-[500px] rounded-3xl overflow-hidden bg-fujiBackground border border-fujiBlue shadow-2xl"
+            className="relative h-[450px] md:h-[500px] rounded-3xl overflow-hidden bg-fuji-surface border border-fuji-blue shadow-2xl"
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
@@ -126,30 +126,30 @@ const ProductSlider = () => {
                 <div className={`grid grid-cols-1 lg:grid-cols-2 h-full ${isRTL ? 'lg:grid-flow-col-dense' : ''}`}>
                   {/* Left Column - Product Image */}
                   <div className={`relative overflow-hidden ${isRTL ? 'lg:col-start-2' : ''}`}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-fujiBlue/20 to-fujiRed/10"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-fuji-blue/20 to-fuji-accent/10"></div>
                     <img 
                       src={product.image} 
                       alt={isRTL ? product.nameAR : product.nameEN}
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                     />
-                    <div className="absolute top-4 left-4 bg-fujiRed text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    <div className="absolute top-4 left-4 bg-fuji-accent text-white px-3 py-1 rounded-full text-sm font-semibold">
                       {isRTL ? 'مصعد متميز' : 'Premium Elevator'}
                     </div>
                   </div>
 
                   {/* Right Column - Product Info */}
                   <div className={`flex flex-col justify-center p-6 lg:p-10 bg-white/95 backdrop-blur-sm ${isRTL ? 'lg:col-start-1 text-right' : 'text-left'}`}>
-                    <h3 className={`text-2xl lg:text-3xl font-bold text-fujiBlue mb-3 ${isRTL ? 'font-cairo' : ''}`}>
+                    <h3 className={`text-2xl lg:text-3xl font-bold text-fuji-blue mb-3 ${isRTL ? 'font-cairo' : ''}`}>
                       {isRTL ? product.nameAR : product.nameEN}
                     </h3>
                     
-                    <p className={`text-base text-[#C0392B] mb-6 leading-relaxed ${isRTL ? 'font-cairo' : ''}`}>
+                    <p className={`text-base text-fuji-muted mb-6 leading-relaxed ${isRTL ? 'font-cairo' : ''}`}>
                       {isRTL ? product.descriptionAR : product.descriptionEN}
                     </p>
 
                     {/* Price Display */}
                     <div className={`mb-5 ${isRTL ? 'text-right' : 'text-left'}`}>
-                      <div className={`flex items-center gap-2 text-2xl lg:text-3xl font-bold text-fujiBlue ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                      <div className={`flex items-center gap-2 text-2xl lg:text-3xl font-bold text-fuji-blue ${isRTL ? 'justify-end' : 'justify-start'}`}>
                         {isRTL ? (
                           <>
                             <span>{product.price.toLocaleString()}</span>
@@ -176,8 +176,8 @@ const ProductSlider = () => {
                           isRTL ? 'صيانة سهلة' : 'Easy Maintenance'
                         ].map((spec, specIndex) => (
                           <div key={specIndex} className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                            <div className="w-1.5 h-1.5 bg-fujiRed rounded-full flex-shrink-0"></div>
-                            <span className={`text-[#C0392B] ${isRTL ? 'text-right' : ''}`}>
+                            <div className="w-1.5 h-1.5 bg-fuji-accent rounded-full flex-shrink-0"></div>
+                            <span className={`text-fuji-muted ${isRTL ? 'text-right' : ''}`}>
                               {spec}
                             </span>
                           </div>
@@ -188,13 +188,13 @@ const ProductSlider = () => {
                     <div className={`flex flex-col sm:flex-row gap-3 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
                       <button
                         onClick={() => window.location.href = '/shop'}
-                        className={`px-6 py-3 bg-fujiRed hover:bg-red-600 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${isRTL ? 'font-cairo' : ''}`}
+                        className={`px-6 py-3 bg-fuji-accent hover:bg-red-600 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${isRTL ? 'font-cairo' : ''}`}
                       >
                         {isRTL ? 'تسوق الآن' : 'Shop Now'}
                       </button>
                       <button
                         onClick={() => window.location.href = '/contact'}
-                        className={`px-6 py-3 bg-white border-2 border-fujiBlue text-fujiBlue hover:bg-fujiBlue hover:text-white font-semibold rounded-xl transition-all duration-300 ${isRTL ? 'font-cairo' : ''}`}
+                        className={`px-6 py-3 bg-white border-2 border-fuji-blue text-fuji-blue hover:bg-fuji-blue hover:text-white font-semibold rounded-xl transition-all duration-300 ${isRTL ? 'font-cairo' : ''}`}
                       >
                         {isRTL ? 'المزيد' : 'Learn More'}
                       </button>
@@ -208,7 +208,7 @@ const ProductSlider = () => {
           {/* Navigation Arrows */}
           <button
             onClick={isRTL ? goToNext : goToPrevious}
-            className={`absolute ${isRTL ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-fujiBlue rounded-full flex items-center justify-center text-fujiBlue hover:bg-fujiBlue hover:text-white hover:border-fujiBlue transition-all duration-300 group z-10 shadow-lg`}
+            className={`absolute ${isRTL ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-fuji-blue rounded-full flex items-center justify-center text-fuji-blue hover:bg-fuji-blue hover:text-white hover:border-fuji-blue transition-all duration-300 group z-10 shadow-lg`}
           >
             {isRTL ? 
               <ChevronRightIcon className="w-6 h-6 transition-colors duration-300" /> :
@@ -218,7 +218,7 @@ const ProductSlider = () => {
           
           <button
             onClick={isRTL ? goToPrevious : goToNext}
-            className={`absolute ${isRTL ? 'left-4' : 'right-4'} top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-fujiBlue rounded-full flex items-center justify-center text-fujiBlue hover:bg-fujiBlue hover:text-white hover:border-fujiBlue transition-all duration-300 group z-10 shadow-lg`}
+            className={`absolute ${isRTL ? 'left-4' : 'right-4'} top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-fuji-blue rounded-full flex items-center justify-center text-fuji-blue hover:bg-fuji-blue hover:text-white hover:border-fuji-blue transition-all duration-300 group z-10 shadow-lg`}
           >
             {isRTL ? 
               <ChevronLeftIcon className="w-6 h-6 transition-colors duration-300" /> :
@@ -226,36 +226,39 @@ const ProductSlider = () => {
             }
           </button>
 
-          {/* Slide Indicators */}
-          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3 z-10 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2">
-            {PRODUCTS.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-4 h-4 rounded-full transition-all duration-300 border-2 ${
-                  index === currentSlide 
-                    ? 'bg-fujiBlue border-fujiBlue scale-125 shadow-lg' 
-                    : 'bg-white border-white/70 hover:bg-fujiBlue/80 hover:border-fujiBlue hover:scale-110 shadow-md'
-                }`}
-              />
-            ))}
-          </div>
 
           {/* Auto-play Indicator */}
           <div className="absolute top-4 right-4 z-10">
-            <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-full border border-fujiBlue shadow-md">
+            <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-full border border-fuji-blue shadow-md">
               <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? 'bg-green-400 animate-pulse' : 'bg-gray-400'}`}></div>
-              <span className="text-fujiText text-xs font-medium">
+              <span className="text-fuji-muted text-xs font-medium">
                 {isAutoPlaying ? 'Auto' : 'Manual'}
               </span>
             </div>
           </div>
         </div>
 
+        {/* Slide Indicators */}
+        <div className="flex justify-center mt-6">
+          <div className="flex gap-3 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2">
+            {PRODUCTS.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-4 h-4 rounded-full transition-all duration-300 border-2 ${
+                  index === currentSlide 
+                    ? 'bg-fuji-blue border-fuji-blue scale-125 shadow-lg' 
+                    : 'bg-white border-white/70 hover:bg-fuji-blue/80 hover:border-fuji-blue hover:scale-110 shadow-md'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* Mobile-specific improvements */}
         <div className="block lg:hidden mt-8">
           <div className="text-center">
-            <p className={`text-[#C0392B] text-sm mb-4 ${isRTL ? 'font-cairo' : ''}`}>
+            <p className={`text-fuji-muted text-sm mb-4 ${isRTL ? 'font-cairo' : ''}`}>
               {isRTL ? 'اسحب يسارًا أو يمينًا لتصفح المنتجات' : 'Swipe left or right to browse products'}
             </p>
           </div>

@@ -13,11 +13,14 @@
     <meta property="og:title" content="FUJI FD Elevators - حلول النقل الرأسي">
     <meta property="og:description" content="سلاسة، أمان، وكفاءة طاقة مع تشكيلة متكاملة من المصاعد والسلالم المتحركة">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="/assets/logo.png">
+    <meta property="og:image" content="./assets/logo.svg">
     
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="./assets/favicon-32x32.svg">
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="./assets/favicon-16x16.svg">
+    <!-- Fallback for older browsers -->
+    <link rel="shortcut icon" href="./assets/favicon.svg">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -34,7 +37,8 @@
                         'fuji-blue-dark': '#054A7B',
                         'fuji-blue-600': '#0A6AAA',
                         'fuji-accent': '#E21E26',
-                        'fuji-surface': '#F5F7FA'
+                        'fuji-surface': '#F5F7FA',
+                        'fuji-muted': '#6B7280'
                     },
                     fontFamily: {
                         'sans': ['Poppins', 'Cairo', 'system-ui', 'sans-serif']
@@ -53,6 +57,9 @@
     
     <!-- Hero Section -->
     <div id="hero-container"></div>
+    
+    <!-- Product Showcase Section -->
+    <div id="product-showcase-container"></div>
     
     <!-- Products Section -->
     <section class="py-16 bg-fuji-surface">

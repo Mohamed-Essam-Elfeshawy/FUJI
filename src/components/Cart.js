@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, memo, useCallback } from 'react';
 import { useCart } from '../context/CartContext';
 import { useTranslation } from 'react-i18next';
-import RiyalSymbol from './RiyalSymbol';
 import cookies from "js-cookie";
+import RiyalSymbol from './RiyalSymbol';
+import LazyImage from './LazyImage';
 
 const Cart = ({ isOpen, onClose }) => {
-    const { t } = useTranslation();
+    // const { t } = useTranslation(); // Removed unused import
     const currentLanguageCode = cookies.get('i18next');
     const isRTL = currentLanguageCode === 'ar';
     const { items, removeItem, updateQty, clear, totals } = useCart();
     const [isOrdering, setIsOrdering] = useState(false);
 
-    const sendWhatsAppOrder = () => {
+    const sendWhatsAppOrder = useCallback(() => {
         if (items.length === 0) return;
         
         setIsOrdering(true);
@@ -72,7 +73,7 @@ ${orderDetails}
             });
             setIsOrdering(false);
         }
-    };
+    }, [items, totals, isRTL, clear, onClose]);
 
     if (!isOpen) return null;
 
@@ -124,7 +125,7 @@ ${orderDetails}
                                 {items.map((item) => (
                                     <div key={item.id} className="flex items-center gap-4 p-5 bg-gradient-to-r from-fuji-surface to-white rounded-2xl border border-gray-100 hover:shadow-md transition-all duration-200">
                                         <div className="relative">
-                                            <img 
+                                            <LazyImage 
                                                 src={item.image} 
                                                 alt={item.name}
                                                 className="w-20 h-20 object-cover rounded-xl shadow-md"
@@ -242,7 +243,7 @@ ${orderDetails}
                                 <div className="flex gap-3">
                                     <button
                                         onClick={clear}
-                                        className={`w-32 py-4 bg-gradient-to-r from-gray-200 to-gray-300 hover:from-red-100 hover:to-red-200 text-gray-700 hover:text-red-700 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${isRTL ? 'font-cairo' : ''}`}
+                                        className={`w-32 py-4 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-xl font-semibold transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105 ${isRTL ? 'font-cairo' : ''}`}
                                     >
                                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -281,4 +282,4 @@ ${orderDetails}
     );
 };
 
-export default Cart;
+export default memo(Cart);

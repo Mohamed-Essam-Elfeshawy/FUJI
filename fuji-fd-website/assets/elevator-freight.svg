@@ -1,0 +1,72 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <defs>
+    <linearGradient id="freightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#146FB6;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#E21E26;stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="200" fill="url(#freightGrad)"/>
+  
+  <!-- Heavy Duty Elevator Shaft -->
+  <rect x="70" y="15" width="160" height="170" rx="8" fill="#f8f9fa" stroke="#146FB6" stroke-width="3"/>
+  
+  <!-- Large Elevator Car -->
+  <rect x="80" y="75" width="140" height="90" rx="4" fill="white" stroke="#146FB6" stroke-width="3"/>
+  
+  <!-- Heavy Duty Doors -->
+  <rect x="85" y="80" width="65" height="80" rx="2" fill="#F5F7FA" stroke="#146FB6" stroke-width="2"/>
+  <rect x="155" y="80" width="60" height="80" rx="2" fill="#F5F7FA" stroke="#146FB6" stroke-width="2"/>
+  <line x1="150" y1="82" x2="150" y2="158" stroke="#146FB6" stroke-width="2"/>
+  
+  <!-- Heavy Duty Hinges -->
+  <rect x="83" y="90" width="4" height="8" fill="#666"/>
+  <rect x="83" y="110" width="4" height="8" fill="#666"/>
+  <rect x="83" y="130" width="4" height="8" fill="#666"/>
+  <rect x="83" y="150" width="4" height="8" fill="#666"/>
+  
+  <!-- Load Capacity Display -->
+  <rect x="230" y="85" width="25" height="70" rx="2" fill="white" stroke="#146FB6" stroke-width="1"/>
+  <text x="242" y="95" text-anchor="middle" font-family="Arial" font-size="6" fill="#146FB6">LOAD</text>
+  <text x="242" y="105" text-anchor="middle" font-family="Arial" font-size="8" font-weight="bold" fill="#E21E26">5000</text>
+  <text x="242" y="115" text-anchor="middle" font-family="Arial" font-size="6" fill="#146FB6">KG</text>
+  
+  <!-- Control Panel -->
+  <circle cx="242" cy="125" r="3" fill="#E21E26"/>
+  <circle cx="242" cy="135" r="3" fill="#146FB6"/>
+  <circle cx="242" cy="145" r="3" fill="#146FB6"/>
+  
+  <!-- Heavy Motor System -->
+  <rect x="110" y="5" width="80" height="25" rx="4" fill="#146FB6"/>
+  <text x="150" y="20" text-anchor="middle" font-family="Arial" font-size="10" fill="white">HEAVY DUTY</text>
+  
+  <!-- Multiple Cables -->
+  <line x1="130" y1="30" x2="130" y2="75" stroke="#666" stroke-width="3"/>
+  <line x1="140" y1="30" x2="140" y2="75" stroke="#666" stroke-width="3"/>
+  <line x1="150" y1="30" x2="150" y2="75" stroke="#666" stroke-width="3"/>
+  <line x1="160" y1="30" x2="160" y2="75" stroke="#666" stroke-width="3"/>
+  <line x1="170" y1="30" x2="170" y2="75" stroke="#666" stroke-width="3"/>
+  
+  <!-- Freight Indicators -->
+  <rect x="30" y="50" width="15" height="10" fill="#E21E26" opacity="0.3"/>
+  <text x="37" y="58" text-anchor="middle" font-family="Arial" font-size="6" fill="#E21E26">BOX</text>
+  
+  <rect x="30" y="80" width="15" height="10" fill="#146FB6" opacity="0.3"/>
+  <text x="37" y="88" text-anchor="middle" font-family="Arial" font-size="6" fill="#146FB6">CAR</text>
+  
+  <!-- Floor Indicators -->
+  <text x="25" y="45" font-family="Arial" font-size="10" fill="#146FB6">W3</text>
+  <text x="25" y="65" font-family="Arial" font-size="10" fill="#666">W2</text>
+  <text x="25" y="85" font-family="Arial" font-size="10" fill="#666">W1</text>
+  <text x="25" y="105" font-family="Arial" font-size="10" fill="#E21E26">GF</text>
+  <text x="25" y="125" font-family="Arial" font-size="10" fill="#666">B1</text>
+  <text x="25" y="145" font-family="Arial" font-size="10" fill="#666">B2</text>
+  
+  <!-- Safety Barriers -->
+  <rect x="75" y="170" width="150" height="3" fill="#FFD700"/>
+  <rect x="75" y="175" width="150" height="2" fill="#E21E26"/>
+  
+  <!-- Title -->
+  <text x="150" y="195" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#146FB6">مصعد البضائع</text>
+</svg>

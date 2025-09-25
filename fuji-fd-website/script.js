@@ -27,6 +27,11 @@ async function loadComponents() {
         const heroHTML = await heroResponse.text();
         document.getElementById('hero-container').innerHTML = heroHTML;
         
+        // Load Product Showcase
+        const showcaseResponse = await fetch('components/product-showcase.html');
+        const showcaseHTML = await showcaseResponse.text();
+        document.getElementById('product-showcase-container').innerHTML = showcaseHTML;
+        
         // Load Product Cards
         const productResponse = await fetch('components/product-card.html');
         const productHTML = await productResponse.text();
@@ -232,10 +237,62 @@ function optimizeImages() {
         
         // Add error handling for missing images
         img.addEventListener('error', function() {
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZVSkk8L3RleHQ+PC9zdmc+';
-            this.alt = 'FUJI FD Logo';
+            console.warn('Image failed to load:', this.src);
+            
+            // Check if fallback div exists (for components with onerror handlers)
+            const fallbackDiv = this.nextElementSibling;
+            if (fallbackDiv && fallbackDiv.classList.contains('fallback-image')) {
+                this.style.display = 'none';
+                fallbackDiv.style.display = 'block';
+                return;
+            }
+            
+            // Create fallback SVG based on image type
+            let fallbackSVG = '';
+            const alt = this.alt || 'FUJI FD';
+            
+            if (alt.includes('logo') || alt.includes('Logo')) {
+                fallbackSVG = createLogoFallback();
+            } else if (alt.includes('مصعد') || alt.includes('elevator')) {
+                fallbackSVG = createElevatorFallback(alt);
+            } else {
+                fallbackSVG = createGenericFallback(alt);
+            }
+            
+            this.src = 'data:image/svg+xml;base64,' + btoa(fallbackSVG);
+            this.style.border = '2px dashed #146FB6';
+            this.style.borderRadius = '8px';
         });
     });
+}
+
+// Create logo fallback SVG
+function createLogoFallback() {
+    return `<svg width="200" height="80" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="80" fill="#f8f9fa"/>
+        <rect x="10" y="20" width="40" height="40" rx="4" fill="#146FB6"/>
+        <text x="70" y="35" font-family="Arial" font-size="20" font-weight="bold" fill="#146FB6">FUJI</text>
+        <text x="70" y="55" font-family="Arial" font-size="14" fill="#E21E26">FD</text>
+    </svg>`;
+}
+
+// Create elevator fallback SVG
+function createElevatorFallback(alt) {
+    return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="200" fill="#f8f9fa"/>
+        <rect x="100" y="40" width="100" height="120" rx="8" fill="#146FB6" opacity="0.1"/>
+        <rect x="110" y="80" width="80" height="60" rx="4" fill="white" stroke="#146FB6" stroke-width="2"/>
+        <line x1="150" y1="85" x2="150" y2="135" stroke="#146FB6"/>
+        <text x="150" y="170" text-anchor="middle" font-family="Arial" font-size="12" fill="#146FB6">${alt}</text>
+    </svg>`;
+}
+
+// Create generic fallback SVG
+function createGenericFallback(alt) {
+    return `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="200" fill="#f8f9fa" stroke="#ddd" stroke-width="2"/>
+        <text x="100" y="100" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">${alt || 'FUJI FD'}</text>
+    </svg>`;
 }
 
 // Initialize optimizations after page load

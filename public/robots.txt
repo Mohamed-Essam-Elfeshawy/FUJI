@@ -1,3 +1,20 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Disallow specific paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Allow important resources
+Allow: /static/
+Allow: /images/
+Allow: /catalog/
+Allow: /locales/
+
+# Sitemap location
+Sitemap: https://www.fujifd-ksa.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1

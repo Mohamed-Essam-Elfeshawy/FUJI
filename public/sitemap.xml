@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.fujifd-ksa.com/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.fujifd-ksa.com/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fujifd-ksa.com/?lang=en"/>
+  </url>
+
+  <!-- Shop Page -->
+  <url>
+    <loc>https://www.fujifd-ksa.com/shop</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.fujifd-ksa.com/shop?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fujifd-ksa.com/shop?lang=en"/>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://www.fujifd-ksa.com/about</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.fujifd-ksa.com/about?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fujifd-ksa.com/about?lang=en"/>
+  </url>
+
+  <!-- Contact Page -->
+  <url>
+    <loc>https://www.fujifd-ksa.com/contact</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.fujifd-ksa.com/contact?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fujifd-ksa.com/contact?lang=en"/>
+  </url>
+
+  <!-- Blog Page -->
+  <url>
+    <loc>https://www.fujifd-ksa.com/blog</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.fujifd-ksa.com/blog?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fujifd-ksa.com/blog?lang=en"/>
+  </url>
+
+  <!-- Login Page -->
+  <url>
+    <loc>https://www.fujifd-ksa.com/login</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.fujifd-ksa.com/login?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fujifd-ksa.com/login?lang=en"/>
+  </url>
+
+  <!-- Product Catalog -->
+  <url>
+    <loc>https://www.fujifd-ksa.com/catalog/catalog.pdf</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>

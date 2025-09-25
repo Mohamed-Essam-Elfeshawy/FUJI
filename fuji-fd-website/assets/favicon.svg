@@ -1,0 +1,24 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="faviconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#146FB6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E21E26;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="url(#faviconGradient)"/>
+  
+  <!-- Elevator -->
+  <rect x="8" y="6" width="16" height="20" rx="2" fill="white" opacity="0.9"/>
+  <rect x="10" y="8" width="12" height="16" rx="1" fill="#146FB6" opacity="0.1"/>
+  
+  <!-- Doors -->
+  <line x1="16" y1="9" x2="16" y2="23" stroke="#146FB6" stroke-width="1"/>
+  <rect x="11" y="12" width="4" height="8" rx="0.5" fill="white" stroke="#146FB6" stroke-width="0.5"/>
+  <rect x="17" y="12" width="4" height="8" rx="0.5" fill="white" stroke="#146FB6" stroke-width="0.5"/>
+  
+  <!-- Control buttons -->
+  <circle cx="19" cy="14" r="0.8" fill="#E21E26"/>
+  <circle cx="19" cy="17" r="0.8" fill="#146FB6"/>
+</svg>

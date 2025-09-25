@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import cookies from "js-cookie";
 import fujiLogo from '../images/fujie-logo.jpg';
@@ -6,13 +6,14 @@ import { useCart } from '../context/CartContext';
 import Cart from './Cart';
 import ThemeToggle from './ThemeToggle';
 import SubscriptionModal from './SubscriptionModal';
+import { throttle } from '../utils/performance';
 import i18next from 'i18next';
 
 const Navbar = () => {
     const { t } = useTranslation();
     const location = window.location;
     const [showMobileMenu, setShowMobileMenu] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
+    // const [isScrolled, setIsScrolled] = useState(false); // Removed unused state
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isSubscriptionModalOpen, setIsSubscriptionModalOpen] = useState(false);
     const { items } = useCart();
@@ -23,13 +24,13 @@ const Navbar = () => {
     
     const cartItemsCount = items.reduce((total, item) => total + item.qty, 0);
 
-    // Scroll detection for sticky navbar
+    // Scroll detection for sticky navbar with throttling
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
-        };
+        const handleScroll = throttle(() => {
+            // Handle scroll logic here if needed
+        }, 16); // ~60fps
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -63,7 +64,7 @@ const Navbar = () => {
                     <div className={`flex items-center gap-2 sm:gap-3 flex-shrink-0 ${isRTL ? 'flex-row-reverse' : ''}`}>
                         <div className="relative group">
                             <img 
-                                className="w-8 h-6 sm:w-10 sm:h-7 md:w-12 md:h-8 lg:w-14 lg:h-10 object-contain rounded-lg shadow-md bg-white p-1 border border-fuji-blue/20 hover:shadow-lg hover:border-fuji-blue/40 transition-all duration-300 group-hover:scale-105" 
+                                className="w-12 h-9 sm:w-14 sm:h-10 md:w-16 md:h-12 lg:w-18 lg:h-14 xl:w-20 xl:h-15 object-contain rounded-lg shadow-md bg-white p-1 border border-fuji-blue/20 hover:shadow-lg hover:border-fuji-blue/40 transition-all duration-300 group-hover:scale-105" 
                                 src={fujiLogo} 
                                 alt="FUJI FD Logo" 
                                 style={{

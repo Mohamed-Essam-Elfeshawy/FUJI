@@ -27,7 +27,7 @@ const Footer = () => {
                         <div className={`flex items-center mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
                             <div className="relative">
                                 <img 
-                                    className="w-14 h-10 lg:w-16 lg:h-12 object-contain rounded-lg shadow-lg bg-white/20 p-2 border border-white/30" 
+                                    className="w-18 h-14 lg:w-20 lg:h-16 xl:w-24 xl:h-18 object-contain rounded-lg shadow-lg bg-white/20 p-2 border border-white/30" 
                                     src={fujiLogo} 
                                     alt="FUJI FD Logo" 
                                     style={{

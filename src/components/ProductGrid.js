@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { PRODUCTS } from '../data/products';
 import { useTranslation } from 'react-i18next';
 import cookies from "js-cookie";
 import RiyalSymbol from './RiyalSymbol';
 import { useCart } from '../context/CartContext';
+import LazyImage from './LazyImage';
 
 const ProductGrid = () => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation(); // Removed unused import
   const currentLanguageCode = cookies.get('i18next');
   const isRTL = currentLanguageCode === 'ar';
   const { addItem } = useCart();
@@ -73,7 +74,7 @@ const ProductGrid = () => {
                 >
                   {/* Product Image */}
                   <div className="relative h-64 overflow-hidden">
-                    <img 
+                    <LazyImage 
                       src={product.image} 
                       alt={isRTL ? product.nameAR : product.nameEN}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -169,4 +170,4 @@ const ProductGrid = () => {
   );
 };
 
-export default ProductGrid;
+export default memo(ProductGrid);
