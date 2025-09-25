@@ -83,7 +83,7 @@ const LetsTalk = () => {
                                     titleEN: "Call Us",
                                     titleAR: "اتصل بنا",
                                     valueEN: "+966 54 956 1015",
-                                    valueAR: "+966 54 956 1015"
+                                    valueAR: "1015 956 54 966+"
                                 },
                                 {
                                     icon: (
@@ -105,8 +105,8 @@ const LetsTalk = () => {
                                     ),
                                     titleEN: "Visit Us",
                                     titleAR: "زورنا",
-                                    valueEN: "Jeddah, Saudi Arabia",
-                                    valueAR: "جدة، المملكة العربية السعودية"
+                                    valueEN: "Saudi Arabia",
+                                    valueAR: "المملكة العربية السعودية"
                                 }
                             ].map((contact, index) => (
                                 <div key={index} className="flex items-center gap-4 p-4 bg-fuji-surface backdrop-blur-md rounded-2xl border border-gray-200 hover:bg-white hover:shadow-soft transition-all duration-300">

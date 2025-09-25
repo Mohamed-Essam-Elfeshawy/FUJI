@@ -24,10 +24,10 @@ const Footer = () => {
                     
                     {/* Column 1: Company Logo + Description */}
                     <div>
-                        <div className={`flex items-center mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <div className="flex items-center mb-6">
                             <div className="relative">
                                 <img 
-                                    className="w-18 h-14 lg:w-20 lg:h-16 xl:w-24 xl:h-18 object-contain rounded-lg shadow-lg bg-white/20 p-2 border border-white/30" 
+                                    className="w-16 h-12 lg:w-18 lg:h-14 xl:w-20 xl:h-16 object-contain rounded-lg shadow-lg bg-white p-2 border border-gray-300" 
                                     src={fujiLogo} 
                                     alt="FUJI FD Logo" 
                                     style={{
@@ -151,7 +151,9 @@ const Footer = () => {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
                                 </div>
-                                <span className={`${isRTL ? 'font-cairo' : ''}`}>+966 54 956 1015</span>
+                                <span className={`${isRTL ? 'font-cairo' : ''}`}>
+                                    {isRTL ? '1015 956 54 966+' : '+966 54 956 1015'}
+                                </span>
                             </a>
 
                             <a 
@@ -174,7 +176,7 @@ const Footer = () => {
                                     </svg>
                                 </div>
                                 <span className={`${isRTL ? 'font-cairo' : ''}`}>
-                                    {isRTL ? 'جدة، المملكة العربية السعودية' : 'Jeddah, Saudi Arabia'}
+                                    {isRTL ? 'المملكة العربية السعودية' : 'Saudi Arabia'}
                                 </span>
                             </div>
 
