@@ -3,7 +3,6 @@ import dribbble from '../images/Footer/dribbble.png'
 import instagram from '../images/Footer/instagram.png'
 import facebook from '../images/Footer/facebook.png'
 import { useTranslation } from 'react-i18next'
-import fujiLogo from '../images/fujie-logo.jpg'
 import company_profile from '../images/Footer/company_profile.png'
 import vat_logo from '../images/Footer/vat_logo.png'
 import cookies from "js-cookie";
@@ -25,17 +24,17 @@ const Footer = () => {
                     {/* Column 1: Company Logo + Description */}
                     <div>
                         <div className="flex items-center mb-6">
-                            <div className="relative bg-white rounded-lg">
+                            <div className="relative rounded-lg logo-bg-white border border-gray-200">
                                 <img 
-                                    className="w-16 h-12 lg:w-18 lg:h-14 xl:w-20 xl:h-16 object-contain rounded-lg shadow-lg bg-new p-2 border border-gray-300" 
-                                    src={fujiLogo} 
+                                    className="w-16 h-12 lg:w-18 lg:h-14 xl:w-20 xl:h-16 object-contain rounded-lg p-2" 
+                                    src={process.env.PUBLIC_URL + '/fuji-logo (2).svg'} 
                                     alt="FUJI FD Logo" 
-                                    style={{
-                                        filter: 'brightness(1.2) contrast(1.3) saturate(1.2)',
-                                        imageRendering: 'crisp-edges'
-                                    }}
+                                    loading="eager"
+                                    decoding="sync"
+                                    fetchpriority="high"
+                                    width="80"
+                                    height="56"
                                 />
-                                <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-white/5 rounded-lg blur opacity-50 -z-10"></div>
                             </div>
                             <div className={`${isRTL ? 'text-right mr-3' : 'text-left ml-3'}`}>
                                 <h2 className={`text-xl lg:text-2xl font-bold text-white ${isRTL ? 'font-cairo text-right' : ''}`}>

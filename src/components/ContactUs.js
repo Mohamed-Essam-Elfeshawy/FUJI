@@ -3,11 +3,16 @@ import { useTranslation } from 'react-i18next';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import StickyWhatsAppIcon from './StickyWhatsAppIcon';
-import AnimateOnScroll from './AnimateOnScroll';
-import StaggerAnimation from './StaggerAnimation';
-import emailjs from 'emailjs-com';
+// import AnimateOnScroll from './AnimateOnScroll';
+// import StaggerAnimation from './StaggerAnimation';
+import emailjs from '@emailjs/browser';
 import cookies from "js-cookie";
-import { sendContactEmail, sendDirectEmail } from '../utils/emailService';
+// import { sendContactEmail, sendDirectEmail } from '../utils/emailService';
+
+// EmailJS configuration (set these in a .env file: REACT_APP_EMAILJS_TEMPLATE_ID, REACT_APP_EMAILJS_PUBLIC_KEY)
+const EMAILJS_SERVICE_ID = 'service_ap8cuwt';
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || '';
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || process.env.REACT_APP_EMAILJS_USER_ID || '';
 
 const ContactUs = () => {
     const { t } = useTranslation();
@@ -24,6 +29,13 @@ const ContactUs = () => {
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [toast, setToast] = useState({ open: false, type: 'success', text: '' });
+
+    const showToast = (text, type = 'success') => {
+        setToast({ open: true, type, text });
+        // Auto hide after 4s
+        setTimeout(() => setToast((prev) => ({ ...prev, open: false })), 4000);
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -38,6 +50,34 @@ const ContactUs = () => {
         setIsSubmitting(true);
 
         try {
+            if (EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY) {
+                // Include multiple aliases so it works with most EmailJS template setups
+                const templateParams = {
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    from_name: `${formData.firstName} ${formData.lastName}`,
+                    // Common email field aliases
+                    from_email: formData.emailAddress,
+                    reply_to: formData.emailAddress,
+                    email: formData.emailAddress,
+                    user_email: formData.emailAddress,
+                    // Other fields
+                    phone: formData.phoneNumber || 'غير محدد',
+                    subject: formData.subject,
+                    message: formData.message,
+                };
+
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_TEMPLATE_ID,
+                    templateParams,
+                    EMAILJS_PUBLIC_KEY
+                );
+
+                setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', subject: '', message: '' });
+                showToast(isRTL ? 'تم إرسال الرسالة بنجاح!' : 'Message sent successfully!', 'success');
+                return;
+            }
             const emailSubject = encodeURIComponent(`رسالة من موقع FUJI FD: ${formData.subject}`);
             const emailBody = encodeURIComponent(`
 🏢 رسالة جديدة من موقع FUJI FD
@@ -63,17 +103,19 @@ ${formData.message}
             
             setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', subject: '', message: '' });
             
-            // eslint-disable-next-line no-alert
-            alert(isRTL ? 
-                "تم فتح تطبيق البريد الإلكتروني. يرجى الضغط على 'إرسال' لإتمام العملية." :
-                "Email app opened. Please click 'Send' to complete the process."
+            showToast(
+                isRTL
+                    ? "تم فتح تطبيق البريد الإلكتروني. يرجى الضغط على 'إرسال' لإتمام العملية."
+                    : "Email app opened. Please click 'Send' to complete the process.",
+                'info'
             );
         } catch (err) {
             console.log('Error:', err);
-            // eslint-disable-next-line no-alert
-            alert(isRTL ? 
-                "حدث خطأ. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة على: melfeshawy42@gmail.com" :
-                "An error occurred. Please try again or contact us directly at: melfeshawy42@gmail.com"
+            showToast(
+                isRTL
+                    ? "حدث خطأ. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة على: melfeshawy42@gmail.com"
+                    : "An error occurred. Please try again or contact us directly at: melfeshawy42@gmail.com",
+                'error'
             );
         } finally {
             setIsSubmitting(false);
@@ -82,6 +124,48 @@ ${formData.message}
 
     return (
         <>
+            {toast.open && (
+                <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
+                    <div
+                        className={
+                            `flex items-start gap-3 rounded-xl border p-4 shadow-lg transition-all duration-300 ` +
+                            (toast.type === 'success'
+                                ? 'bg-green-50 border-green-200 text-green-800'
+                                : toast.type === 'info'
+                                ? 'bg-blue-50 border-blue-200 text-blue-800'
+                                : 'bg-red-50 border-red-200 text-red-800')
+                        }
+                        role="status"
+                        aria-live="polite"
+                    >
+                        {toast.type === 'success' && (
+                            <svg className="h-6 w-6 flex-shrink-0 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        )}
+                        {toast.type === 'info' && (
+                            <svg className="h-6 w-6 flex-shrink-0 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                            </svg>
+                        )}
+                        {toast.type === 'error' && (
+                            <svg className="h-6 w-6 flex-shrink-0 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M12 8v8m0 4a9 9 0 110-18 9 9 0 010 18z" />
+                            </svg>
+                        )}
+                        <div className={`text-sm ${isRTL ? 'font-cairo text-right' : ''}`}>{toast.text}</div>
+                        <button
+                            onClick={() => setToast((prev) => ({ ...prev, open: false }))}
+                            className="ml-auto text-gray-400 hover:text-gray-600"
+                            aria-label={isRTL ? 'إغلاق' : 'Close'}
+                        >
+                            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            )}
             {/* Mobile */}
             <div className='lg:hidden'>
                 <Navbar />

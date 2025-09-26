@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import cookies from "js-cookie";
-import fujiLogo from '../images/fujie-logo.jpg';
 import { useCart } from '../context/CartContext';
 import Cart from './Cart';
 import ThemeToggle from './ThemeToggle';
@@ -62,17 +61,17 @@ const Navbar = () => {
                     
                     {/* Logo Section */}
                     <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 ">
-                        <div className="relative group">
+                        <div className="relative">
                             <img  
-                                className=" h-9 sm:w-14 sm:h-10 md:w-16 md:h-12 lg:w-full lg:h-14 xl:w-20 xl:h-15 object-contain rounded-lg shadow-md bg-transparent p-1 border border-fuji-blue/20 hover:shadow-lg hover:border-fuji-blue/40 transition-all duration-300 group-hover:scale-105" 
-                                src={fujiLogo} 
+                                className="h-9 sm:w-14 sm:h-10 md:w-16 md:h-12 lg:w-full lg:h-14 xl:w-20 xl:h-15 object-contain rounded-lg p-1 border border-gray-200 logo-bg-white" 
+                                src={process.env.PUBLIC_URL + '/fuji-logo (2).svg'} 
                                 alt="FUJI FD Logo" 
-                                style={{
-                                    filter: 'brightness(1.1) contrast(1.3) saturate(1.2)',
-                                    imageRendering: 'crisp-edges'
-                                }}
+                                loading="eager"
+                                decoding="sync"
+                                fetchpriority="high"
+                                width="80"
+                                height="56"
                             />
-                            <div className="absolute -inset-1 bg-gradient-to-r from-fuji-blue/20 to-fuji-accent/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                         </div>
 
                         <div className={`${isRTL ? 'text-right' : 'text-left'} hidden sm:block`}>
