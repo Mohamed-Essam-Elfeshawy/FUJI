@@ -249,3 +249,110 @@ html.dark nav img[style] {
     0 20px 40px -10px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(79, 142, 247, 0.25) !important;
 }
+
+/* Simple Promotional Modal Animation */
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.6s ease-out;
+}
+
+/* Floating Animation for Decorative Elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(var(--rotation, 0deg));
+  }
+  50% {
+    transform: translateY(-20px) rotate(var(--rotation, 0deg));
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(var(--rotation, 0deg));
+  }
+  50% {
+    transform: translateY(-15px) rotate(var(--rotation, 0deg));
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(var(--rotation, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--rotation, 0deg));
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite 2s;
+}
+
+.animate-float-slow {
+  animation: float-slow 10s ease-in-out infinite 1s;
+}
+
+/* Dark Mode for Floating Elements */
+.dark .bg-red-500\/50 {
+  background-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+.dark .bg-red-500\/60 {
+  background-color: rgba(239, 68, 68, 0.5) !important;
+}
+
+.dark .bg-red-500\/80 {
+  background-color: rgba(239, 68, 68, 0.7) !important;
+}
+
+.dark .bg-red-600\/65 {
+  background-color: rgba(220, 38, 38, 0.55) !important;
+}
+
+.dark .bg-red-600\/70 {
+  background-color: rgba(220, 38, 38, 0.6) !important;
+}
+
+.dark .bg-blue-500\/50 {
+  background-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+.dark .bg-blue-500\/60 {
+  background-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+.dark .bg-blue-500\/65 {
+  background-color: rgba(59, 130, 246, 0.55) !important;
+}
+
+.dark .bg-blue-500\/75 {
+  background-color: rgba(59, 130, 246, 0.65) !important;
+}
+
+.dark .bg-blue-600\/60 {
+  background-color: rgba(37, 99, 235, 0.5) !important;
+}
+
+.dark .bg-blue-600\/70 {
+  background-color: rgba(37, 99, 235, 0.6) !important;
+}

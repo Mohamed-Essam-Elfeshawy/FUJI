@@ -35,12 +35,35 @@ const Elevators = () => {
     };
 
     return (
-        <section className="bg-gray-50 py-16 lg:py-24">
-            <div className="max-w-7xl mx-auto px-6 lg:px-16">
+        <section className="bg-gray-50 py-16 lg:py-24 relative overflow-hidden">
+            {/* Floating Decorative Elements */}
+            <div className="absolute inset-0 pointer-events-none">
+                {/* Red Squares */}
+                <div className="absolute top-20 left-10 w-16 h-16 bg-red-500 rounded-lg rotate-12 animate-float shadow-lg"></div>
+                <div className="absolute top-40 right-20 w-12 h-12 bg-red-600 rounded-lg -rotate-12 animate-float-delayed shadow-md"></div>
+                <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-red-500 rounded-lg rotate-45 animate-float-slow shadow-lg"></div>
+                <div className="absolute top-1/2 right-10 w-14 h-14 bg-red-600 rounded-lg -rotate-6 animate-float shadow-md"></div>
+                
+                {/* Blue Squares */}
+                <div className="absolute top-32 right-1/3 w-18 h-18 bg-blue-500 rounded-lg rotate-6 animate-float-delayed shadow-lg"></div>
+                <div className="absolute bottom-20 right-16 w-16 h-16 bg-blue-600 rounded-lg -rotate-12 animate-float shadow-md"></div>
+                <div className="absolute top-60 left-1/3 w-14 h-14 bg-blue-500 rounded-lg rotate-45 animate-float-slow shadow-lg"></div>
+                <div className="absolute bottom-40 left-20 w-12 h-12 bg-blue-600 rounded-lg -rotate-6 animate-float-delayed shadow-md"></div>
+                
+                {/* Mixed Geometric Shapes */}
+                <div className="absolute top-1/4 left-1/2 w-10 h-10 bg-red-500 rounded-full animate-float shadow-md"></div>
+                <div className="absolute bottom-1/4 right-1/3 w-8 h-8 bg-blue-500 rounded-full animate-float-slow shadow-sm"></div>
+                
+                {/* Additional Small Elements */}
+                <div className="absolute top-16 left-1/3 w-6 h-6 bg-red-600 rounded-sm rotate-12 animate-float-delayed shadow-sm"></div>
+                <div className="absolute bottom-16 right-1/4 w-8 h-8 bg-blue-600 rounded-sm -rotate-12 animate-float shadow-sm"></div>
+            </div>
+
+            <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10">
                 
                 {/* Section Header */}
                 <div className="text-center mb-12">
-                    <h2 className={`text-4xl lg:text-5xl font-bold text-fujiBlue mb-4 ${isRTL ? 'font-cairo' : ''}`}>
+                    <h2 className={`text-4xl lg:text-5xl font-bold text-fuji-blue mb-4 ${isRTL ? 'font-cairo' : ''}`}>
                         {t('Elevators')}
                     </h2>
                     <p className={`text-lg text-[#C0392B] max-w-2xl mx-auto ${isRTL ? 'font-cairo' : ''}`}>

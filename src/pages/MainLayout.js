@@ -15,6 +15,7 @@ import OurClients from '../components/OurClients'
 import WhyChooseUs from '../components/WhyChooseUs'
 import LetsTalk from '../components/LetsTalk'
 import StickyWhatsAppIcon from '../components/StickyWhatsAppIcon'
+import SimplePromotionalModal from '../components/SimplePromotionalModal'
 import { useTranslation } from 'react-i18next'
 import cookies from "js-cookie"
 
@@ -57,6 +58,7 @@ const MainLayout = () => {
             <LetsTalk />
             <Footer />
             <StickyWhatsAppIcon />
+            <SimplePromotionalModal />
         </div>
     )
 }
