@@ -110,7 +110,7 @@ const Navbar = () => {
                         {/* Subscription Button - Hidden on small screens */}
                         <button
                             onClick={() => setIsSubscriptionModalOpen(true)}
-                            className="hidden sm:flex px-2 py-1 sm:px-3 sm:py-1.5 md:px-3 md:py-1.5 lg:px-4 lg:py-2 text-xs sm:text-sm md:text-sm font-medium rounded-lg bg-fuji-accent text-white hover:bg-red-600 transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 whitespace-nowrap"
+                            className="hidden sm:flex px-2 py-1 sm:px-3 sm:py-1.5 md:px-3 md:py-1.5 lg:px-4 lg:py-2 text-xs sm:text-sm md:text-sm font-medium rounded-lg bg-fuji-accent text-white hover:bg-red-600 transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 whitespace-nowrap animate-heartbeat-3s"
                         >
                             <span className={`${isRTL ? 'font-cairo' : ''}`}>
                                 {isRTL ? '🎁 العروض' : '🎁 Offers'}
@@ -200,7 +200,7 @@ const Navbar = () => {
                                     setIsSubscriptionModalOpen(true);
                                     setShowMobileMenu(false);
                                 }}
-                                className={`w-full px-4 py-3 bg-fuji-accent text-white font-semibold rounded-xl hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg mb-3 ${isRTL ? 'font-cairo' : ''}`}
+                                className={`w-full px-4 py-3 bg-fuji-accent text-white font-semibold rounded-xl hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg mb-3 animate-heartbeat-3s ${isRTL ? 'font-cairo' : ''}`}
                             >
                                 <span className="flex items-center justify-center">
                                     <span className={`${isRTL ? 'ml-2' : 'mr-2'}`}>🎁</span>
