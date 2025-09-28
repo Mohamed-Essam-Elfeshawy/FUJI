@@ -84,7 +84,7 @@ const OurClients = () => {
                 {/* Client Logos Carousel */}
                 <div className="relative mb-12 sm:mb-16 lg:mb-20">
                     <div className="overflow-hidden rounded-2xl sm:rounded-3xl bg-white shadow-soft border border-gray-200">
-                        <div className="flex transition-transform duration-500 ease-in-out" 
+                        <div dir="ltr" className="flex transition-transform duration-500 ease-in-out" 
                              style={{ transform: `translateX(-${currentSlide * (100 / Our_Clients_Data.length)}%)` }}>
                             {Our_Clients_Data.concat(Our_Clients_Data).map((client, index) => (
                                 <div key={`${client.id}-${index}`} className="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 p-4 sm:p-6 lg:p-8">
@@ -138,40 +138,38 @@ const OurClients = () => {
                         </p>
                     </div>
 
-                    {/* Testimonials Display */}
                     <div className="relative max-w-6xl mx-auto">
                         {/* Mobile: Slider View */}
                         <div className="block md:hidden">
-                            <div className="overflow-hidden">
-                                <div className="flex transition-transform duration-500 ease-in-out"
+                            <div className="overflow-hidden min-h-[280px]">
+                                <div dir="ltr" className="flex transition-transform duration-500 ease-in-out"
                                      style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}>
                                     {testimonials.map((testimonial, index) => (
-                                        <div key={testimonial.id} className="flex-none w-full">
-                                            <div className={`text-center ${isRTL ? 'font-cairo' : ''}`}>
+                                        <div key={testimonial.id} className="flex-none w-full px-2">
+                                            <div dir={isRTL ? 'rtl' : 'ltr'} className={`min-h-[260px] bg-gray-50 rounded-2xl p-5 border border-gray-200 shadow-sm text-center flex flex-col justify-between ${isRTL ? 'font-cairo' : ''}`}>
                                                 {/* Stars */}
-                                                <div className="flex justify-center mb-6">
+                                                <div className="flex justify-center mb-4">
                                                     {[...Array(testimonial.rating)].map((_, i) => (
-                                                        <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                                                         </svg>
                                                     ))}
                                                 </div>
 
-                                                {/* Quote */}
-                                                <blockquote className={`text-lg text-gray-700 leading-relaxed mb-6 italic ${isRTL ? 'text-right' : ''}`}>
-                                                    "{isRTL ? testimonial.textAR : testimonial.textEN}"
-                                                </blockquote>
+                                                <h3 className={`text-base text-gray-700 leading-relaxed mb-4 italic ${isRTL ? 'text-right' : 'text-left'}`}>
+                                                    {isRTL ? testimonial.textAR : testimonial.textEN}
+                                                </h3>
 
                                                 {/* Client Info */}
-                                                <div className="flex items-center justify-center gap-4">
-                                                    <div className="w-12 h-12 bg-gradient-to-br from-brandRed to-brandBlue rounded-full flex items-center justify-center text-white text-sm font-bold">
+                                                <div className="flex items-center justify-center gap-3">
+                                                    <div className="w-10 h-10 bg-gradient-to-br from-brandRed to-brandBlue rounded-full flex items-center justify-center text-white text-xs font-bold">
                                                         {(isRTL ? testimonial.nameAR : testimonial.nameEN).charAt(0)}
                                                     </div>
                                                     <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
-                                                        <h4 className="text-base font-semibold text-fujiBlue">
+                                                        <h4 className="text-sm font-semibold text-fujiBlue">
                                                             {isRTL ? testimonial.nameAR : testimonial.nameEN}
                                                         </h4>
-                                                        <p className="text-sm text-[#C0392B]">
+                                                        <p className="text-xs text-[#C0392B]">
                                                             {isRTL ? testimonial.positionAR : testimonial.positionEN}
                                                         </p>
                                                     </div>

@@ -74,11 +74,22 @@
     "Secure_login": "تسجيل دخول آمن ومحمي",
     "SSL_encrypted": "مشفر بتقنية SSL",
     "Company_Name": "فوجي إف دي",
-    "Company_Tagline": "نظام إدارة المصاعد",
+    "Company_tagline": "نظام إدارة المصاعد",
     "Innovation_Excellence": "التميز والابتكار",
-    "Innovation_Description": "تقنيات مصاعد متطورة وحلول مبتكرة تواكب أحدث التطورات التكنولوجية",
+    "Innovation_description": "تقنيات مصاعد متطورة وحلول مبتكرة تواكب أحدث التطورات التكنولوجية",
     "Quality_Assurance": "ضمان الجودة",
-    "Quality_Description": "مواد عالية الجودة وحرفية متقنة مع التزام صارم بأعلى معايير الصناعة",
+    "Quality_description": "مواد عالية الجودة وحرفية متقنة مع التزام صارم بأعلى معايير الصناعة",
     "Expert_Team": "فريق الخبراء",
-    "Team_Description": "محترفون مهرة بسنوات من الخبرة والتدريب المتخصص في جميع أنواع المصاعد"
+    "Team_description": "محترفون مهرة بسنوات من الخبرة والتدريب المتخصص في جميع أنواع المصاعد"
+  ,
+  "Success_Message_Sent": "✅ تم إرسال رسالتك بنجاح!",
+  "Info_Email_App_Opened": "تم فتح تطبيق البريد الإلكتروني. يرجى الضغط على 'إرسال' لإتمام العملية.",
+  "Error_Generic_With_Email": "حدث خطأ. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة على: melfeshawy42@gmail.com",
+  "Sending": "جاري الإرسال...",
+  "Google_Reviews": "تقييمات جوجل",
+  "See_what_our_clients_say": "اطلع على تقييمات عملائنا",
+  "View_on_Google_Maps": "عرض على خرائط جوجل",
+  "Phone_Not_Provided": "غير محدد",
+  "Contact_via_WhatsApp": "تواصل عبر WhatsApp",
+  "We_are_here_to_help": "نحن هنا لمساعدتك، تواصل معنا الآن"
 }

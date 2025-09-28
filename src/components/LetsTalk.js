@@ -8,6 +8,46 @@ const LetsTalk = () => {
     const currentLanguageCode = cookies.get('i18next');
     const isRTL = currentLanguageCode === 'ar';
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [toast, setToast] = useState({ open: false, type: 'success', text: '' });
+
+    // Notification sound (matches ContactUs tone and intensity)
+    const playToastSound = (type = 'success') => {
+        try {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return;
+            const ctx = new AudioCtx();
+            const master = ctx.createGain();
+            master.gain.value = 0.12; // same volume as ContactUs
+            master.connect(ctx.destination);
+
+            const playTone = (freq, start, dur, pan = 0) => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                const panner = (ctx.createStereoPanner ? ctx.createStereoPanner() : null);
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(freq, ctx.currentTime + start);
+                gain.gain.setValueAtTime(0.0001, ctx.currentTime + start);
+                gain.gain.exponentialRampToValueAtTime(0.25, ctx.currentTime + start + 0.015);
+                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + start + dur);
+                if (panner) { panner.pan.setValueAtTime(pan, ctx.currentTime + start); osc.connect(gain); gain.connect(panner); panner.connect(master); }
+                else { osc.connect(gain); gain.connect(master); }
+                osc.start(ctx.currentTime + start);
+                osc.stop(ctx.currentTime + start + dur + 0.02);
+            };
+
+            if (type === 'success') { playTone(880, 0, 0.18, -0.2); playTone(1320, 0.12, 0.22, 0.2); }
+            else if (type === 'info') { playTone(988, 0, 0.22, 0); }
+            else { playTone(660, 0, 0.18, 0.1); playTone(440, 0.12, 0.22, -0.1); }
+
+            setTimeout(() => { try { ctx.close(); } catch (e) {} }, 600);
+        } catch (e) {}
+    };
+
+    const showToast = (text, type = 'success') => {
+        setToast({ open: true, type, text });
+        playToastSound(type);
+        setTimeout(() => setToast((prev) => ({ ...prev, open: false })), 2000);
+    };
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -34,11 +74,11 @@ const LetsTalk = () => {
         try {
             // Use emailjs to send the form data
             await emailjs.send('service_5yyfaqj', 'template_jmewn0n', formData, '-Dqp5Ia1jl6qhAYVT');
-            alert(isRTL ? "تم إرسال الرسالة بنجاح!" : "Message sent successfully!");
+            showToast(t('Success_Message_Sent'), 'success');
             setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', subject: '', message: '' });
         } catch (error) {
             console.log('FAILED...', error);
-            alert(isRTL ? "فشل في إرسال الرسالة." : "Failed to send message.");
+            showToast(t('Error_Generic_With_Email'), 'error');
         } finally {
             setIsSubmitting(false);
         }
@@ -47,6 +87,48 @@ const LetsTalk = () => {
 
     return (
         <section className="relative bg-white py-16 lg:py-24 overflow-hidden">
+            {toast.open && (
+                <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[9999] w-full max-w-md px-4">
+                    <div
+                        className={
+                            `flex items-center gap-3 rounded-2xl border p-5 shadow-2xl ring-1 ring-black/10 transition-all duration-300 ` +
+                            (toast.type === 'success'
+                                ? 'bg-green-600 border-green-700 text-white'
+                                : toast.type === 'info'
+                                ? 'bg-blue-600 border-blue-700 text-white'
+                                : 'bg-red-600 border-red-700 text-white')
+                        }
+                        role="status"
+                        aria-live="polite"
+                    >
+                        {toast.type === 'success' && (
+                            <svg className="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        )}
+                        {toast.type === 'info' && (
+                            <svg className="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                            </svg>
+                        )}
+                        {toast.type === 'error' && (
+                            <svg className="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M12 8v8m0 4a9 9 0 110-18 9 9 0 010 18z" />
+                            </svg>
+                        )}
+                        <div className={`flex-1 text-center text-base font-bold text-white ${isRTL ? 'font-cairo' : ''}`}>{toast.text}</div>
+                        <button
+                            onClick={() => setToast((prev) => ({ ...prev, open: false }))}
+                            className="ml-3 inline-flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 text-white w-8 h-8"
+                            aria-label={t('Close')}
+                        >
+                            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            )}
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute top-0 left-0 w-72 h-72 bg-fuji-accent rounded-full filter blur-3xl"></div>

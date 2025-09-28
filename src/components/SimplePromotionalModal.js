@@ -38,10 +38,10 @@ const SimplePromotionalModal = () => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden animate-bounce-in">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-3">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full mx-3 overflow-hidden animate-bounce-in">
         {/* Header */}
-        <div className="bg-gradient-to-r from-fuji-blue to-blue-600 text-white p-6 text-center relative">
+        <div className="bg-gradient-to-r from-fuji-blue to-blue-600 text-white p-5 text-center relative">
           <button
             onClick={handleClose}
             className="absolute top-4 right-4 text-white hover:text-gray-200 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition-all"
@@ -49,11 +49,19 @@ const SimplePromotionalModal = () => {
             ×
           </button>
           
-          <div className="mb-4">
-            <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3 animate-bounce">
-              <span className="text-2xl">🎁</span>
+          <div className="mb-3">
+            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 animate-bounce">
+              <span className="text-xl">🎁</span>
             </div>
-            <h2 className="text-xl font-bold mb-2 text-white">
+            <div className="flex items-center justify-center mb-2">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 text-white font-semibold shadow-sm ring-1 ring-white/20">
+                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                {i18n.language === 'ar' ? 'أهلاً بك في FUJI FD' : 'Welcome to FUJI FD'}
+              </span>
+            </div>
+            <h2 className="text-lg font-bold mb-2 text-white">
               {i18n.language === 'ar' ? 'اشترك في العروض الترويجية' : 'Subscribe to Promotional Offers'}
             </h2>
             <p className="text-sm text-white opacity-90">
@@ -66,7 +74,7 @@ const SimplePromotionalModal = () => {
         </div>
 
         {/* Body */}
-        <div className="p-6">
+        <div className="p-5">
           <div className="space-y-4">
             {/* Email Input */}
             <div>
@@ -102,7 +110,7 @@ const SimplePromotionalModal = () => {
             <button
               onClick={handleSubscribe}
               disabled={!email || !phone}
-              className="w-full bg-gradient-to-r from-fuji-blue to-fuji-accent text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
+              className="w-full bg-gradient-to-r from-fuji-blue to-fuji-accent text-white py-2.5 px-5 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
             >
               <span className="mr-2">⚡</span>
               <span>

@@ -66,9 +66,6 @@ const Login = () => {
                                     <h1 className={`text-3xl font-bold text-fuji-blue mb-2 ${isRTL ? 'font-cairo' : ''}`}>
                                         {t('Company_Name') || (isRTL ? 'فوجي إف دي' : 'FUJI FD')}
                                     </h1>
-                                    <p className={`text-fuji-muted text-lg ${isRTL ? 'font-cairo' : ''}`}>
-                                        {t('Company_Tagline') || (isRTL ? 'نظام إدارة المصاعد' : 'Elevator Management System')}
-                                    </p>
                                 </div>
                                 
                                 <div className="w-16 h-1 bg-gradient-to-r from-fuji-accent to-fuji-blue mx-auto rounded-full mb-6"></div>

@@ -308,3 +308,46 @@
     box-shadow: 0 0 0 30px white inset !important;
     border: 1px solid #d1d5db !important;
 }
+
+/* === Brand Scrollbar (Global) === */
+/* WebKit Browsers (Chrome, Edge, Safari) */
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+@media (max-width: 640px) {
+  body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+body::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 9999px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #146FB6 0%, #125f9b 100%);
+  border-radius: 9999px;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(20, 111, 182, 0.35);
+  transition: background 200ms ease, box-shadow 200ms ease; /* smooth hover */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #C0392B 0%, #b12f22 100%);
+  box-shadow: 0 4px 10px rgba(192, 57, 43, 0.45);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;                /* auto | thin | none */
+  scrollbar-color: #146FB6 #f8fafc;    /* thumb | track */
+}
+
+.dark html {
+  scrollbar-color: #C0392B #0f172a;
+}
