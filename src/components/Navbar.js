@@ -61,9 +61,9 @@ const Navbar = () => {
                     
                     {/* Logo Section */}
                     <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 ">
-                        <div className="relative">
+                        <a href="/" aria-label="Home" className="flex items-center gap-2 sm:gap-3 group">
                             <img  
-                                className="h-9 sm:w-14 sm:h-10 md:w-16 md:h-12 lg:w-full lg:h-14 xl:w-20 xl:h-15 object-contain rounded-lg p-1 border border-gray-200 logo-bg-white" 
+                                className="h-9 sm:w-14 sm:h-10 md:w-16 md:h-12 lg:w-full lg:h-14 xl:w-20 xl:h-15 object-contain rounded-lg p-1 border border-gray-200 logo-bg-white cursor-pointer transition-transform group-hover:scale-105" 
                                 src={process.env.PUBLIC_URL + '/fuji-logo (2).svg'} 
                                 alt="FUJI FD Logo" 
                                 loading="eager"
@@ -72,16 +72,16 @@ const Navbar = () => {
                                 width="80"
                                 height="56"
                             />
-                        </div>
 
-                        <div className={`${isRTL ? 'text-right' : 'text-left'} hidden sm:block`}>
-                            <h1 className={`text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold ${isRTL ? 'font-cairo' : ''} text-fuji-blue hover:text-fuji-accent transition-colors duration-300`}>
-                                {t('App_Name')}
-                            </h1>
-                            <p className={`text-xs md:text-sm lg:text-sm xl:text-sm ${isRTL ? 'font-cairo' : ''} text-fuji-muted`}>
-                                {isRTL ? 'حلول المصاعد المتطورة' : 'Premium Elevator Solutions'}
-                            </p>
-                        </div>
+                            <div className={`${isRTL ? 'text-right' : 'text-left'} hidden sm:block cursor-pointer`}>
+                                <h1 className={`text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold ${isRTL ? 'font-cairo' : ''} text-fuji-blue group-hover:text-fuji-accent transition-colors duration-300`}>
+                                    {t('App_Name')}
+                                </h1>
+                                <p className={`text-xs md:text-sm lg:text-sm xl:text-sm ${isRTL ? 'font-cairo' : ''} text-fuji-muted`}>
+                                    {isRTL ? 'حلول المصاعد المتطورة' : 'Premium Elevator Solutions'}
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
                     {/* Desktop Navigation Links */}
