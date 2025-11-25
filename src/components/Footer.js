@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
-import dribbble from '../images/Footer/dribbble.png'
-import instagram from '../images/Footer/instagram.png'
-import facebook from '../images/Footer/facebook.png'
 import { useTranslation } from 'react-i18next'
 import company_profile from '../images/Footer/company_profile.png'
 import vat_logo from '../images/Footer/vat_logo.png'
 import cookies from "js-cookie";
-
 const Footer = () => {
     const { t } = useTranslation();
     const currentLanguageCode = cookies.get('i18next');
@@ -20,15 +16,15 @@ const Footer = () => {
             {/* Main Footer Content */}
             <div className="max-w-7xl mx-auto px-6 lg:px-16 py-16 lg:py-20">
                 <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ${isRTL ? 'text-right' : 'text-left'}`}>
-                    
+
                     {/* Column 1: Company Logo + Description */}
                     <div>
                         <div className="flex items-center mb-6">
                             <div className="relative rounded-lg logo-bg-white border border-gray-200">
-                                <img 
-                                    className="w-16 h-12 lg:w-18 lg:h-14 xl:w-20 xl:h-16 object-contain rounded-lg p-2" 
-                                    src={process.env.PUBLIC_URL + '/fuji-logo (2).svg'} 
-                                    alt="FUJI FD Logo" 
+                                <img
+                                    className="w-16 h-12 lg:w-18 lg:h-14 xl:w-20 xl:h-16 object-contain rounded-lg p-2"
+                                    src={process.env.PUBLIC_URL + '/fuji-logo (2).svg'}
+                                    alt="FUJI FD Logo"
                                     loading="eager"
                                     decoding="sync"
                                     fetchpriority="high"
@@ -46,12 +42,12 @@ const Footer = () => {
                             </div>
                         </div>
                         <p className={`text-gray-300 leading-relaxed mb-6 text-sm ${isRTL ? 'font-cairo text-right' : ''}`}>
-                            {isRTL 
+                            {isRTL
                                 ? 'نحن شركة رائدة في مجال المصاعد والحلول الذكية، نقدم خدمات متميزة وحلول مبتكرة لعملائنا في جميع أنحاء المملكة.'
                                 : 'We are a leading company in elevators and smart solutions, providing exceptional services and innovative solutions to our clients throughout the Kingdom.'
                             }
                         </p>
-                        
+
                         {/* Certifications & Social Media */}
                         <div className="space-y-3">
                             <button
@@ -65,7 +61,7 @@ const Footer = () => {
                                     {isRTL ? 'ملف الشركة' : 'Company Profile'}
                                 </span>
                             </button>
-                            
+
                             <button
                                 onClick={() => window.open('https://drive.google.com/file/d/1T3HJm13unuxNFNUR8g6pgTUdxiz7sL04/view?usp=sharing', '_blank')}
                                 className={`flex items-center gap-3 text-gray-300 hover:text-red-500 transition-colors duration-300 text-sm ${isRTL ? 'justify-start' : 'justify-start'}`}
@@ -77,7 +73,7 @@ const Footer = () => {
                                     {isRTL ? 'شهادة ضريبية' : 'VAT Certificate'}
                                 </span>
                             </button>
-                            
+
                         </div>
                     </div>
 
@@ -95,7 +91,7 @@ const Footer = () => {
                                 { labelEN: 'Blog', labelAR: 'المدونة', href: '/blog' }
                             ].map((link, index) => (
                                 <li key={index}>
-                                    <a 
+                                    <a
                                         href={link.href}
                                         className={`text-gray-300 hover:text-red-500 transition-colors duration-300 flex items-center group text-sm ${isRTL ? 'font-cairo' : ''}`}
                                     >
@@ -121,7 +117,7 @@ const Footer = () => {
                                 { labelEN: 'Emergency Repair', labelAR: 'الإصلاح الطارئ' }
                             ].map((service, index) => (
                                 <li key={index}>
-                                    <a 
+                                    <a
                                         href="https://wa.me/966549561015"
                                         className={`text-gray-300 hover:text-red-500 transition-colors duration-300 flex items-center group text-sm ${isRTL ? 'font-cairo' : ''}`}
                                     >
@@ -138,10 +134,10 @@ const Footer = () => {
                         <h3 className={`text-lg font-bold text-white mb-4 ${isRTL ? 'font-cairo' : ''}`}>
                             {isRTL ? 'تواصل معنا' : 'Contact Info'}
                         </h3>
-                        
+
                         {/* Contact Info */}
                         <div className="space-y-4">
-                            <a 
+                            <a
                                 href="tel:+966549561015"
                                 className="flex items-center gap-3 text-gray-300 hover:text-red-500 transition-colors duration-300 group"
                             >
@@ -155,7 +151,7 @@ const Footer = () => {
                                 </span>
                             </a>
 
-                            <a 
+                            <a
                                 href={`mailto:info@fujifd-ksa.com?subject=${isRTL ? emailSubjectAR : emailSubjectEN}`}
                                 className="flex items-center gap-3 text-gray-300 hover:text-red-500 transition-colors duration-300 group"
                             >
@@ -188,19 +184,57 @@ const Footer = () => {
             {/* Bottom Copyright Bar */}
             <div className="border-t border-white/10 bg-black/30">
                 <div className="max-w-7xl mx-auto px-6 lg:px-16 py-6">
-                    <div className={`flex flex-col md:flex-row justify-between items-center gap-4 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className={`text-gray-400 text-sm ${isRTL ? 'font-cairo text-right' : 'text-left'}`}>
                             {t('Copywrite')}
                         </p>
+
+                        {/* Social Media Links */}
+                        <div className="flex items-center gap-4">
+                            <a
+                                href="https://x.com/FUJIFD_KSA"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-400 hover:text-red-500 transition-colors duration-300"
+                                title={isRTL ? 'تويتر' : 'Twitter'}
+                            >
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </a>
+                            <a
+                                href="https://www.facebook.com/fujifdksa"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
+                                title={isRTL ? 'فيسبوك' : 'Facebook'}
+                            >
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                                </svg>
+                            </a>
+                            <a
+                                href="https://www.tiktok.com/@fujifd_ksa"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-400 hover:text-gray-800 transition-colors duration-300"
+                                title="TikTok"
+                            >
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.43.27-.83.59-1.21.96-.7.7-1.11 1.62-1.02 2.61.17 1.19 1.1 2.4 2.32 2.65.83.17 1.69-.12 2.35-.6.62-.45 1.03-1.15 1.16-1.9.21-1.19.1-4.3.1-4.3 0-2.77 0-5.55.01-8.32v-.04z" />
+                                </svg>
+                            </a>
+                        </div>
+
                         <div className="flex items-center gap-6">
-                            <a 
-                                href="/privacy" 
+                            <a
+                                href="/privacy"
                                 className={`text-gray-400 hover:text-white text-sm transition-colors duration-300 ${isRTL ? 'font-cairo' : ''}`}
                             >
                                 {isRTL ? 'سياسة الخصوصية' : 'Privacy Policy'}
                             </a>
-                            <a 
-                                href="/terms" 
+                            <a
+                                href="/terms"
                                 className={`text-gray-400 hover:text-white text-sm transition-colors duration-300 ${isRTL ? 'font-cairo' : ''}`}
                             >
                                 {isRTL ? 'الشروط والأحكام' : 'Terms of Service'}
@@ -213,4 +247,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default Footer;
