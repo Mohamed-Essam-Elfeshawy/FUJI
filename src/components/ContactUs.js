@@ -109,6 +109,7 @@ const ContactUs = () => {
         showToast(t('Sending...'), 'info');
 
         try {
+<<<<<<< HEAD
             console.log('Sending form data:', formData); // Debug log
 
             const response = await fetch(
@@ -148,6 +149,66 @@ const ContactUs = () => {
 
         } catch (error) {
             console.error('Error submitting form:', error);
+=======
+            if (EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY) {
+                // Include multiple aliases so it works with most EmailJS template setups
+                const templateParams = {
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    from_name: `${formData.firstName} ${formData.lastName}`,
+                    // Common email field aliases
+                    from_email: formData.emailAddress,
+                    reply_to: formData.emailAddress,
+                    email: formData.emailAddress,
+                    user_email: formData.emailAddress,
+                    // Other fields
+                    phone: formData.phoneNumber || t('Phone_Not_Provided'),
+                    subject: formData.subject,
+                    message: formData.message,
+                };
+
+                const emailjs = (await import('@emailjs/browser')).default;
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_TEMPLATE_ID,
+                    templateParams,
+                    EMAILJS_PUBLIC_KEY
+                );
+
+                setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', subject: '', message: '' });
+                showToast(t('Success_Message_Sent'), 'success');
+                return;
+            }
+
+            const emailSubject = encodeURIComponent(`رسالة من موقع FUJI FD: ${formData.subject}`);
+            const emailBody = encodeURIComponent(`
+🏢 رسالة جديدة من موقع FUJI FD
+
+👤 معلومات المرسل:
+الاسم: ${formData.firstName} ${formData.lastName}
+البريد الإلكتروني: ${formData.emailAddress}
+رقم الهاتف: ${formData.phoneNumber || t('Phone_Not_Provided')}
+
+📋 تفاصيل الرسالة:
+الموضوع: ${formData.subject}
+
+💬 الرسالة:
+${formData.message}
+
+---
+تم إرسال هذه الرسالة من نموذج التواصل في موقع FUJI FD
+التاريخ: ${new Date().toLocaleString('ar-SA')}
+            `);
+
+            const mailtoLink = `mailto:melfeshawy42@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+            window.open(mailtoLink);
+
+            setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', subject: '', message: '' });
+
+            showToast(t('Info_Email_App_Opened'), 'info');
+        } catch (err) {
+            console.log('Error:', err);
+>>>>>>> 6e9d26c196459255c6961c54a61e303f1288fc87
             showToast(t('Error_Generic_With_Email'), 'error');
         } finally {
             setIsSubmitting(false);

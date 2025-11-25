@@ -61,9 +61,9 @@ const Navbar = () => {
                     
                     {/* Logo Section */}
                     <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 ">
-                        <div className="relative">
+                        <a href="/" aria-label="Home" className="flex items-center gap-2 sm:gap-3 group">
                             <img  
-                                className="h-9 sm:w-14 sm:h-10 md:w-16 md:h-12 lg:w-full lg:h-14 xl:w-20 xl:h-15 object-contain rounded-lg p-1 border border-gray-200 logo-bg-white" 
+                                className="h-9 sm:w-14 sm:h-10 md:w-16 md:h-12 lg:w-full lg:h-14 xl:w-20 xl:h-15 object-contain rounded-lg p-1 border border-gray-200 logo-bg-white cursor-pointer transition-transform group-hover:scale-105" 
                                 src={process.env.PUBLIC_URL + '/fuji-logo (2).svg'} 
                                 alt="FUJI FD Logo" 
                                 loading="eager"
@@ -72,16 +72,16 @@ const Navbar = () => {
                                 width="80"
                                 height="56"
                             />
-                        </div>
 
-                        <div className={`${isRTL ? 'text-right' : 'text-left'} hidden sm:block`}>
-                            <h1 className={`text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold ${isRTL ? 'font-cairo' : ''} text-fuji-blue hover:text-fuji-accent transition-colors duration-300`}>
-                                {t('App_Name')}
-                            </h1>
-                            <p className={`text-xs md:text-sm lg:text-sm xl:text-sm ${isRTL ? 'font-cairo' : ''} text-fuji-muted`}>
-                                {isRTL ? 'حلول المصاعد المتطورة' : 'Premium Elevator Solutions'}
-                            </p>
-                        </div>
+                            <div className={`${isRTL ? 'text-right' : 'text-left'} hidden sm:block cursor-pointer`}>
+                                <h1 className={`text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold ${isRTL ? 'font-cairo' : ''} text-fuji-blue group-hover:text-fuji-accent transition-colors duration-300`}>
+                                    {t('App_Name')}
+                                </h1>
+                                <p className={`text-xs md:text-sm lg:text-sm xl:text-sm ${isRTL ? 'font-cairo' : ''} text-fuji-muted`}>
+                                    {isRTL ? 'حلول المصاعد المتطورة' : 'Premium Elevator Solutions'}
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
                     {/* Desktop Navigation Links */}
@@ -110,7 +110,7 @@ const Navbar = () => {
                         {/* Subscription Button - Hidden on small screens */}
                         <button
                             onClick={() => setIsSubscriptionModalOpen(true)}
-                            className="hidden sm:flex px-2 py-1 sm:px-3 sm:py-1.5 md:px-3 md:py-1.5 lg:px-4 lg:py-2 text-xs sm:text-sm md:text-sm font-medium rounded-lg bg-fuji-accent text-white hover:bg-red-600 transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 whitespace-nowrap"
+                            className="hidden sm:flex px-2 py-1 sm:px-3 sm:py-1.5 md:px-3 md:py-1.5 lg:px-4 lg:py-2 text-xs sm:text-sm md:text-sm font-medium rounded-lg bg-fuji-accent text-white hover:bg-red-600 transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 whitespace-nowrap animate-heartbeat-3s"
                         >
                             <span className={`${isRTL ? 'font-cairo' : ''}`}>
                                 {isRTL ? '🎁 العروض' : '🎁 Offers'}
@@ -200,7 +200,7 @@ const Navbar = () => {
                                     setIsSubscriptionModalOpen(true);
                                     setShowMobileMenu(false);
                                 }}
-                                className={`w-full px-4 py-3 bg-fuji-accent text-white font-semibold rounded-xl hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg mb-3 ${isRTL ? 'font-cairo' : ''}`}
+                                className={`w-full px-4 py-3 bg-fuji-accent text-white font-semibold rounded-xl hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg mb-3 animate-heartbeat-3s ${isRTL ? 'font-cairo' : ''}`}
                             >
                                 <span className="flex items-center justify-center">
                                     <span className={`${isRTL ? 'ml-2' : 'mr-2'}`}>🎁</span>

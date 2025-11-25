@@ -74,11 +74,22 @@
     "Secure_login": "Secure and protected login",
     "SSL_encrypted": "SSL encrypted",
     "Company_Name": "FUJI FD",
-    "Company_Tagline": "Elevator Management System",
+    "Company_tagline": "Elevator Management System",
     "Innovation_Excellence": "Innovation Excellence",
-    "Innovation_Description": "Cutting-edge elevator technology and innovative solutions that keep pace with the latest technological developments",
+    "Innovation_description": "Cutting-edge elevator technology and innovative solutions that keep pace with the latest technological developments",
     "Quality_Assurance": "Quality Assurance",
-    "Quality_Description": "Premium materials and craftsmanship with strict adherence to the highest industry standards",
+    "Quality_description": "Premium materials and craftsmanship with strict adherence to the highest industry standards",
     "Expert_Team": "Expert Team",
-    "Team_Description": "Skilled professionals with years of experience and specialized training in all types of elevators"
+    "Team_description": "Skilled professionals with years of experience and specialized training in all types of elevators"
+  ,
+  "Success_Message_Sent": "Message sent successfully!",
+  "Info_Email_App_Opened": "Email app opened. Please click 'Send' to complete the process.",
+  "Error_Generic_With_Email": "An error occurred. Please try again or contact us directly at: melfeshawy42@gmail.com",
+  "Sending": "Sending...",
+  "Close": "Close",
+  "Google_Reviews": "Google Reviews",
+  "See_what_our_clients_say": "See what our clients say",
+  "View_on_Google_Maps": "View on Google Maps",
+  "Phone_Not_Provided": "Not provided",
+  "We_are_here_to_help": "We are here to help you, contact us now"
 }

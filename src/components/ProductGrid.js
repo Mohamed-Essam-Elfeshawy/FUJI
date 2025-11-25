@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import { PRODUCTS } from '../data/products';
 import { useTranslation } from 'react-i18next';
 import cookies from "js-cookie";
-import RiyalSymbol from './RiyalSymbol';
 import { useCart } from '../context/CartContext';
 import LazyImage from './LazyImage';
 
@@ -105,20 +104,16 @@ const ProductGrid = () => {
 
                     {/* Price */}
                     <div className={`mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>
-                      <div className={`flex items-center gap-2 text-2xl font-bold text-fuji-blue ${isRTL ? 'justify-end' : 'justify-start'}`}>
-                        {isRTL ? (
-                          <>
-                            <span>{product.price.toLocaleString()}</span>
-                            <span className="text-lg font-medium">ريال سعودي</span>
-                            <RiyalSymbol className="w-6 h-6" />
-                          </>
-                        ) : (
-                          <>
-                            <span>{product.price.toLocaleString()}</span>
-                            <span className="text-lg font-medium">Saudi Riyal</span>
-                            <RiyalSymbol className="w-6 h-6" />
-                          </>
-                        )}
+                      <div className={`flex items-center gap-1 leading-none text-2xl font-bold text-fuji-blue ${isRTL ? 'justify-end' : 'justify-start'}`}>
+                        <span>{product.price.toLocaleString()}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 382 428" className="w-5 h-5 translate-y-[1px]">
+                          <path d="M223.564 62.2622C239.654 44.2002 249.543 36.0911 268.965 25.839V326.607L223.564 335.988V62.2622Z" fill="rgb(20,111,182)"/>
+                          <path d="M368.627 213.474C378.039 193.607 379.147 184.777 381.667 164.396L33.6534 239.963C25.4006 258.346 22.7442 268.622 21.4724 286.872L368.627 213.474Z" fill="rgb(20,111,182)"/>
+                          <path d="M368.627 305.598C378.039 285.73 379.147 276.9 381.667 256.52L225.225 289.632C224.118 307.843 225.389 317.186 224.118 335.436L368.627 305.598Z" fill="rgb(20,111,182)"/>
+                          <path d="M368.627 397.708C378.039 377.841 379.147 369.011 381.667 348.63L239.067 379.586C231.869 389.519 227.44 406.075 224.118 427.547L368.627 397.708Z" fill="rgb(20,111,182)"/>
+                          <path d="M142.174 366.341C156.016 349.233 170.411 327.71 180.377 310.051L12.514 346.435C4.26132 364.818 1.60486 375.094 0.333069 393.344L142.174 366.341Z" fill="rgb(20,111,182)"/>
+                          <path d="M134.976 36.8764C151.067 18.8143 160.955 10.7052 180.377 0.453125V311.154L134.976 320.536V36.8764Z" fill="rgb(20,111,182)"/>
+                        </svg>
                       </div>
                       <p className={`text-xs text-fuji-muted mt-1 ${isRTL ? 'font-cairo' : ''}`}>
                         {isRTL ? 'شامل التركيب والضمان' : 'Including installation & warranty'}

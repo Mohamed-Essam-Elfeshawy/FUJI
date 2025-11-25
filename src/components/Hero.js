@@ -74,7 +74,7 @@ const Hero = () => {
 
                 <div className='relative z-20 px-4 sm:px-6 pt-16 sm:pt-20'>
                     {/* Modern hero content with glassmorphism */}
-                    <div className="flex flex-col justify-center min-h-[calc(100vh-100px)] sm:min-h-[calc(100vh-120px)]">
+                    <div className="flex flex-col justify-center min-h-screen sm:min-h-screen -translate-y-6 sm:-translate-y-8">
                         <div className="text-center">
                             <h1 className={`text-white text-3xl sm:text-4xl font-bold leading-tight mb-4 sm:mb-6 tracking-tight animate-fade-in-up drop-shadow-lg ${isRTL ? 'font-cairo text-center' : 'text-center'}`}>
                                 {isRTL ? (
@@ -90,15 +90,15 @@ const Hero = () => {
                                 )}
                             </h1>
 
-                            <p className={`text-white text-base font-medium leading-relaxed mb-10 max-w-md mx-auto animate-fade-in-up drop-shadow-md ${isRTL ? 'font-cairo text-right' : 'text-left'}`} style={{animationDelay: '0.2s'}}>
-                                {isRTL ? 
-                                    'نقدم حلولاً تكنولوجية متطورة تمكن الشركات من الوصول إلى آفاق جديدة بأمان وسرعة لا مثيل لهما.' :
-                                    'We provide cutting-edge technological solutions that empower businesses to scale new heights with unparalleled safety and swiftness.'
+                            <p className={`text-gray-200 text-base font-medium leading-relaxed mb-10 max-w-md mx-auto animate-fade-in-up drop-shadow-md ${isRTL ? 'font-cairo text-right' : 'text-left'}`} style={{animationDelay: '0.2s'}}>
+                                {isRTL 
+                                    ? 'نقدم حلولاً تكنولوجية متطورة تمكن الشركات من الوصول إلى آفاق جديدة بأمان وسرعة لا مثيل لهما.' 
+                                    : 'We provide cutting-edge technological solutions that empower businesses to scale new heights with unparalleled safety and swiftness.'
                                 }
                             </p>
 
                             {/* Modern CTA buttons with glassmorphism */}
-                            <div className={`flex flex-col gap-4 animate-fade-in-up ${isRTL ? 'items-end' : 'items-start'}`} style={{animationDelay: '0.4s'}}>
+                            <div className={`flex flex-col gap-4 items-center justify-center animate-fade-in-up`} style={{animationDelay: '0.4s'}}>
                                 <button
                                     onClick={() => window.location.href = '/shop'}
                                     className={`py-4 px-8 bg-electricBlue hover:bg-electricBlueDark text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-strong hover:shadow-xl transform hover:scale-105 hover:shadow-electricBlue/25 ${isRTL ? 'font-cairo' : ''}`}>
@@ -149,7 +149,7 @@ const Hero = () => {
 
                 <div className='relative z-20 max-w-7xl mx-auto px-8 lg:px-16'>
                     {/* Modern hero content with glassmorphism */}
-                    <div className="flex items-center min-h-[calc(100vh-120px)]">
+                    <div className="flex items-center min-h-screen -translate-y-8">
                         <div className="max-w-4xl pt-20">
                             <h1 className={`text-white text-4xl font-bold leading-tight mb-6 tracking-tight animate-fade-in-up drop-shadow-lg ${isRTL ? 'font-cairo text-right' : 'text-left'}`}>
                                 {isRTL ? (
@@ -165,7 +165,7 @@ const Hero = () => {
                                 )}
                             </h1>
 
-                            <p className={`text-white text-base font-medium leading-relaxed mb-10 max-w-md mx-auto animate-fade-in-up drop-shadow-md ${isRTL ? 'font-cairo text-right' : 'text-left'}`} style={{animationDelay: '0.2s'}}>
+                            <p className={`text-gray-200 text-base font-medium leading-relaxed mb-10 max-w-md mx-auto animate-fade-in-up drop-shadow-md ${isRTL ? 'font-cairo text-right' : 'text-left'}`} style={{animationDelay: '0.2s'}}>
                                 {isRTL ? 
                                     'نقدم حلولاً تكنولوجية متطورة تمكن الشركات من الوصول إلى آفاق جديدة بأمان وسرعة لا مثيل لهما.' :
                                     'We provide cutting-edge technological solutions that empower businesses to scale new heights with unparalleled safety and swiftness.'
@@ -173,7 +173,7 @@ const Hero = () => {
                             </p>
 
                             {/* Modern CTA buttons with glassmorphism */}
-                            <div className={`flex flex-col gap-4 animate-fade-in-up ${isRTL ? 'items-end' : 'items-start'}`} style={{animationDelay: '0.4s'}}>
+                            <div className={`flex flex-col gap-4 items-center animate-fade-in-up`} style={{animationDelay: '0.4s'}}>
                                 <button
                                     onClick={() => window.location.href = '/shop'}
                                     className={`py-4 px-8 bg-electricBlue hover:bg-electricBlueDark text-white text-lg font-semibold rounded-2xl transition-all duration-300 shadow-strong hover:shadow-xl transform hover:scale-105 hover:shadow-electricBlue/25 ${isRTL ? 'font-cairo' : ''}`}>
