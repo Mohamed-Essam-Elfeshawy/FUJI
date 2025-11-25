@@ -85,7 +85,7 @@ const LetsTalk = () => {
         showToast(t('Sending...'), 'info');
 
         try {
-<<<<<<< HEAD
+
             console.log('Sending form data:', formData); // Debug log
             
             const response = await fetch(
@@ -123,14 +123,6 @@ const LetsTalk = () => {
             
         } catch (error) {
             console.error('Error submitting form:', error);
-=======
-            // Use emailjs to send the form data
-            await emailjs.send('service_5yyfaqj', 'template_jmewn0n', formData, '-Dqp5Ia1jl6qhAYVT');
-            showToast(t('Success_Message_Sent'), 'success');
-            setFormData({ firstName: '', lastName: '', phoneNumber: '', emailAddress: '', subject: '', message: '' });
-        } catch (error) {
-            console.log('FAILED...', error);
->>>>>>> 6e9d26c196459255c6961c54a61e303f1288fc87
             showToast(t('Error_Generic_With_Email'), 'error');
         } finally {
             setIsSubmitting(false);
